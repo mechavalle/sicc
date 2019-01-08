@@ -1,0 +1,107 @@
+.navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      /*height: 70px;*/
+      height: 45px;
+      background-color: #a04343;
+      color: beige;
+    }
+
+    .ctitulo {
+      color: #525252;
+      font-family: Arial;
+      font-size: 15px;
+      margin: 5px 5px 0 5px;
+      font-weight: 600;
+    }
+
+    .csubtitulo {
+      color: #525252;
+      font-family: Arial;
+      font-size: 13px;
+      margin: 0 5px 3px 5px;
+    }
+
+    .cextra {
+      color: #525252;
+      font-family: Arial;
+      font-size: 10px;
+      margin: 0 5px 3px 5px;
+    }
+
+    .cnum {
+      color: #525252;
+      font-family: Arial;
+      font-size: 13px;
+      margin: 0 5px;
+      font-weight: 600;
+    }
+
+    .tarjeta
+    {
+     width: 170px; 
+     display: inline-grid; 
+     margin: 10px;
+     vertical-align: top;
+    }
+
+
+    .affix {
+      top: 0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 100px;
+  }
+
+  .esvisible
+    {
+    display: inherit;
+    }
+
+  .novisible
+    {
+    display: none;
+    }
+
+  div.ex3 
+  {
+    height: 800px;
+    width: 100%;    
+    overflow-y: auto;
+  }
+
+  div.ex3::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+div.ex3::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+ 
+div.ex3::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+  border-radius: 10px;
+}
+
+
+.avatarmisdatos
+{
+    width: 150px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #a04343;
+    margin: 0 auto;
+}

@@ -1,0 +1,110 @@
+<?
+include("f_conecta.php"); 
+include("f_fnBD.php"); 
+$conexio=Conecta();
+
+if(isset($_GET['id']))	
+	$id=$_GET['id'];
+else {
+	echo "<html><head><title>Borrar</title></head><body onLoad=\"window.close();\"></body></html>";
+	exit(); }
+
+if(isset($_GET['campoid']))	
+	$campoid=$_GET['campoid'];
+else {
+	echo "<html><head><title>Borrar</title></head><body onLoad=\"window.close();\"></body></html>";
+	exit(); }
+	
+if(isset($_GET['tabla']))	
+	$tabla=$_GET['tabla'];
+else {
+	echo "<html><head><title>Borrar</title></head><body onLoad=\"window.close();\"></body></html>";
+	exit(); }
+	
+if(isset($_GET['img']))	
+	$img=$_GET['img'];
+else
+	$img="";
+	
+if(isset($_GET['ver']))	
+	$ver=$_GET['ver'];
+else {
+	echo "<html><head><title>Borrar</title></head><body onLoad=\"window.close();\"></body></html>";
+	exit(); }
+
+$ahora=md5($id.$campoid.$tabla."masamuneshirow");
+if($ver!=$ahora)
+	{
+	echo "<html><head><title>Borrar</title></head><body onLoad=\"alert('Uso no autorizado de funcion');\"></body></html>";
+	exit(); }
+
+if(isset($_GET['accion']))
+	{
+	if($_GET['accion']=="1")
+		{
+		#borramos imagen
+		if($img!="")
+			if(file_exists($img))
+				unlink($img);
+		
+		$csql = "DELETE FROM `$tabla` WHERE `$campoid`='$id'";
+		mysql_query($csql);
+		if(mysql_error()!=""){
+			echo "Error al grabar el registro. ".mysql_error()."-> $csql";
+			exit();	}
+		echo "<html><head><title>Borrar</title></head><body onLoad=\" w2=window.opener; w2.location.reload(); window.close(); \"></body></html>";
+		exit();
+		}
+	}
+?>
+
+
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="es-mx">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Seleccione el archivo</title>
+</head>
+
+<body bgcolor="#FFFF00">
+<form name="edicion" method="GET" target="_self" enctype="multipart/form-data">
+<table border="0" width="343" id="table2" cellspacing="0" cellpadding="0">
+	<tr>
+		<td align="center">&nbsp;</td>
+		<td align="center" width="318">&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="center">&nbsp;</td>
+		<td align="center" width="318" bgcolor="#FF0000"><font color="#FFFFFF"><b>¿Realmente desea 
+		borrar este registro?</b></font></td>
+	</tr>
+	<tr>
+		<td align="center">&nbsp;</td>
+		<td align="center" width="318">&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="center">
+	&nbsp;</td>
+		<td align="center" width="318">
+	<table border="1" width="300" id="table3" cellspacing="0" cellpadding="0" bordercolor="#FF0000">
+		<tr>
+			<td align="center" bgcolor="#FFFFFF">
+			<img border="0" src="../../r30/img/ok.gif" width="16" height="16"><a href="#" onclick=" document.edicion.submit(); "><font size="1" face="Verdana">Ok</font></a></td>
+			<td align="center" width="157" bgcolor="#FFFFFF">
+			<img border="0" src="../../r30/img/salir.gif" width="16" height="16"><a href="#" onclick="window.close();" ><font size="1" face="Verdana">Cancelar</font></a></td>
+		</tr>
+	</table>
+		</td>
+	</tr>
+</table>
+	<input type="hidden" name="id" value="<? echo $id;?>">
+	<input type="hidden" name="tabla" value="<? echo $tabla;?>">
+	<input type="hidden" name="campoid" value="<? echo $campoid;?>">
+	<input type="hidden" name="img" value="<? echo $img;?>">
+	<input type="hidden" name="ver" value="<? echo $ver;?>">
+	<input type="hidden" name="accion" value="1">
+</form>
+</body>
+
+</html>

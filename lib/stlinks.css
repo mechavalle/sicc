@@ -1,0 +1,47 @@
+a:link {text-decoration:none;}    /* unvisited link */
+a:visited {text-decoration:none;} /* visited link */
+a:hover {text-decoration:underline;}   /* mouse over link */
+a:active {text-decoration:none;}  /* selected link */
+
+.cenbox {
+	font-family: Verdana; 
+	font-size: 8pt;
+	width: 150px;
+	margin: 2px 0;
+	height: 20px !important;
+}
+
+.cenboxmin {
+	font-family: Verdana; 
+	font-size: 8pt;
+	width: 75px;
+	margin: 2px 0;
+	height: 20px !important;
+}
+
+.cenboxfrm {
+	font-family: Arial; 
+	font-size: 10pt;
+	width: 200px;
+	margin: 2px 0;
+	height: 20px;
+}
+
+.cenboxfrmmin {
+	font-family: Arial; 
+	font-size: 10pt;
+	width: 75px;
+	margin: 2px 0;
+	height: 20px;
+}
+
+.cencuadro {
+	width: 20px;
+	height: 20px;
+}
+
+.subr {
+			border-color: grey;
+		    border-bottom-style: dotted;
+		    border-width: 1px;
+		}

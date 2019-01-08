@@ -1,25 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
--- https://www.phpmyadmin.net/
+-- version 4.1.4
+-- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Jan 08, 2019 at 09:28 AM
--- Server version: 5.6.39-cll-lve
--- PHP Version: 5.6.30
+-- Host: 127.0.0.1
+-- Generation Time: Jan 08, 2019 at 06:07 PM
+-- Server version: 5.6.15-log
+-- PHP Version: 5.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Database: `siccdb`
+-- Database: `sicc`
 --
 
 -- --------------------------------------------------------
@@ -28,14 +26,15 @@ SET time_zone = "+00:00";
 -- Table structure for table `adm_archivos`
 --
 
-CREATE TABLE `adm_archivos` (
-  `id` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `adm_archivos` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
   `idcata` int(3) NOT NULL,
   `idcatb` int(3) NOT NULL,
   `modulo` varchar(150) NOT NULL,
   `tabla` varchar(100) NOT NULL,
-  `ruta` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ruta` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `adm_archivos`
@@ -50,8 +49,8 @@ INSERT INTO `adm_archivos` (`id`, `idcata`, `idcatb`, `modulo`, `tabla`, `ruta`)
 -- Table structure for table `adm_config`
 --
 
-CREATE TABLE `adm_config` (
-  `id` tinyint(2) NOT NULL,
+CREATE TABLE IF NOT EXISTS `adm_config` (
+  `id` tinyint(2) NOT NULL AUTO_INCREMENT,
   `idempresa` int(5) NOT NULL,
   `empresa` varchar(250) NOT NULL,
   `empresacomercial` varchar(250) NOT NULL,
@@ -92,8 +91,9 @@ CREATE TABLE `adm_config` (
   `contratomutuos` varchar(250) NOT NULL,
   `correoadmin` varchar(100) NOT NULL,
   `ultactusu` varchar(25) NOT NULL,
-  `ultactfec` varchar(25) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactfec` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `adm_config`
@@ -108,8 +108,8 @@ INSERT INTO `adm_config` (`id`, `idempresa`, `empresa`, `empresacomercial`, `rfc
 -- Table structure for table `adm_documentos`
 --
 
-CREATE TABLE `adm_documentos` (
-  `id` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `adm_documentos` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
   `idcata` int(3) NOT NULL,
   `idcatb` int(3) NOT NULL,
   `identificador` varchar(100) NOT NULL DEFAULT '',
@@ -118,8 +118,9 @@ CREATE TABLE `adm_documentos` (
   `archivo` longtext NOT NULL,
   `status` tinyint(3) NOT NULL DEFAULT '0',
   `ultactfec` varchar(25) NOT NULL DEFAULT '',
-  `ultactusu` varchar(25) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactusu` varchar(25) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `adm_documentos`
@@ -166,8 +167,8 @@ INSERT INTO `adm_documentos` (`id`, `idcata`, `idcatb`, `identificador`, `descri
 -- Table structure for table `adm_empresas`
 --
 
-CREATE TABLE `adm_empresas` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `adm_empresas` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `orden` int(3) NOT NULL,
   `base` varchar(100) NOT NULL DEFAULT '',
   `razon` varchar(250) NOT NULL,
@@ -176,15 +177,16 @@ CREATE TABLE `adm_empresas` (
   `licvigencia` date NOT NULL,
   `status` tinyint(2) NOT NULL DEFAULT '0',
   `ultactfec` varchar(25) NOT NULL DEFAULT '',
-  `ultactusu` varchar(25) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactusu` varchar(25) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `adm_empresas`
 --
 
 INSERT INTO `adm_empresas` (`id`, `orden`, `base`, `razon`, `logo`, `vidamax`, `licvigencia`, `status`, `ultactfec`, `ultactusu`) VALUES
-(1, 2, 'siccdb', 'Centro de Expertos', 'Logo_CEIDE.png', 0, '0000-00-00', 1, '2018-10-05 05:26:23', 'avalle');
+(1, 2, 'sicc', 'Centro de Expertos', 'Logo_CEIDE.png', 0, '0000-00-00', 1, '2018-10-05 05:26:23', 'avalle');
 
 -- --------------------------------------------------------
 
@@ -192,15 +194,16 @@ INSERT INTO `adm_empresas` (`id`, `orden`, `base`, `razon`, `logo`, `vidamax`, `
 -- Table structure for table `adm_modcatego`
 --
 
-CREATE TABLE `adm_modcatego` (
-  `id` int(6) NOT NULL,
+CREATE TABLE IF NOT EXISTS `adm_modcatego` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
   `idpadre` int(6) NOT NULL,
   `nivel` tinyint(4) NOT NULL,
   `descripcion` varchar(200) NOT NULL DEFAULT '',
   `status` tinyint(2) NOT NULL DEFAULT '0',
   `ultactfec` varchar(25) NOT NULL DEFAULT '',
-  `ultactusu` varchar(25) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactusu` varchar(25) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=112 ;
 
 --
 -- Dumping data for table `adm_modcatego`
@@ -323,8 +326,8 @@ INSERT INTO `adm_modcatego` (`id`, `idpadre`, `nivel`, `descripcion`, `status`, 
 -- Table structure for table `adm_modulos`
 --
 
-CREATE TABLE `adm_modulos` (
-  `id` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `adm_modulos` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
   `idcata` int(3) NOT NULL,
   `idcatb` int(3) NOT NULL,
   `orden` int(2) NOT NULL DEFAULT '0',
@@ -347,8 +350,9 @@ CREATE TABLE `adm_modulos` (
   `status` tinyint(3) NOT NULL DEFAULT '0',
   `ultactfec` varchar(25) NOT NULL DEFAULT '',
   `ultactusu` varchar(25) NOT NULL DEFAULT '',
-  `scan` tinyint(2) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `scan` tinyint(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=454 ;
 
 --
 -- Dumping data for table `adm_modulos`
@@ -493,9 +497,9 @@ INSERT INTO `adm_modulos` (`id`, `idcata`, `idcatb`, `orden`, `tipo`, `grupo`, `
 (185, 52, 72, 0, 0, '', 'Administrar Neumáticos', '', '', '', '', 0, 0, 'Adminllantas', '', '', '', 'Permite consultar, asignar y capturar registros de los Neumáticos', 4, '\r\n<strong>\r\nNivel 1</strong>: Consulta de Neumáticos<br />\r\n<strong>\r\nNivel 2</strong>:&nbsp;Agrega información a Neumáticos<br />\r\n<strong>\r\nNivel 3</strong>:&nbsp;Creación y asignación de Neumáticos a Unidades<br />\r\n<strong>\r\nNivel 4</strong>: Eliminar Neumáticos\r\n\r\n', 1, '2015-10-10 07:59:43', 'avalle', 0),
 (186, 52, 62, 0, 0, '', 'Importa información de Torniquetes', '', '', '', '', 0, 0, 'AdminATM', '', '', '', 'Importa información de Torniquetes', 1, 'Nivel 1: Requerido', 1, '2015-09-11 16:00:37', 'avalle', 0),
 (187, 52, 60, 0, 0, '', 'Consulta Tarjetas Vendidas', '', '', '', '', 0, 0, 'AdminConsultaATMTar', '', '', '', '', 1, '\r\nNivel 1: Requerido\r\n', 1, '2015-09-17 15:04:30', 'avalle', 0),
-(188, 70, 71, 0, 0, '', 'Folios Correspondencia', '', '', '', '', 0, 0, 'AdminCorres', '', '', '', 'Acceso al sistema de folios de correspondencia', 3, 'Nivel 1: Consulta de registros<br />\r\nNivel 2: Creación y edición<br />\r\nNivel 3: Borrado de registros', 1, '2015-09-22 11:53:21', 'avalle', 0),
-(193, 55, 56, 0, 0, '', 'Comentarios en Capital Humano', '', '', '', '', 0, 0, 'AdminPoperaComs', '', '', '', 'Permite ver, editar y/o borrar comentarios en el Capital humano', 4, '<strong>\r\nNivel 1</strong>: Consulta<br />\r\n<strong>\r\nNivel 2:</strong> Creación de Comentarios<br />\r\n<strong>\r\nNivel 3:</strong> Editar Comentarios<br />\r\n<strong>\r\nNivel 4:</strong> Borrar Comentarios\r\n', 1, '2015-11-13 14:07:10', 'avalle', 0);
+(188, 70, 71, 0, 0, '', 'Folios Correspondencia', '', '', '', '', 0, 0, 'AdminCorres', '', '', '', 'Acceso al sistema de folios de correspondencia', 3, 'Nivel 1: Consulta de registros<br />\r\nNivel 2: Creación y edición<br />\r\nNivel 3: Borrado de registros', 1, '2015-09-22 11:53:21', 'avalle', 0);
 INSERT INTO `adm_modulos` (`id`, `idcata`, `idcatb`, `orden`, `tipo`, `grupo`, `nombre`, `tabla`, `tablaimg`, `dirimg`, `dirimgtotal`, `fotoimg`, `prefijoimg`, `modulo`, `extra`, `acceso`, `recurso`, `descripcion`, `maxniveles`, `niveles`, `status`, `ultactfec`, `ultactusu`, `scan`) VALUES
+(193, 55, 56, 0, 0, '', 'Comentarios en Capital Humano', '', '', '', '', 0, 0, 'AdminPoperaComs', '', '', '', 'Permite ver, editar y/o borrar comentarios en el Capital humano', 4, '<strong>\r\nNivel 1</strong>: Consulta<br />\r\n<strong>\r\nNivel 2:</strong> Creación de Comentarios<br />\r\n<strong>\r\nNivel 3:</strong> Editar Comentarios<br />\r\n<strong>\r\nNivel 4:</strong> Borrar Comentarios\r\n', 1, '2015-11-13 14:07:10', 'avalle', 0),
 (194, 55, 56, 0, 0, '', 'Permite editar personal ya contratado', '', '', '', '', 0, 0, 'AdminPoperaSupered', '', '', '', 'Permite editar personal ya contratado', 2, '\r\n<strong>\r\nNivel 1:</strong> Editar solo la información financiera<br />\r\n<strong>Nivel 2:</strong> Editar todo el perfil', 1, '2015-12-01 23:59:55', 'avalle', 0),
 (195, 52, 72, 0, 0, '', 'Exportar Neumáticos Asignados', '', '', '', '', 0, 0, 'AdminllantasExp', '', '', '', 'Permite exportar los neumaticos asignados', 1, '<strong>\r\nNivel 1:</strong> Requerido\r\n', 1, '2015-12-12 10:35:23', 'avalle', 0),
 (196, 63, 65, 0, 0, '', 'Aplicación Acceso Principal', '', '', '', '', 0, 0, 'AdminAcceso', '', '', '', 'Permite utilizar la appDirecto de Acceso a puerta principal y Acceso desde el módulo de herramientas.', 3, '\r\n<p><strong>Nivel 1:</strong> Acceso y captura.<br />\r\n<strong>\r\nNivel 2:</strong> Permite dar salida a la gente.<br />\r\n<strong>\r\nNivel 3:</strong> Permite eliminar registros.</p>\r\n', 1, '2015-12-18 15:47:57', 'avalle', 0),
@@ -599,17 +603,17 @@ INSERT INTO `adm_modulos` (`id`, `idcata`, `idcatb`, `orden`, `tipo`, `grupo`, `
 (294, 26, 29, 0, 0, '', 'Permite Cancelar Pólizas', '', '', '', '', 0, 0, 'AdminPolizaCancelar', '', '', '', '', 1, '<strong>Nivel 1:</strong> Requerido', 1, '2017-01-05 18:18:43', 'avalle', 0),
 (295, 70, 84, 0, 0, '', 'Permite acceso a Actividades', '', '', '', '', 0, 0, 'AdminActividades', '', '', '', '', 3, '<strong>Nivel 1:</strong> Consulta<br />\r\n<strong>Nivel 2:</strong> Crear y Editar<br />\r\n<strong>Nivel 3:</strong> Borrado', 1, '2017-01-19 16:01:21', 'avalle', 0),
 (296, 70, 84, 0, 0, '', 'Catalogo de las Actividades de Personal', '', '', '', '', 0, 0, 'AdminActividadesCat', '', '', '', 'Permite editar los catalogos del modulo de Actividades del Personal', 3, '<strong>Nivel 1:</strong> Consulta<br />\r\n<strong>Nivel 2:</strong> Creación y edición<br />\r\n<strong>Nivel 3:</strong> Borrado', 1, '2017-01-19 16:38:14', 'avalle', 0),
-(297, 85, 86, 0, 0, '', 'Control de Folios de Tarjetas', '', '', '', '', 0, 0, 'AdminFinanzasFolios', '', '', '', 'Control de Folios de Tarjetas', 1, '<span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;\">Nivel 1: Requerido</span>\r\n\r\n', 1, '2017-01-23 08:57:41', 'avalle', 0),
-(298, 85, 86, 0, 0, '', 'Creación de Ciclos (semanas)', '', '', '', '', 0, 0, 'AdminFinanzasCiclos', '', '', '', 'Permite crear Ciclos o semanas necesarias para tesoreria', 1, '\r\n<strong style=\"color: rgb(0, 0, 0); font-family: \" times=\"\" new=\"\" roman\";=\"\" font-size:=\"\" medium;=\"\" font-style:=\"\" normal;=\"\" font-variant-ligatures:=\"\" font-variant-caps:=\"\" letter-spacing:=\"\" orphans:=\"\" 2;=\"\" text-align:=\"\" start;=\"\" text-indent:=\"\" 0px;=\"\" text-transform:=\"\" none;=\"\" white-space:=\"\" widows:=\"\" word-spacing:=\"\" -webkit-text-stroke-width:=\"\" 0px;\"=\"\">Nivel 1:</strong><span style=\"color: rgb(0, 0, 0); font-family: \" times=\"\" new=\"\" roman\";=\"\" font-size:=\"\" medium;=\"\" font-style:=\"\" normal;=\"\" font-variant-ligatures:=\"\" font-variant-caps:=\"\" font-weight:=\"\" letter-spacing:=\"\" orphans:=\"\" 2;=\"\" text-align:=\"\" start;=\"\" text-indent:=\"\" 0px;=\"\" text-transform:=\"\" none;=\"\" white-space:=\"\" widows:=\"\" word-spacing:=\"\" -webkit-text-stroke-width:=\"\" display:=\"\" inline=\"\" !important;=\"\" float:=\"\" none;\"=\"\">&nbsp;Requerido</span>\r\n\r\n\r\n', 1, '2017-01-23 08:58:23', 'avalle', 0),
-(299, 85, 87, 0, 0, '', 'Avisos de Tarjeta', '', '', '', '', 0, 0, 'AdminFinanzasAvisos', '', '', '', 'Permite acceder al modulo de Avisos de Tarjeta', 5, '<div style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\"><strong>Nivel 1:</strong><span class=\"Apple-converted-space\">&nbsp;</span>Consulta<br />\r\n<strong>Nivel 2:</strong><span class=\"Apple-converted-space\"> </span>Creación y Edición de avisos (creados por el mismom usuario)\r\n</div>\r\n<div style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\"><strong>Nivel 5:<span class=\"Apple-converted-space\">&nbsp;</span></strong>Puede editar y borrar avisos de cualquier usuario\r\n</div>\r\n\r\n', 1, '2017-01-23 08:59:04', 'avalle', 0),
-(300, 85, 88, 0, 0, '', 'Cargos', '', '', '', '', 0, 0, 'AdminFinanzasCargos', '', '', '', 'Permite acceder al modulo de Tesorería y Consultar /Editar Cargos (descontinuado)', 5, '<strong style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\">Nivel 1:&nbsp;</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;\">Requerido</span><br style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\" /><strong style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\">Nivel 2:&nbsp;</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;\">Crear y borrar Cargos creados por el usuario</span><br style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\" /><strong style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\">Nivel 3:&nbsp;</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;\">Acceso a Consulta General de Cargos</span><br style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\" /><strong style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\">Nivel 4:&nbsp;</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;\">Permite editar Cargos desde la Consulta General</span><br style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\" /><strong style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\">Nivel 5:&nbsp;</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;\">Permite editar y borrar cargos especiales</span>\r\n\r\n', 1, '2017-01-23 08:59:45', 'avalle', 0),
-(301, 85, 88, 0, 0, '', 'Tarjeta', '', '', '', '', 0, 0, 'AdminFinanzasTarjeta', '', '', '', 'Permite acceder al modulo de Tarjetas y trabajar con Tarjetas', 5, '<strong style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\">Nivel 1:&nbsp;</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;\">Consulta de Tarjetas Impresas</span><br style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\" /><strong style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\">Nivel 2:&nbsp;</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;\">Puede crear e imprimir tarjetas</span><br style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\" /><strong style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\">Nivel 3:&nbsp;</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;\">Puede consultar el reporte de depositos</span><br style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\" /><strong style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\">Nivel 5:&nbsp;</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;\">Puede borrar tarjetas</span>\r\n\r\n', 1, '2017-01-23 09:00:20', 'avalle', 0),
-(302, 85, 89, 0, 0, '', 'Revisar Solicitudes de Reimpresion', '', '', '', '', 0, 0, 'AdminFinanzasTarjetaSolicitudes', '', '', '', 'Permite acceder a las Solicitudes de reimpresion', 3, '<strong style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\">Nivel 1:&nbsp;</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;\">Requerido</span><br style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\" /><strong style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\">Nivel 3:</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;\"><span class=\"Apple-converted-space\">&nbsp;</span>Puede Borrar solicitudes</span>\r\n\r\n', 1, '2017-01-23 09:00:55', 'avalle', 0),
-(303, 5, 6, 0, 0, '', 'Acceso a parametros del sistema', '', '', '', '', 0, 0, 'AdminTesoreriaAdmin', '', '', '', 'Acceso a los parámetros del sistema pertenecientes al area de Tesorería', 1, '<strong style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\">Nivel 1:<span class=\"Apple-converted-space\">&nbsp;</span></strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;\">Requerido</span>\r\n\r\n', 1, '2017-01-23 09:01:29', 'avalle', 0),
+(297, 85, 86, 0, 0, '', 'Control de Folios de Tarjetas', '', '', '', '', 0, 0, 'AdminFinanzasFolios', '', '', '', 'Control de Folios de Tarjetas', 1, '<span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;">Nivel 1: Requerido</span>\r\n\r\n', 1, '2017-01-23 08:57:41', 'avalle', 0),
+(298, 85, 86, 0, 0, '', 'Creación de Ciclos (semanas)', '', '', '', '', 0, 0, 'AdminFinanzasCiclos', '', '', '', 'Permite crear Ciclos o semanas necesarias para tesoreria', 1, '\r\n<strong style="color: rgb(0, 0, 0); font-family: " times="" new="" roman";="" font-size:="" medium;="" font-style:="" normal;="" font-variant-ligatures:="" font-variant-caps:="" letter-spacing:="" orphans:="" 2;="" text-align:="" start;="" text-indent:="" 0px;="" text-transform:="" none;="" white-space:="" widows:="" word-spacing:="" -webkit-text-stroke-width:="" 0px;"="">Nivel 1:</strong><span style="color: rgb(0, 0, 0); font-family: " times="" new="" roman";="" font-size:="" medium;="" font-style:="" normal;="" font-variant-ligatures:="" font-variant-caps:="" font-weight:="" letter-spacing:="" orphans:="" 2;="" text-align:="" start;="" text-indent:="" 0px;="" text-transform:="" none;="" white-space:="" widows:="" word-spacing:="" -webkit-text-stroke-width:="" display:="" inline="" !important;="" float:="" none;"="">&nbsp;Requerido</span>\r\n\r\n\r\n', 1, '2017-01-23 08:58:23', 'avalle', 0),
+(299, 85, 87, 0, 0, '', 'Avisos de Tarjeta', '', '', '', '', 0, 0, 'AdminFinanzasAvisos', '', '', '', 'Permite acceder al modulo de Avisos de Tarjeta', 5, '<div style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;"><strong>Nivel 1:</strong><span class="Apple-converted-space">&nbsp;</span>Consulta<br />\r\n<strong>Nivel 2:</strong><span class="Apple-converted-space"> </span>Creación y Edición de avisos (creados por el mismom usuario)\r\n</div>\r\n<div style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;"><strong>Nivel 5:<span class="Apple-converted-space">&nbsp;</span></strong>Puede editar y borrar avisos de cualquier usuario\r\n</div>\r\n\r\n', 1, '2017-01-23 08:59:04', 'avalle', 0),
+(300, 85, 88, 0, 0, '', 'Cargos', '', '', '', '', 0, 0, 'AdminFinanzasCargos', '', '', '', 'Permite acceder al modulo de Tesorería y Consultar /Editar Cargos (descontinuado)', 5, '<strong style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Nivel 1:&nbsp;</strong><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;">Requerido</span><br style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" /><strong style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Nivel 2:&nbsp;</strong><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;">Crear y borrar Cargos creados por el usuario</span><br style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" /><strong style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Nivel 3:&nbsp;</strong><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;">Acceso a Consulta General de Cargos</span><br style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" /><strong style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Nivel 4:&nbsp;</strong><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;">Permite editar Cargos desde la Consulta General</span><br style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" /><strong style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Nivel 5:&nbsp;</strong><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;">Permite editar y borrar cargos especiales</span>\r\n\r\n', 1, '2017-01-23 08:59:45', 'avalle', 0),
+(301, 85, 88, 0, 0, '', 'Tarjeta', '', '', '', '', 0, 0, 'AdminFinanzasTarjeta', '', '', '', 'Permite acceder al modulo de Tarjetas y trabajar con Tarjetas', 5, '<strong style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Nivel 1:&nbsp;</strong><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;">Consulta de Tarjetas Impresas</span><br style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" /><strong style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Nivel 2:&nbsp;</strong><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;">Puede crear e imprimir tarjetas</span><br style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" /><strong style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Nivel 3:&nbsp;</strong><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;">Puede consultar el reporte de depositos</span><br style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" /><strong style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Nivel 5:&nbsp;</strong><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;">Puede borrar tarjetas</span>\r\n\r\n', 1, '2017-01-23 09:00:20', 'avalle', 0),
+(302, 85, 89, 0, 0, '', 'Revisar Solicitudes de Reimpresion', '', '', '', '', 0, 0, 'AdminFinanzasTarjetaSolicitudes', '', '', '', 'Permite acceder a las Solicitudes de reimpresion', 3, '<strong style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Nivel 1:&nbsp;</strong><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;">Requerido</span><br style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;" /><strong style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Nivel 3:</strong><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;"><span class="Apple-converted-space">&nbsp;</span>Puede Borrar solicitudes</span>\r\n\r\n', 1, '2017-01-23 09:00:55', 'avalle', 0),
+(303, 5, 6, 0, 0, '', 'Acceso a parametros del sistema', '', '', '', '', 0, 0, 'AdminTesoreriaAdmin', '', '', '', 'Acceso a los parámetros del sistema pertenecientes al area de Tesorería', 1, '<strong style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Nivel 1:<span class="Apple-converted-space">&nbsp;</span></strong><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none;">Requerido</span>\r\n\r\n', 1, '2017-01-23 09:01:29', 'avalle', 0),
 (304, 52, 81, 0, 0, '', 'Permite reabrir captura de USUARIOS en BigData', '', '', '', '', 0, 0, 'AdminDataUeditor', '', '', '', 'Permite reabrir captura de usuarios en BigData', 1, '\r\n<strong>Nivel:</strong> Requerido\r\n\r\n', 1, '2017-02-17 12:20:00', 'avalle', 0),
-(305, 52, 81, 0, 0, '', 'Editar tarjetas BigData', '', '', '', '', 0, 0, 'AdminDataTeditor', '', '', '', 'Este permiso es para otorgar la edición del registro de TARJETAS', 1, '\r\n<div style=\"text-align: left;\"><strong>Nivel:</strong> 1 requerido\r\n</div>\r\n', 1, '2017-02-17 12:20:16', 'avalle', 0),
-(306, 52, 62, 0, 0, '', 'Permiso para administrar periodos de nomina', '', '', '', '', 0, 0, 'AdminJornadasNom', '', '', '', 'Éste permiso otorga la creacion, edición y borrado de nuevas jornadas', 4, '<div>Nivel: 1 Consulta registro\r\n</div>\r\n<div>Nivel: 2 Edicion e inserción de registro\r\n</div>\r\n<div>Nivel: 3 Cerrar periodo\r\n</div>\r\n<div>Nivel: 4 Eliminar registro\r\n</div>\r\n\r\n', 1, '2017-09-02 08:43:57', 'avalle', 0);
+(305, 52, 81, 0, 0, '', 'Editar tarjetas BigData', '', '', '', '', 0, 0, 'AdminDataTeditor', '', '', '', 'Este permiso es para otorgar la edición del registro de TARJETAS', 1, '\r\n<div style="text-align: left;"><strong>Nivel:</strong> 1 requerido\r\n</div>\r\n', 1, '2017-02-17 12:20:16', 'avalle', 0);
 INSERT INTO `adm_modulos` (`id`, `idcata`, `idcatb`, `orden`, `tipo`, `grupo`, `nombre`, `tabla`, `tablaimg`, `dirimg`, `dirimgtotal`, `fotoimg`, `prefijoimg`, `modulo`, `extra`, `acceso`, `recurso`, `descripcion`, `maxniveles`, `niveles`, `status`, `ultactfec`, `ultactusu`, `scan`) VALUES
+(306, 52, 62, 0, 0, '', 'Permiso para administrar periodos de nomina', '', '', '', '', 0, 0, 'AdminJornadasNom', '', '', '', 'Éste permiso otorga la creacion, edición y borrado de nuevas jornadas', 4, '<div>Nivel: 1 Consulta registro\r\n</div>\r\n<div>Nivel: 2 Edicion e inserción de registro\r\n</div>\r\n<div>Nivel: 3 Cerrar periodo\r\n</div>\r\n<div>Nivel: 4 Eliminar registro\r\n</div>\r\n\r\n', 1, '2017-09-02 08:43:57', 'avalle', 0),
 (307, 63, 90, 0, 0, '', 'Catálogo para Bahías', '', '', '', '', 0, 0, 'AdminBahiasCat', '', '', '', 'Acceso al catálogo de Bahías', 3, '\r\n<strong>Nivel 1:</strong> Consulta<br />\r\n<strong>Nivel 2:</strong> Crear y editar<br />\r\n<strong>Nivel 3:</strong> Borrar\r\n\r\n', 1, '2017-02-23 02:04:08', 'avalle', 0),
 (308, 63, 90, 0, 0, '', 'Acceso a Bahías', '', '', '', '', 0, 0, 'AdminBahias', '', '', '', 'Acceso al modulo de captura de acceso a las bahias', 3, '<div><strong>Nivel 1:</strong> Consulta<br />\r\n<strong>Nivel 2:</strong> Creación y registro de accesos<br />\r\n<strong>Nivel 3:</strong> Borrado de accesos\r\n</div>\r\n\r\n', 1, '2017-02-23 02:05:46', 'avalle', 0),
 (309, 52, 60, 0, 0, '', 'Calificar Ciclos realizados', '', '', '', '', 0, 0, 'AdminCicCalif', '', '', '', 'Permite calificar ciclos realizados por jornada', 3, '<strong>Nivel 1:</strong> Consulta de modulos<br />\r\n<strong>Nivel 2:</strong> Permite calificar ciclos<br />\r\n<strong>Nivel 3:</strong> Permite Cerrar Jornada', 1, '2017-03-17 23:14:06', 'avalle', 0),
@@ -763,8 +767,8 @@ INSERT INTO `adm_modulos` (`id`, `idcata`, `idcatb`, `orden`, `tipo`, `grupo`, `
 -- Table structure for table `adm_parametros`
 --
 
-CREATE TABLE `adm_parametros` (
-  `id` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `adm_parametros` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
   `parametro` varchar(25) NOT NULL,
   `valor` double DEFAULT NULL,
   `valorvar` varchar(100) DEFAULT NULL,
@@ -774,8 +778,9 @@ CREATE TABLE `adm_parametros` (
   `tipo` int(3) NOT NULL,
   `status` tinyint(2) NOT NULL,
   `ultactfec` datetime NOT NULL,
-  `ultactusu` varchar(25) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactusu` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `adm_parametros`
@@ -791,8 +796,8 @@ INSERT INTO `adm_parametros` (`id`, `parametro`, `valor`, `valorvar`, `valordate
 -- Table structure for table `adm_permisos`
 --
 
-CREATE TABLE `adm_permisos` (
-  `id` int(9) NOT NULL,
+CREATE TABLE IF NOT EXISTS `adm_permisos` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `idusuario` int(5) DEFAULT '0',
   `idmodulo` int(5) NOT NULL,
   `modulo` varchar(50) DEFAULT '',
@@ -803,8 +808,9 @@ CREATE TABLE `adm_permisos` (
   `extra4` int(5) NOT NULL,
   `extra5` int(5) NOT NULL,
   `ultactfec` varchar(25) DEFAULT '',
-  `ultactusu` varchar(25) DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactusu` varchar(25) DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `adm_permisos`
@@ -836,8 +842,8 @@ INSERT INTO `adm_permisos` (`id`, `idusuario`, `idmodulo`, `modulo`, `tipo`, `ex
 -- Table structure for table `adm_usuarios`
 --
 
-CREATE TABLE `adm_usuarios` (
-  `id` int(9) NOT NULL,
+CREATE TABLE IF NOT EXISTS `adm_usuarios` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `idcategoria` tinyint(3) NOT NULL DEFAULT '0',
   `disponible` tinyint(2) NOT NULL DEFAULT '0',
   `nombre` varchar(200) NOT NULL DEFAULT '',
@@ -850,8 +856,9 @@ CREATE TABLE `adm_usuarios` (
   `comentario` varchar(200) NOT NULL DEFAULT '',
   `status` tinyint(2) NOT NULL DEFAULT '0',
   `ultactfec` varchar(25) NOT NULL DEFAULT '',
-  `ultactusu` varchar(25) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactusu` varchar(25) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `adm_usuarios`
@@ -867,8 +874,8 @@ INSERT INTO `adm_usuarios` (`id`, `idcategoria`, `disponible`, `nombre`, `usuari
 -- Table structure for table `arc_clientes`
 --
 
-CREATE TABLE `arc_clientes` (
-  `id` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `arc_clientes` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
   `idorigen` int(3) NOT NULL DEFAULT '0',
   `iddoc` int(5) NOT NULL,
   `tipo` varchar(10) NOT NULL DEFAULT '0',
@@ -879,8 +886,9 @@ CREATE TABLE `arc_clientes` (
   `descripcion` varchar(150) NOT NULL DEFAULT '',
   `comentario` varchar(150) NOT NULL DEFAULT '',
   `ultactfec` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `ultactusu` varchar(10) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactusu` varchar(10) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `arc_clientes`
@@ -890,19 +898,7 @@ INSERT INTO `arc_clientes` (`id`, `idorigen`, `iddoc`, `tipo`, `archivo`, `tipoa
 (2, 1, 1, 'must', '', '', '', '0000-00-00 00:00:00', 'INE', '', '2018-12-28 04:53:15', 'avalle'),
 (4, 1, 3, 'must', '', '', '', '0000-00-00 00:00:00', 'RFC', '', '2018-12-28 04:53:15', 'avalle'),
 (5, 1, 4, 'must', '000000005_04f215443826f105b2a635a578df74a2.jpg', 'image/jpeg', '26495', '2018-12-29 01:24:00', 'CURP', '', '2018-12-29 01:24:00', 'avalle'),
-(6, 1, 5, 'must', '000000006_45f3ad120e61add1347f87dd3c9a5674.jpg', 'image/jpeg', '5201', '2018-12-29 01:15:04', 'Acta de nacimiento', '', '2018-12-29 01:15:04', 'avalle'),
-(7, 3, 5, 'must', '', '', '', '0000-00-00 00:00:00', 'Acta de nacimiento', '', '0000-00-00 00:00:00', 'avalle'),
-(8, 3, 2, 'must', '', '', '', '0000-00-00 00:00:00', 'Comprobante de Domicilio', '', '0000-00-00 00:00:00', 'avalle'),
-(9, 3, 4, 'must', '', '', '', '0000-00-00 00:00:00', 'CURP', '', '0000-00-00 00:00:00', 'avalle'),
-(10, 3, 1, 'must', '', '', '', '0000-00-00 00:00:00', 'INE', '', '0000-00-00 00:00:00', 'avalle'),
-(11, 3, 3, 'must', '', '', '', '0000-00-00 00:00:00', 'RFC', '', '0000-00-00 00:00:00', 'avalle'),
-(12, 1, 0, 'extra', '000000001_be08228a54514dab2b1a320fb0562491.jpg', 'image/jpeg', '9650', '2019-01-07 07:52:29', 'test', '', '2019-01-07 02:52:29', 'avalle'),
-(13, 4, 5, 'must', '', '', '', '0000-00-00 00:00:00', 'Acta de nacimiento', '', '0000-00-00 00:00:00', 'avalle'),
-(14, 4, 2, 'must', '000000014_d1288aa958ecbe46530102062335bbce.xlsx', 'applicatio', '39585', '2019-01-07 06:29:02', 'Comprobante de Domicilio', '', '2019-01-07 06:29:02', 'avalle'),
-(15, 4, 4, 'must', '', '', '', '0000-00-00 00:00:00', 'CURP', '', '0000-00-00 00:00:00', 'avalle'),
-(16, 4, 1, 'must', '', '', '', '0000-00-00 00:00:00', 'INE', '', '0000-00-00 00:00:00', 'avalle'),
-(17, 4, 3, 'must', '', '', '', '0000-00-00 00:00:00', 'RFC', '', '0000-00-00 00:00:00', 'avalle'),
-(18, 4, 0, 'extra', '000000004_727273c94f8b99a05af0ef0354985ceb.xlsx', 'applicatio', '39585', '2019-01-07 11:29:49', 'pruebas', '', '2019-01-07 06:29:49', 'avalle');
+(6, 1, 5, 'must', '000000006_45f3ad120e61add1347f87dd3c9a5674.jpg', 'image/jpeg', '5201', '2018-12-29 01:15:04', 'Acta de nacimiento', '', '2018-12-29 01:15:04', 'avalle');
 
 -- --------------------------------------------------------
 
@@ -910,8 +906,8 @@ INSERT INTO `arc_clientes` (`id`, `idorigen`, `iddoc`, `tipo`, `archivo`, `tipoa
 -- Table structure for table `cat_clientes`
 --
 
-CREATE TABLE `cat_clientes` (
-  `id` int(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS `cat_clientes` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `idcli` varchar(25) DEFAULT NULL,
   `nombre` longtext,
   `apellidop` varchar(150) DEFAULT NULL,
@@ -991,18 +987,76 @@ CREATE TABLE `cat_clientes` (
   `owner` varchar(100) NOT NULL,
   `status` int(2) NOT NULL,
   `ultactfec` varchar(25) DEFAULT NULL,
-  `ultactusu` varchar(25) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactusu` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `cat_clientes`
 --
 
 INSERT INTO `cat_clientes` (`id`, `idcli`, `nombre`, `apellidop`, `apellidom`, `nacimiento`, `ecivil`, `nss`, `escolaridad`, `calle`, `numero`, `colonia`, `municipio`, `estado`, `cp`, `rfc`, `curp`, `celular`, `oficina`, `telefonos`, `email`, `profesion`, `ocupacion`, `idextranjero`, `estadonac`, `nacionalidad`, `idbanco`, `cuenta`, `clabe`, `beneficiario`, `genero`, `tipoid`, `fuentei`, `puestopolitico`, `procedencia`, `propietarior`, `callef`, `numerof`, `coloniaf`, `municipiof`, `estadof`, `cpf`, `integradora`, `asesor`, `recursosori`, `recursosdes`, `valorampliacion`, `valorregla`, `valorneto`, `docmust`, `fecha`, `fechafin`, `idproducto`, `idtipoproducto`, `iddestino`, `plazocredito`, `segundocredito`, `discapacidad`, `tipodiscapacidad`, `personacapacidad`, `montopresupuesto`, `afectaestructura`, `razonsocialpatron`, `rfcpatron`, `telpatron`, `ref1nombre`, `ref1apellidop`, `ref1apellidom`, `ref1telefono`, `ref2nombre`, `ref2apellidop`, `ref2apellidom`, `ref2telefono`, `razonsocialacreditado`, `rfcacreditado`, `nombreacreditado`, `clabeacreditado`, `owner`, `status`, `ultactfec`, `ultactusu`) VALUES
-(1, '000001', 'Jose Abraham', 'Valle', 'Villanueva', '1979-12-14', 'Casado', 'b', 'Pre Escolar', 'r', 's', 't', 'u', 'Baja California', '8', 'VAVA761025MVA', 'a', 'f', 'e', 'd', 'c', 'i', 'j', 'h', 'Aguascalientes', 'g', 3, '6', '7', '8', 'Masculino', '', 'k', 'm', 'l', 'Propios', 'n', 'ñ', 'o', 'Pachuca', 'Hidalgo', '8', 'Integradora B', 'Abraham Valle', 'w', 'x', 3, 4, 5, 5, '2018-12-21 06:27:31', '0000-00-00 00:00:00', 0, 0, 0, 0, 0, 0, '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0', 1, '2019-01-02 05:45:25', 'avalle'),
-(2, '000002', 'Francisco', 'Mendez Sanchez', 'Mendez Sanchez', '2004-01-15', '', '', '', NULL, NULL, NULL, '', NULL, NULL, 'XAXA040115VV4', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 'México', 0, '', '', '', '', '', '', '', '', NULL, '', '', '', '', '', '', '', 'Abraham Valle', '', '', 0, 0, 0, 0, '2019-01-07 04:32:02', '0000-00-00 00:00:00', 0, 0, 0, 0, 0, 0, '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'avalle', 1, '2019-01-06 21:32:02', 'avalle'),
-(3, '000003', 'Hugo', 'Guzman', 'Guzman', '1985-04-11', '', '', '', NULL, NULL, NULL, '', NULL, NULL, 'GUZU850411GH3', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 'México', 0, '', '', '', '', '', '', '', '', NULL, '', '', '', '', '', '', '', 'Abraham Valle', '', '', 0, 0, 0, 5, '2019-01-07 04:35:35', '0000-00-00 00:00:00', 0, 0, 0, 0, 0, 0, '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'avalle', 1, '2019-01-06 21:35:35', 'avalle'),
-(4, '000004', 'Juan', 'Lopez', 'Martinez', '1995-01-05', 'Casado', '', 'Secundaria', '', '', '', '', '', '', 'VAVA456782MJ8', '', '', '', '', '', '', '', '', 'Chihuahua', 'México', 3, '1', '3', 'pepe', '', '', '', '', '', 'Propios', '', '', '', '', '', '', 'Integradora B', 'Administrator', '', '', 1000, 2000, 3000, 5, '2019-01-07 06:22:24', '0000-00-00 00:00:00', 0, 0, 0, 0, 0, 0, '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'avalle', 1, '2019-01-07 06:27:34', 'avalle');
+(1, '000001', 'Jose Abraham', 'Valle', 'Villanueva', '1979-12-14', 'Casado', 'b', 'Pre Escolar', 'r', 's', 't', 'u', 'Baja California', '8', 'VAVA761025MVA', 'a', 'f', 'e', 'd', 'c', 'i', 'j', 'h', 'Aguascalientes', 'g', 3, '6', '7', '8', 'Masculino', '', 'k', 'm', 'l', 'Propios', 'n', 'ñ', 'o', 'Pachuca', 'Hidalgo', '8', 'Integradora B', 'Abraham Valle', 'w', 'x', 3, 4, 5, 5, '2018-12-21 06:27:31', '0000-00-00 00:00:00', 0, 0, 0, 0, 0, 0, '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0', 1, '2019-01-02 05:45:25', 'avalle');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cat_credestino`
+--
+
+CREATE TABLE IF NOT EXISTS `cat_credestino` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(50) NOT NULL DEFAULT '',
+  `status` tinyint(2) NOT NULL DEFAULT '0',
+  `ultactusu` varchar(25) NOT NULL,
+  `ultactfec` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cat_creplazo`
+--
+
+CREATE TABLE IF NOT EXISTS `cat_creplazo` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(50) NOT NULL DEFAULT '',
+  `status` tinyint(2) NOT NULL DEFAULT '0',
+  `ultactusu` varchar(25) NOT NULL,
+  `ultactfec` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cat_creproductos`
+--
+
+CREATE TABLE IF NOT EXISTS `cat_creproductos` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(50) NOT NULL DEFAULT '',
+  `status` tinyint(2) NOT NULL DEFAULT '0',
+  `ultactusu` varchar(25) NOT NULL,
+  `ultactfec` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cat_cretipopro`
+--
+
+CREATE TABLE IF NOT EXISTS `cat_cretipopro` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(50) NOT NULL DEFAULT '',
+  `status` tinyint(2) NOT NULL DEFAULT '0',
+  `ultactusu` varchar(25) NOT NULL,
+  `ultactfec` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1010,13 +1064,14 @@ INSERT INTO `cat_clientes` (`id`, `idcli`, `nombre`, `apellidop`, `apellidom`, `
 -- Table structure for table `cat_docsmust`
 --
 
-CREATE TABLE `cat_docsmust` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `cat_docsmust` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(50) NOT NULL DEFAULT '',
   `status` tinyint(2) NOT NULL DEFAULT '0',
   `ultactusu` varchar(25) NOT NULL,
-  `ultactfec` varchar(25) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactfec` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `cat_docsmust`
@@ -1025,10 +1080,9 @@ CREATE TABLE `cat_docsmust` (
 INSERT INTO `cat_docsmust` (`id`, `descripcion`, `status`, `ultactusu`, `ultactfec`) VALUES
 (1, 'INE', 1, '', ''),
 (2, 'Comprobante de Domicilio', 1, '', ''),
-(3, 'RFC/SAT', 1, 'avalle', '2019-01-07 12:33:27'),
+(3, 'RFC', 1, '', ''),
 (4, 'CURP', 1, '', ''),
-(5, 'Acta de nacimiento', 1, '', ''),
-(6, 'Boleta Predial', 1, 'avalle', '2019-01-07 12:33:11');
+(5, 'Acta de nacimiento', 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -1036,13 +1090,14 @@ INSERT INTO `cat_docsmust` (`id`, `descripcion`, `status`, `ultactusu`, `ultactf
 -- Table structure for table `cat_ecivil`
 --
 
-CREATE TABLE `cat_ecivil` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `cat_ecivil` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(50) NOT NULL DEFAULT '',
   `status` tinyint(2) NOT NULL DEFAULT '0',
   `ultactusu` varchar(25) NOT NULL,
-  `ultactfec` varchar(25) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactfec` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `cat_ecivil`
@@ -1058,11 +1113,12 @@ INSERT INTO `cat_ecivil` (`id`, `descripcion`, `status`, `ultactusu`, `ultactfec
 -- Table structure for table `cat_escolaridad`
 --
 
-CREATE TABLE `cat_escolaridad` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `cat_escolaridad` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(50) NOT NULL DEFAULT '',
-  `status` tinyint(2) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `status` tinyint(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=235 ;
 
 --
 -- Dumping data for table `cat_escolaridad`
@@ -1084,11 +1140,12 @@ INSERT INTO `cat_escolaridad` (`id`, `descripcion`, `status`) VALUES
 -- Table structure for table `cat_estadosrep`
 --
 
-CREATE TABLE `cat_estadosrep` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `cat_estadosrep` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(50) NOT NULL DEFAULT '',
-  `status` tinyint(2) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `status` tinyint(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=227 ;
 
 --
 -- Dumping data for table `cat_estadosrep`
@@ -1134,13 +1191,14 @@ INSERT INTO `cat_estadosrep` (`id`, `descripcion`, `status`) VALUES
 -- Table structure for table `cat_instituciones`
 --
 
-CREATE TABLE `cat_instituciones` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `cat_instituciones` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(50) NOT NULL DEFAULT '',
   `status` tinyint(2) NOT NULL DEFAULT '0',
   `ultactusu` varchar(25) NOT NULL,
-  `ultactfec` varchar(25) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactfec` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `cat_instituciones`
@@ -1158,13 +1216,14 @@ INSERT INTO `cat_instituciones` (`id`, `descripcion`, `status`, `ultactusu`, `ul
 -- Table structure for table `cat_integradoras`
 --
 
-CREATE TABLE `cat_integradoras` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `cat_integradoras` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(50) NOT NULL DEFAULT '',
   `status` tinyint(2) NOT NULL DEFAULT '0',
   `ultactusu` varchar(25) NOT NULL,
-  `ultactfec` varchar(25) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactfec` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `cat_integradoras`
@@ -1180,15 +1239,16 @@ INSERT INTO `cat_integradoras` (`id`, `descripcion`, `status`, `ultactusu`, `ult
 -- Table structure for table `cat_recursos`
 --
 
-CREATE TABLE `cat_recursos` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `cat_recursos` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `orden` int(3) NOT NULL,
   `tipo` tinyint(2) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
   `status` tinyint(2) NOT NULL,
   `ultactfec` datetime NOT NULL,
-  `ultactusu` varchar(25) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactusu` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `cat_recursos`
@@ -1223,14 +1283,15 @@ INSERT INTO `cat_recursos` (`id`, `orden`, `tipo`, `descripcion`, `status`, `ult
 -- Table structure for table `cat_statuscliente`
 --
 
-CREATE TABLE `cat_statuscliente` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `cat_statuscliente` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(50) NOT NULL DEFAULT '',
   `color` varchar(10) NOT NULL,
   `status` tinyint(2) NOT NULL DEFAULT '0',
   `ultactusu` varchar(25) NOT NULL,
-  `ultactfec` varchar(25) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactfec` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `cat_statuscliente`
@@ -1247,15 +1308,16 @@ INSERT INTO `cat_statuscliente` (`id`, `descripcion`, `color`, `status`, `ultact
 -- Table structure for table `log_capitalhumano`
 --
 
-CREATE TABLE `log_capitalhumano` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `log_capitalhumano` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `idorigen` int(5) NOT NULL,
   `tipo` tinyint(2) NOT NULL,
   `descripcion` longtext NOT NULL,
   `status` tinyint(2) NOT NULL,
   `ultactfec` datetime NOT NULL,
-  `ultactusu` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ultactusu` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1263,15 +1325,16 @@ CREATE TABLE `log_capitalhumano` (
 -- Table structure for table `log_clientes`
 --
 
-CREATE TABLE `log_clientes` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `log_clientes` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `idorigen` int(5) NOT NULL,
   `tipo` tinyint(2) NOT NULL,
   `descripcion` longtext NOT NULL,
   `status` tinyint(2) NOT NULL,
   `ultactfec` datetime NOT NULL,
-  `ultactusu` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ultactusu` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `log_clientes`
@@ -1284,9 +1347,9 @@ INSERT INTO `log_clientes` (`id`, `idorigen`, `tipo`, `descripcion`, `status`, `
 (4, 1, 1, 'Cambio el CURP de  a a, Cambio el banco de 0 a , ', 1, '2018-12-27 21:18:42', 'avalle'),
 (5, 1, 1, 'Cambio el CP de la dirección de 2 a 8, Cambio en Origen de los recursos de 0 a 0,1 (ids del sistema), Cambio en Destino de los recursos de 0 a 0,17 (ids del sistema), ', 1, '2018-12-27 21:22:57', 'avalle'),
 (6, 1, 1, 'Cambio en Origen de los recursos de 0,1 a 0,1,3,5,7,9,11 (ids del sistema), Cambio en Destino de los recursos de 0,17 a 0,17,21 (ids del sistema), ', 1, '2018-12-27 21:23:17', 'avalle'),
-(7, 1, 1, 'Comentario nuevo: \'prueba 1,2,3\'\'. ', 1, '2018-12-27 21:28:34', 'avalle'),
-(8, 1, 1, 'Cambio un Comentario, de \'prueba 1,2,3\' a \'prueba 1,2,3... ok\'. ', 1, '2018-12-27 21:30:18', 'avalle'),
-(9, 1, 5, 'Borrado del Comentario \'prueba 1,2,3... ok\'. ', 1, '2018-12-27 21:32:06', 'avalle'),
+(7, 1, 1, 'Comentario nuevo: ''prueba 1,2,3''''. ', 1, '2018-12-27 21:28:34', 'avalle'),
+(8, 1, 1, 'Cambio un Comentario, de ''prueba 1,2,3'' a ''prueba 1,2,3... ok''. ', 1, '2018-12-27 21:30:18', 'avalle'),
+(9, 1, 5, 'Borrado del Comentario ''prueba 1,2,3... ok''. ', 1, '2018-12-27 21:32:06', 'avalle'),
 (10, 1, 5, 'Actualización de Asesor de  a Abraham Valle.', 1, '2018-12-28 01:45:07', 'avalle'),
 (11, 1, 5, 'Actualización de Integradora de  a Integradora A.', 1, '2018-12-28 01:46:25', 'avalle'),
 (12, 1, 5, 'Actualización de Asesor de Abraham Valle a Administrator.', 1, '2018-12-28 01:50:51', 'avalle'),
@@ -1294,12 +1357,8 @@ INSERT INTO `log_clientes` (`id`, `idorigen`, `tipo`, `descripcion`, `status`, `
 (14, 1, 5, 'Actualización de Asesor de  a Abraham Valle.', 1, '2019-01-02 17:42:40', 'avalle'),
 (15, 1, 5, 'Actualización de Asesor de  a Administrator.', 1, '2019-01-02 17:43:36', 'avalle'),
 (16, 1, 5, 'Actualización de Asesor de Administrator a Abraham Valle.', 1, '2019-01-02 17:45:25', 'avalle'),
-(17, 1, 1, 'Comentario nuevo: \'Prueba comentario\'\'. ', 1, '2019-01-02 17:46:08', 'avalle'),
-(18, 1, 1, 'Cambio un Comentario, de \'Prueba comentario\' a \'Prueba comentario2\'. ', 1, '2019-01-02 17:46:33', 'avalle'),
-(19, 4, 1, 'Cambio el Estado Civil de  a Casado, Cambio la Escolaridad de  a Secundaria, Cambio el estado de nacimiento de  a Chihuahua, Cambio el banco de 0 a 3, Cambio la Cuenta de  a 1, Cambio la Cuenta CLABE de  a 3, Cambio la Beneficiario de  a pepe, Cambio el Propietario de recursos de  a Propios, Cambio el monto segun regla de 0 a 2000, Cambio el valor neto de 0 a 3000, Cambio en Origen de los recursos de 0 a 0,1,5,6 (ids del sistema), Cambio en Destino de los recursos de 0 a 0,19 (ids del sistema), ', 1, '2019-01-07 18:25:29', 'avalle'),
-(20, 4, 1, 'Comentario nuevo: \'que  dsfsdfsd\'\'. ', 1, '2019-01-07 18:26:24', 'avalle'),
-(21, 4, 5, 'Actualización de Asesor de Abraham Valle a Administrator.', 1, '2019-01-07 18:27:15', 'avalle'),
-(22, 4, 5, 'Actualización de Integradora de  a Integradora B.', 1, '2019-01-07 18:27:34', 'avalle');
+(17, 1, 1, 'Comentario nuevo: ''Prueba comentario''''. ', 1, '2019-01-02 17:46:08', 'avalle'),
+(18, 1, 1, 'Cambio un Comentario, de ''Prueba comentario'' a ''Prueba comentario2''. ', 1, '2019-01-02 17:46:33', 'avalle');
 
 -- --------------------------------------------------------
 
@@ -1307,24 +1366,24 @@ INSERT INTO `log_clientes` (`id`, `idorigen`, `tipo`, `descripcion`, `status`, `
 -- Table structure for table `ope_clientecoms`
 --
 
-CREATE TABLE `ope_clientecoms` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ope_clientecoms` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `idorigen` int(5) NOT NULL,
   `tipo` int(2) DEFAULT NULL,
   `descripcion` longtext,
   `fecha` datetime NOT NULL,
   `usuario` varchar(100) NOT NULL,
   `ultactfec` varchar(25) DEFAULT NULL,
-  `ultactusu` varchar(25) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ultactusu` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `ope_clientecoms`
 --
 
 INSERT INTO `ope_clientecoms` (`id`, `idorigen`, `tipo`, `descripcion`, `fecha`, `usuario`, `ultactfec`, `ultactusu`) VALUES
-(2, 1, 0, 'Prueba comentario2', '2019-01-02 17:46:08', 'avalle', '2019-01-02 17:46:33', 'avalle'),
-(3, 4, 0, 'que  dsfsdfsd', '2019-01-07 18:26:24', 'avalle', '2019-01-07 18:26:24', 'avalle');
+(2, 1, 0, 'Prueba comentario2', '2019-01-02 17:46:08', 'avalle', '2019-01-02 17:46:33', 'avalle');
 
 -- --------------------------------------------------------
 
@@ -1332,8 +1391,8 @@ INSERT INTO `ope_clientecoms` (`id`, `idorigen`, `tipo`, `descripcion`, `fecha`,
 -- Table structure for table `ope_formatos`
 --
 
-CREATE TABLE `ope_formatos` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ope_formatos` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `idpersona` int(5) NOT NULL,
   `idformato` varchar(200) NOT NULL,
   `descripcion` varchar(200) NOT NULL,
@@ -1350,8 +1409,9 @@ CREATE TABLE `ope_formatos` (
   `fechadoc` date NOT NULL,
   `lugar` longtext NOT NULL,
   `ultactfec` varchar(25) NOT NULL,
-  `ultactusu` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ultactusu` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `ope_formatos`
@@ -1360,10 +1420,7 @@ CREATE TABLE `ope_formatos` (
 INSERT INTO `ope_formatos` (`id`, `idpersona`, `idformato`, `descripcion`, `servicio`, `honorarios`, `duracion`, `fecha`, `puesto`, `departamento`, `actividades`, `sueldodiario`, `jornada`, `persona`, `fechadoc`, `lugar`, `ultactfec`, `ultactusu`) VALUES
 (1, 1, 'clienteformato1', 'Acuse', '', '', '', '2019-01-10', '', '', '', '', '', 'Juan Perez', '0000-00-00', 'Ciudad de México', '2019-01-03 16:33:14', 'avalle'),
 (2, 1, 'clienteformato2', 'Crédito de línea IV sin garantía', '', '', '', '2019-01-16', '', '', '', '', '', 'Juan Perez', '0000-00-00', 'Mineral de la Reforma', '2019-01-03 17:56:23', 'avalle'),
-(5, 1, 'clienteformato3', 'Contrato de Obra (Vitta)', '', '', '', '2019-01-15', '', '', '', '', '', '', '2019-01-31', '', '2019-01-07 07:01:02', 'avalle'),
-(6, 4, 'clienteformato1', 'Acuse', '', '', '', '2019-01-08', '', '', '', '', '', 'YYYYY', '0000-00-00', 'XXXX', '2019-01-07 11:31:03', 'avalle'),
-(7, 4, 'clienteformato3', 'Contrato de Obra (Vitta)', '', '', '', '2019-01-01', '', '', '', '', '', '', '2019-01-31', '', '2019-01-07 11:33:11', 'avalle'),
-(8, 4, 'clienteformato2', 'Crédito de línea IV sin garantía', '', '', '', '2019-01-09', '', '', '', '', '', 'dgfgf', '0000-00-00', 'rrr', '2019-01-07 11:35:33', 'avalle');
+(5, 1, 'clienteformato3', 'Contrato de Obra (Vitta)', '', '', '', '2019-01-15', '', '', '', '', '', '', '2019-01-31', '', '2019-01-07 07:46:59', 'avalle');
 
 -- --------------------------------------------------------
 
@@ -1371,15 +1428,17 @@ INSERT INTO `ope_formatos` (`id`, `idpersona`, `idformato`, `descripcion`, `serv
 -- Table structure for table `ope_hits`
 --
 
-CREATE TABLE `ope_hits` (
-  `id` int(9) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ope_hits` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `pagina` varchar(250) NOT NULL DEFAULT '',
   `usuario` varchar(200) NOT NULL,
   `descripcion` varchar(250) NOT NULL DEFAULT '',
   `ip` varchar(50) NOT NULL DEFAULT '',
   `fecha` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `idusuario` int(5) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `idusuario` int(5) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idusuario` (`idusuario`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `ope_hits`
@@ -1394,15 +1453,8 @@ INSERT INTO `ope_hits` (`id`, `pagina`, `usuario`, `descripcion`, `ip`, `fecha`,
 (6, 'acceso', '1', 'avalle', '127.0.0.1', '2018-12-31 11:50:55', 2),
 (7, 'acceso', '1', 'avalle', '127.0.0.1', '2018-12-31 11:51:19', 2),
 (8, 'acceso', '1', 'avalle', '127.0.0.1', '2019-01-02 12:25:29', 2),
-(9, 'acceso', '1', 'avalle', '189.142.118.124', '2019-01-06 21:27:39', 2),
-(10, 'acceso', '1', 'avalle', '189.142.118.124', '2019-01-06 21:29:38', 2),
-(11, 'acceso', '1', 'avalle', '189.142.118.124', '2019-01-07 06:59:27', 2),
-(12, 'acceso', '1', 'avalle', '189.142.118.124', '2019-01-07 06:59:48', 2),
-(13, 'acceso', '1', 'avalle', '189.142.118.124', '2019-01-07 07:51:30', 2),
-(14, 'acceso', '1', 'avalle', '187.210.189.236', '2019-01-07 11:12:24', 2),
-(15, 'acceso', '1', 'avalle', '189.216.197.164', '2019-01-07 11:21:01', 2),
-(16, 'acceso', '1', 'avalle', '201.137.252.122', '2019-01-07 11:32:12', 2),
-(17, 'acceso', '1', 'avalle', '200.68.128.75', '2019-01-07 12:32:24', 2);
+(9, 'acceso', '1', 'avalle', '127.0.0.1', '2019-01-07 07:46:10', 2),
+(10, 'acceso', '1', 'avalle', '127.0.0.1', '2019-01-07 08:49:46', 2);
 
 -- --------------------------------------------------------
 
@@ -1410,12 +1462,13 @@ INSERT INTO `ope_hits` (`id`, `pagina`, `usuario`, `descripcion`, `ip`, `fecha`,
 -- Table structure for table `rel_recursos`
 --
 
-CREATE TABLE `rel_recursos` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `rel_recursos` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `tipo` tinyint(2) NOT NULL,
   `idcliente` int(5) NOT NULL,
-  `idrecurso` int(5) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `idrecurso` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `rel_recursos`
@@ -1429,11 +1482,7 @@ INSERT INTO `rel_recursos` (`id`, `tipo`, `idcliente`, `idrecurso`) VALUES
 (6, 1, 1, 7),
 (7, 1, 1, 9),
 (8, 1, 1, 11),
-(10, 2, 1, 21),
-(11, 1, 4, 1),
-(12, 1, 4, 5),
-(13, 1, 4, 6),
-(14, 2, 4, 19);
+(10, 2, 1, 21);
 
 -- --------------------------------------------------------
 
@@ -1441,11 +1490,12 @@ INSERT INTO `rel_recursos` (`id`, `tipo`, `idcliente`, `idrecurso`) VALUES
 -- Table structure for table `rel_usuarios`
 --
 
-CREATE TABLE `rel_usuarios` (
-  `id` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `rel_usuarios` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `idusuario` int(5) NOT NULL,
-  `idempresa` int(5) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `idempresa` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `rel_usuarios`
@@ -1454,328 +1504,6 @@ CREATE TABLE `rel_usuarios` (
 INSERT INTO `rel_usuarios` (`id`, `idusuario`, `idempresa`) VALUES
 (2, 1, 1),
 (3, 2, 1);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `adm_archivos`
---
-ALTER TABLE `adm_archivos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `adm_config`
---
-ALTER TABLE `adm_config`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `adm_documentos`
---
-ALTER TABLE `adm_documentos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `adm_empresas`
---
-ALTER TABLE `adm_empresas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `adm_modcatego`
---
-ALTER TABLE `adm_modcatego`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `adm_modulos`
---
-ALTER TABLE `adm_modulos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `adm_parametros`
---
-ALTER TABLE `adm_parametros`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `adm_permisos`
---
-ALTER TABLE `adm_permisos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `adm_usuarios`
---
-ALTER TABLE `adm_usuarios`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `arc_clientes`
---
-ALTER TABLE `arc_clientes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cat_clientes`
---
-ALTER TABLE `cat_clientes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cat_docsmust`
---
-ALTER TABLE `cat_docsmust`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cat_ecivil`
---
-ALTER TABLE `cat_ecivil`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cat_escolaridad`
---
-ALTER TABLE `cat_escolaridad`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cat_estadosrep`
---
-ALTER TABLE `cat_estadosrep`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cat_instituciones`
---
-ALTER TABLE `cat_instituciones`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cat_integradoras`
---
-ALTER TABLE `cat_integradoras`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cat_recursos`
---
-ALTER TABLE `cat_recursos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cat_statuscliente`
---
-ALTER TABLE `cat_statuscliente`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `log_capitalhumano`
---
-ALTER TABLE `log_capitalhumano`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `log_clientes`
---
-ALTER TABLE `log_clientes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ope_clientecoms`
---
-ALTER TABLE `ope_clientecoms`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ope_formatos`
---
-ALTER TABLE `ope_formatos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ope_hits`
---
-ALTER TABLE `ope_hits`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idusuario` (`idusuario`);
-
---
--- Indexes for table `rel_recursos`
---
-ALTER TABLE `rel_recursos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `rel_usuarios`
---
-ALTER TABLE `rel_usuarios`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `adm_archivos`
---
-ALTER TABLE `adm_archivos`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `adm_config`
---
-ALTER TABLE `adm_config`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `adm_documentos`
---
-ALTER TABLE `adm_documentos`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
---
--- AUTO_INCREMENT for table `adm_empresas`
---
-ALTER TABLE `adm_empresas`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
-
---
--- AUTO_INCREMENT for table `adm_modcatego`
---
-ALTER TABLE `adm_modcatego`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
-
---
--- AUTO_INCREMENT for table `adm_modulos`
---
-ALTER TABLE `adm_modulos`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=454;
-
---
--- AUTO_INCREMENT for table `adm_parametros`
---
-ALTER TABLE `adm_parametros`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `adm_permisos`
---
-ALTER TABLE `adm_permisos`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `adm_usuarios`
---
-ALTER TABLE `adm_usuarios`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `arc_clientes`
---
-ALTER TABLE `arc_clientes`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `cat_clientes`
---
-ALTER TABLE `cat_clientes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `cat_docsmust`
---
-ALTER TABLE `cat_docsmust`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `cat_ecivil`
---
-ALTER TABLE `cat_ecivil`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `cat_escolaridad`
---
-ALTER TABLE `cat_escolaridad`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235;
-
---
--- AUTO_INCREMENT for table `cat_estadosrep`
---
-ALTER TABLE `cat_estadosrep`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
-
---
--- AUTO_INCREMENT for table `cat_instituciones`
---
-ALTER TABLE `cat_instituciones`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `cat_integradoras`
---
-ALTER TABLE `cat_integradoras`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `cat_recursos`
---
-ALTER TABLE `cat_recursos`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT for table `cat_statuscliente`
---
-ALTER TABLE `cat_statuscliente`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `log_capitalhumano`
---
-ALTER TABLE `log_capitalhumano`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `log_clientes`
---
-ALTER TABLE `log_clientes`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT for table `ope_clientecoms`
---
-ALTER TABLE `ope_clientecoms`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `ope_formatos`
---
-ALTER TABLE `ope_formatos`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `ope_hits`
---
-ALTER TABLE `ope_hits`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT for table `rel_recursos`
---
-ALTER TABLE `rel_recursos`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `rel_usuarios`
---
-ALTER TABLE `rel_usuarios`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

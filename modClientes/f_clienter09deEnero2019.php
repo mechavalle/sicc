@@ -193,106 +193,6 @@ if($val5=mysqli_fetch_array($res2))
 	$procedencia=$val5['procedencia'];
 	$puestopolitico=$val5['puestopolitico'];
 
-	//combos09/01/19
-	$ref1apellidop=$val5['ref1apellidop'];
-	$ref1apellidom=$val5['ref1apellidom'];
-	$ref1nombre=$val5['ref1nombre'];
-	$ref1telefono=$val5['ref1telefono'];
-	$ref2apellidop=$val5['ref2apellidop'];
-	$ref2apellidom=$val5['ref2apellidom'];
-	$ref2nombre=$val5['ref2nombre'];
-	$ref2telefono=$val5['ref2telefono'];
-	$razonsocialpatron=$val5['razonsocialpatron'];
-	$rfcpatron=$val5['rfcpatron'];
-	$telpatron=$val5['telpatron'];
-	$ref1apellidop=$val5['ref1apellidop'];
-	$ref1apellidom=$val5['ref1apellidom'];
-	$ref1nombre=$val5['ref1nombre'];
-	$ref1telefono=$val5['ref1telefono'];
-	$ref2apellidop=$val5['ref2apellidop'];
-	$ref2apellidom=$val5['ref2apellidom'];
-	$ref2nombre=$val5['ref2nombre'];
-	$ref2telefono=$val5['ref2telefono'];
-	$razonsocialacreditado=$val5['razonsocialacreditado'];
-	$rfcacreditado=$val5['rfcacreditado'];
-	$nombreacreditado=$val5['nombreacreditado'];
-	$clabeacreditado=$val5['clabeacreditado'];
-
-	$discapacidadv=$val5['discapacidad'];
-	if($discapacidadv=="")
-		$discapacidadv="-";
-	if($discapacidadv=="0")
-		$discapacidadv="No";
-	if($discapacidadv=="1")
-		$discapacidadv="Si";
-
-	$tipodiscapacidadv=$val5['tipodiscapacidad'];
-	if($tipodiscapacidadv=="")
-		$tipodiscapacidadv="-";
-
-	$personacapacidadv=$val5['personacapacidad'];
-	if($personacapacidadv=="")
-		$personacapacidadv="-";
-
-	$afectaestructurav=$val5['afectaestructura'];
-	if($afectaestructurav=="")
-		$afectaestructurav="-";
-	if($afectaestructurav=="0")
-		$afectaestructurav="No";
-	if($afectaestructurav=="1")
-		$afectaestructurav="Si";
-
-	$idproducto=$val5['idproducto'];
-      switch ($val5['idproducto']) 
-          {
-          case '1': $idproducto="INFONAVIT"; break;
-          case '2': $idproducto="INFONAVIT TOTAL"; break;
-          case '3': $idproducto="COFINAVIT"; break;
-          case '4': $idproducto="COFINAVIT INGRESOS ADICIONALES"; break;          
-          default: $idproducto="-"; break;
-          }
-
-    $idtipoproducto=$val5['idtipoproducto'];
-      switch ($val5['idtipoproducto']) 
-          {
-          case '2': $idtipoproducto="INDIVIDUAL"; break;
-          case '3': $idtipoproducto="CONYUGAL"; break;          
-          default: $idtipoproducto="-"; break;
-          }
-
-    $iddestino=$val5['iddestino'];
-      switch ($val5['iddestino']) 
-          {
-          case '2': $iddestino="Comprar una vivienda"; break; 
-          case '3': $iddestino="Construir vivienda"; break;
-          case '4': $iddestino="Reparar, ampliar o mejorar la vivienda"; break;
-          case '5': $iddestino="Pagar el pasivo o la hipoteca de la vivienda"; break;
-          case '6': $iddestino="Compra y mejora de vivienda"; break;     
-          case '7': $iddestino="Pago de pasivo y mejora de vivienda"; break;    
-          default: $iddestino="-"; break;
-          }
-
-	$plazocredito=$val5['plazocredito'];
-      switch ($val5['plazocredito']) 
-          {
-          case '2': $plazocredito="5 años"; break;
-          case '3': $plazocredito="10 años"; break;
-          case '4': $plazocredito="15 años"; break;
-          case '5': $plazocredito="20 años"; break;
-          case '6': $plazocredito="25 años"; break;
-          case '7': $plazocredito="30 años"; break;          
-          default: $plazocredito="-"; break;
-          }
-
-	$segundocreditov=$val5['segundocredito'];
-	if($segundocreditov=="")
-		$segundocreditov="-";
-	if($segundocreditov=="0")
-		$segundocreditov="No";
-	if($segundocreditov=="1")
-		$segundocreditov="Si";
-	//
-
 	$recursosori=$val5['recursosori'];
 	$recursosdes=$val5['recursosdes'];
 
@@ -681,7 +581,7 @@ function cambiarasesor()
 						</tr>
 						<tr>
 							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">País de Nacimiento:</font></td>
+							<font face="Arial" size="2">Páis de Nacimiento:</font></td>
 							<td width="5" align="left" height="22">
 							&nbsp;</td>
 							<td class="subr" align="left" height="22">
@@ -755,122 +655,15 @@ function cambiarasesor()
 				</div>
 			</div>
 
-		<?//?>
-		<div class="row">
-				<div class="col-sm-6">
-					<h4><font face="Arial">Referencias familiares</font></h4>	
-					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Apellido paterno:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $ref1apellidop; ?></b></font>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Apellido materno:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $ref1apellidom; ?></b></font>
-							</td>							
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Nombre:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><? echo $ref1nombre;?></b></font>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Teléfono:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $ref1telefono; ?></b></font>
-							</td>							
-						</tr>
-					</table>
-				</div>
-				<br><br>
-				<div class="col-sm-6">
-					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">						
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Apellido paterno:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $ref2apellidop; ?></b></font>
-							</td>							
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Apellido materno:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $ref2apellidom; ?></b></font>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Nombre:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $ref2nombre; ?></b></font>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Teléfono:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $ref2telefono; ?></b></font>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		<?//?>
+		
 		
 		<br>		
 		<div class="row">
 			<div class="col-sm-6">	
 				<h4><font face="Arial">Domicilio Fiscal</font></h4>	
-				<div class="subr">		
+				<div class="subr">			
 					<font face="Arial" size="2"><b><?echo $domiciliof; ?></b></font>
 				</div>
-				<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
-					<tr>	
-						<td width="350" align="left" height="22"><font face="Arial" size="2">¿La vivienda elegida es para una persona con discapacidad?</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td class="subr" align="left" height="22"><font face="Arial" size="2"><b><?echo $discapacidadv; ?></b></font></td>
-					</tr>
-					<tr>
-						<td width="350" align="left" height="22"><font face="Arial" size="2">Tipo de discapacidad:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td class="subr" align="left" height="22"><font face="Arial" size="2"><b><?echo $tipodiscapacidadv; ?></b></font></td>
-					</tr>
-					<tr>
-						<td width="350" align="left" height="22"><font face="Arial" size="2">Persona que presentará comprobante de discapacidad:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td class="subr" align="left" height="22"><font face="Arial" size="2"><b><?echo $personacapacidadv; ?></b></font></td>
-					</tr>
-					<tr>
-						<td width="350" align="left" height="22"><font face="Arial" size="2">Afectación estructural:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td class="subr" align="left" height="22"><font face="Arial" size="2"><b><?echo $afectaestructurav; ?></b></font></td>
-					</tr>
-				</table>
 			</div>
 			<div class="col-sm-6">	
 				<h4><font face="Arial">Domicilio Particular</font></h4>	
@@ -953,58 +746,6 @@ function cambiarasesor()
 			</div>
 		</div>
 
-		<?//?>
-		<br>
-		<h4><font face="Arial">Crédito solicitado</font></h4>
-		<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
-			<tr>
-				<td width="150" align="right" height="22">
-					<font face="Arial" size="2">Producto</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-
-				<td class="subr" align="left" height="22">	
-					<font face="Arial" size="2"><b><?echo $idproducto; ?></b></font>												
-				</td>				
-			</tr>
-			<tr>
-				<td width="150" align="right" height="22">
-					<font face="Arial" size="2">Tipo de crédito:</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-
-				<td class="subr" align="left" height="22">	
-					<font face="Arial" size="2"><b><?echo $idtipoproducto; ?></b></font>												
-				</td>				
-			</tr>
-			<tr>
-				<td width="150" align="right" height="22">
-					<font face="Arial" size="2">Destino del crédito:</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-
-				<td class="subr" align="left" height="22">	
-					<font face="Arial" size="2"><b><?echo $iddestino; ?></b></font>												
-				</td>				
-			</tr>
-			<tr>
-				<td width="150" align="right" height="22">
-					<font face="Arial" size="2">Plazo del crédito:</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-
-				<td class="subr" align="left" height="22">	
-					<font face="Arial" size="2"><b><?echo $plazocredito; ?></b></font>												
-				</td>				
-			</tr>
-			<tr>
-				<td width="150" align="right" height="22">
-					<font face="Arial" size="2">¿Es el segundo crédito que solicitaste al infonavit?</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-
-				<td class="subr" align="left" height="22">	
-					<font face="Arial" size="2"><b><?echo $segundocreditov; ?></b></font>												
-				</td>				
-			</tr>
-		</table>
-		<?//?>
-
 		<br>
 		<div class="row">
 			<div class="col-sm-6">
@@ -1075,77 +816,8 @@ function cambiarasesor()
 				</div>
 			</div>
 
-			<?//?>
-		<br>
-		<div class="row">
-			<div class="col-sm-6">
-				<h4><font face="Arial">Datos de la empresa o patrón</font></h4>
-					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Nombre de la empresa o patrón:</font></td>
-							<td width="5" align="left" height="22">&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $razonsocialpatron; ?></b></font>
-							</td>				
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Número de registro patronal (NRP):</font></td>
-							<td width="5" align="left" height="22">&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $rfcpatron; ?></b></font>
-							</td>				
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Teléfono de la empresa donde trabaja:</font></td>
-							<td width="5" align="left" height="22" >&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $telpatron; ?></b></font>
-							</td>				
-						</tr>						
-					</table>
-				</div>
-			<div class="col-sm-6">
-				<h4><font face="Arial">Datos del acreedor hipotecario</font></h4>
-					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Nombre o denominación o razón social:</font></td>
-							<td width="5" align="left" height="22">&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $razonsocialacreditado; ?></b></font>
-							</td>				
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">RFC:</font></td>
-							<td width="5" align="left" height="22">&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $rfcacreditado; ?></b></font>
-							</td>			
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Nombre o denominación o razón social como aparece en el estado de cuenta:</font></td>
-							<td width="5" align="left" height="22" >&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $nombreacreditado; ?></b></font>
-							</td>				
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Clabe bancaria estandarizada (CLABE):</font></td>
-							<td width="5" align="left" height="22">&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $clabeacreditado; ?></b></font>
-							</td>			
-						</tr>
-					</table>
-				</div>
-			</div>
-			<?//?>
+
+				
 
 		
 

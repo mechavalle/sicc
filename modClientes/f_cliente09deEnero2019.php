@@ -134,33 +134,6 @@ if(isset($_POST['accion']))
 		$valorregla=$_POST['valorregla'];
 		$valorneto=$_POST['valorneto'];
 		$status="1";
-
-		//
-		$idproducto=$_POST['idproducto'];
-		$idtipoproducto=$_POST['idtipoproducto'];
-		$iddestino=$_POST['iddestino'];
-		$plazocredito=$_POST['plazocredito'];
-		$segundocredito=$_POST['segundocredito'];
-		$discapacidad=$_POST['discapacidad'];
-		$tipodiscapacidad=$_POST['tipodiscapacidad'];
-		$personacapacidad=$_POST['personacapacidad'];
-		$afectaestructura=$_POST['afectaestructura'];
-		$razonsocialpatron=$_POST['razonsocialpatron'];
-		$rfcpatron=$_POST['rfcpatron'];
-		$telpatron=$_POST['telpatron'];
-		$ref1apellidop=$_POST['ref1apellidop'];
-		$ref1apellidom=$_POST['ref1apellidom'];
-		$ref1nombre=$_POST['ref1nombre'];
-		$ref1telefono=$_POST['ref1telefono'];
-		$ref2apellidop=$_POST['ref2apellidop'];
-		$ref2apellidom=$_POST['ref2apellidom'];
-		$ref2nombre=$_POST['ref2nombre'];
-		$ref2telefono=$_POST['ref2telefono'];
-		$razonsocialacreditado=$_POST['razonsocialacreditado'];
-		$rfcacreditado=$_POST['rfcacreditado'];
-		$nombreacreditado=$_POST['nombreacreditado'];
-		$clabeacreditado=$_POST['clabeacreditado'];
-		//
 		
 		if($numopeauto==0)
 			$minsql="`idcli`='$idcli',";
@@ -179,14 +152,6 @@ if(isset($_POST['accion']))
 		$csql .="`callef`='$callef', `numerof`='$numerof', `coloniaf`='$coloniaf', `municipiof`='$municipiof',";
 		$csql .="`estadof`='$estadof', `cpf`='$cpf',";
 		$csql .="`recursosori`='$recursosori', `recursosdes`='$recursosdes', `valorampliacion`='$valorampliacion', `valorregla`='$valorregla',";
-		//
-		$csql .="`idproducto`='$idproducto', `idtipoproducto`='$idtipoproducto', `iddestino`='$iddestino', `plazocredito`='$plazocredito',";
-		$csql .="`segundocredito`='$segundocredito', `discapacidad`='$discapacidad', `tipodiscapacidad`='$tipodiscapacidad', `personacapacidad`='$personacapacidad',";
-		$csql .="`afectaestructura`='$afectaestructura', `razonsocialpatron`='$razonsocialpatron', `rfcpatron`='$rfcpatron', `telpatron`='$telpatron',";
-		$csql .="`ref1apellidop`='$ref1apellidop', `ref1apellidom`='$ref1apellidom', `ref1nombre`='$ref1nombre', `ref1telefono`='$ref1telefono',";
-		$csql .="`ref2apellidop`='$ref2apellidop', `ref2apellidom`='$ref2apellidom', `ref2nombre`='$ref2nombre', `ref2telefono`='$ref2telefono',";
-		$csql .="`razonsocialacreditado`='$razonsocialacreditado', `rfcacreditado`='$rfcacreditado', `nombreacreditado`='$nombreacreditado', `clabeacreditado`='$clabeacreditado',";
-		//
 		$csql .="`valorneto`='$valorneto', `status`='$status', `ultactfec`='".date("Y-m-d h:i:s")."', `ultactusu`='$IDUser' ";
 		$csql .="WHERE `id`='$id'";	
 		
@@ -578,142 +543,7 @@ else{ #Fin del existe 'Accion'
 		
 		$res2 = mysqli_query($conexio, $csql);
 		if($val5=mysqli_fetch_array($res2))
-			{	
-
-			//combos 08/01/19
-		$idproducto=$val5['idproducto'];
-            if($idproducto==0)
-              $idproductov="<option selected value='0'>(sin asignar)</option>";
-            else
-              $idproductov="<option value='0'>(sin asignar)</option>";     
-            $csql = "SELECT * from `cat_creproductos`  where status='1' order by descripcion asc";
-            $res = $conexio->query($csql);
-            while($val=mysqli_fetch_array($res))
-              {
-              if($val['id']==$idproducto)
-          		$idproductov.="<option selected value='".$val['id']."'>".$val['descripcion']."</option>";
-        	else
-         	 	$idproductov.="<option value='".$val['id']."'>".$val['descripcion']."</option>";
-       		  }
-      		$res->free();
-
-		$idtipoproducto=$val5['idtipoproducto'];
-            if($idtipoproducto==0)
-              $idtipoproductov="<option selected value='0'>(sin asignar)</option>";
-            else
-              $idtipoproductov="<option value='0'>(sin asignar)</option>";     
-            $csql = "SELECT * from `cat_cretipopro`  where status='1' order by descripcion asc";
-            $res = $conexio->query($csql);
-            while($val=mysqli_fetch_array($res))
-              {
-              if($val['id']==$idtipoproducto)
-          		$idtipoproductov.="<option selected value='".$val['id']."'>".$val['descripcion']."</option>";
-        	else
-         	 	$idtipoproductov.="<option value='".$val['id']."'>".$val['descripcion']."</option>";
-       		  }
-      		$res->free();
-
-		$iddestino=$val5['iddestino'];
-            if($iddestino==0)
-              $iddestinov="<option selected value='0'>(sin asignar)</option>";
-            else
-              $iddestinov="<option value='0'>(sin asignar)</option>";     
-            $csql = "SELECT * from `cat_credestino`  where status='1' order by descripcion asc";
-            $res = $conexio->query($csql);
-            while($val=mysqli_fetch_array($res))
-              {
-              if($val['id']==$iddestino)
-          		$iddestinov.="<option selected value='".$val['id']."'>".$val['descripcion']."</option>";
-        	else
-         	 	$iddestinov.="<option value='".$val['id']."'>".$val['descripcion']."</option>";
-       		  }
-      		$res->free();
-
-		$plazocredito=$val5['plazocredito'];
-            if($plazocredito==0)
-              $plazocreditov="<option selected value='0'>(sin asignar)</option>";
-            else
-              $plazocreditov="<option value='0'>(sin asignar)</option>";     
-            $csql = "SELECT * from `cat_creplazo`  where status='1' order by descripcion asc";
-            $res = $conexio->query($csql);
-            while($val=mysqli_fetch_array($res))
-              {
-              if($val['id']==$plazocredito)
-          		$plazocreditov.="<option selected value='".$val['id']."'>".$val['descripcion']."</option>";
-        	else
-         	 	$plazocreditov.="<option value='".$val['id']."'>".$val['descripcion']."</option>";
-       		  }
-      		$res->free();	
-
-		$segundocredito=$val5['segundocredito'];
-			if($segundocredito=="")
-				$segundocreditov="<option selected value=''>(seleccione)</option><option value='0'>No</option><option value='1'>Si</option>";
-			if($segundocredito=="0")
-				$segundocreditov="<option value=''>(seleccione)</option><option selected value='0'>No</option><option value='1'>Si</option>";
-			if($segundocredito=="1")
-				$segundocreditov="<option value=''>(seleccione)</option><option value='0'>No</option><option selected value='1'>Si</option>";	
-
-		$discapacidad=$val5['discapacidad'];
-			if($discapacidad=="")
-				$discapacidadv="<option selected value=''>(seleccione)</option><option value='0'>No</option><option value='1'>Si</option>";
-			if($discapacidad=='0')
-				$discapacidadv="<option value=''>(seleccione)</option><option selected value='0'>No</option><option value='1'>Si</option>";
-			if($discapacidad=='1')
-				$discapacidadv="<option value=''>(seleccione)</option><option value='0'>No</option><option selected value='1'>Si</option>";
-
-		$tipodiscapacidad=$val5['tipodiscapacidad'];
-			if($tipodiscapacidad=="")
-				$tipodiscapacidadv="<option selected value=''>(seleccione)</option><option value='Motriz'>Motriz</option><option value='Auditiva'>Auditiva</option><option value='Mental'>Mental</option><option value='Visual'>Visual</option>";
-			if($tipodiscapacidad=="Motriz")
-				$tipodiscapacidadv="<option value=''>(seleccione)</option><option selected value='Motriz'>Motriz</option><option value='Auditiva'>Auditiva</option><option value='Mental'>Mental</option><option value='Visual'>Visual</option>";
-			if($tipodiscapacidad=="Auditiva")
-				$tipodiscapacidadv="<option value=''>(seleccione)</option><option value='Motriz'>Motriz</option><option selected value='Auditiva'>Auditiva</option><option value='Mental'>Mental</option><option value='Visual'>Visual</option>";
-			if($tipodiscapacidad=="Mental")
-				$tipodiscapacidadv="<option value=''>(seleccione)</option><option value='Motriz'>Motriz</option><option value='Auditiva'>Auditiva</option><option selected value='Mental'>Mental</option><option value='Visual'>Visual</option>";
-			if($tipodiscapacidad=="Visual")
-				$tipodiscapacidadv="<option value=''>(seleccione)</option><option value='Motriz'>Motriz</option><option value='Auditiva'>Auditiva</option><option value='Mental'>Mental</option><option selected value='Visual'>Visual</option>";
-
-		$personacapacidad=$val5['personacapacidad'];
-			if($personacapacidad=="")
-				$personacapacidadv="<option selected value=''>(sin asignar)</option>";
-			else
-				$personacapacidadv="<option value=''>(sin asignar)</option>";			
-			$csql = "SELECT * from `cat_parentezco` where status='1' order by `descripcion` asc;";
-			$resx = mysqli_query($conexio, $csql);
-			while($val=mysqli_fetch_array($resx))
-				{
-				if($val['descripcion']==$personacapacidad)
-					$personacapacidadv.="<option selected value='".$val['descripcion']."'>".$val['descripcion']."</option>";
-				else
-					$personacapacidadv.="<option value='".$val['descripcion']."'>".$val['descripcion']."</option>";
-				}
-			mysqli_free_result($resx);	
-
-		$afectaestructura=$val5['afectaestructura'];
-			if($afectaestructura=="")
-				$afectaestructurav="<option selected value=''>(seleccione)</option><option value='0'>No</option><option value='1'>Si</option>";
-			if($afectaestructura=="0")
-				$afectaestructurav="<option value=''>(seleccione)</option><option selected value='0'>No</option><option value='1'>Si</option>";
-			if($afectaestructura=="1")
-				$afectaestructurav="<option value=''>(seleccione)</option><option value='0'>No</option><option selected value='1'>Si</option>";;		
-
-			$razonsocialpatron=$val5['razonsocialpatron'];
-			$rfcpatron=$val5['rfcpatron'];
-			$telpatron=$val5['telpatron'];
-			$ref1apellidop=$val5['ref1apellidop'];
-			$ref1apellidom=$val5['ref1apellidom'];
-			$ref1nombre=$val5['ref1nombre'];
-			$ref1telefono=$val5['ref1telefono'];
-			$ref2apellidop=$val5['ref2apellidop'];
-			$ref2apellidom=$val5['ref2apellidom'];
-			$ref2nombre=$val5['ref2nombre'];
-			$ref2telefono=$val5['ref2telefono'];
-			$razonsocialacreditado=$val5['razonsocialacreditado'];
-			$rfcacreditado=$val5['rfcacreditado'];
-			$nombreacreditado=$val5['nombreacreditado'];
-			$clabeacreditado=$val5['clabeacreditado'];
-	//
-		
+			{			
 			$idcli=$val5['idcli'];
 			$nombre=$val5['nombre'];
 			$apellidop=$val5['apellidop'];
@@ -896,7 +726,7 @@ else{ #Fin del existe 'Accion'
 		mysqli_free_result($res2);
 		}
 	
-	
+
 	}
 
 #relaciones
@@ -1467,77 +1297,7 @@ function cambiarasesor()
 				</div>
 			</div>
 
-		<?//?>
-		<br>		
-		<div class="row">
-			<div class="col-sm-6">	
-				<h4><font face="Arial">Referencias familiares</font></h4>	
-				<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">			
-					<tr>
-						<td align="right" height="22" width="150">
-						<font face="Arial" size="2">Apellido paterno:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td align="left" height="22" bordercolor="#FFFF99">
-						<input type="text" name="ref1apellidop" class="cenboxfrm" <?echo "value='$ref1apellidop'"?>></td>
-					</tr>
-					<tr>
-						<td align="right" height="22" width="150">
-						<font face="Arial" size="2">Apellido materno:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td align="left" height="22" bordercolor="#FFFF99">
-						<input type="text" name="ref1apellidom" class="cenboxfrm" <?echo "value='$ref1apellidom'"?>></td>
-					</tr>
-					<tr>
-						<td align="right" height="22" width="150">
-						<font face="Arial" size="2">Nombre:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td align="left" height="22" bordercolor="#FFFF99">
-						<input type="text" name="ref1nombre" class="cenboxfrm" <?echo "value='$ref1nombre'"?>></td>
-					</tr>
-					<tr>
-						<td align="right" height="22" width="150">
-						<font face="Arial" size="2">Teléfono:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td align="left" height="22" bordercolor="#FFFF99">
-						<input type="text" name="ref1telefono" class="cenboxfrm" <?echo "value='$ref1telefono'"?>></td>
-					</tr>
-				</table>	
-			</div>
-			<br><br>
-			<div class="col-sm-6">
-				<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">			
-					<tr>
-						<td align="right" height="22" width="150">
-						<font face="Arial" size="2">Apellido paterno:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td align="left" height="22" bordercolor="#FFFF99">
-						<input type="text" name="ref2apellidop" class="cenboxfrm" <?echo "value='$ref2apellidop'"?>></td>
-					</tr>
-					<tr>
-						<td align="right" height="22" width="150">
-						<font face="Arial" size="2">Apellido materno:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td align="left" height="22" bordercolor="#FFFF99">
-						<input type="text" name="ref2apellidom" class="cenboxfrm" <?echo "value='$ref2apellidom'"?>></td>
-					</tr>
-					<tr>
-						<td align="right" height="22" width="150">
-						<font face="Arial" size="2">Nombre:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td align="left" height="22" bordercolor="#FFFF99">
-						<input type="text" name="ref2nombre" class="cenboxfrm" <?echo "value='$ref2nombre'"?>></td>
-					</tr>
-					<tr>
-						<td align="right" height="22" width="150">
-						<font face="Arial" size="2">Teléfono:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td align="left" height="22" bordercolor="#FFFF99">
-						<input type="text" name="ref2telefono" class="cenboxfrm" <?echo "value='$ref2telefono'"?>></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-		<?//?>
+		
 		
 		<br>		
 		<div class="row">
@@ -1589,48 +1349,7 @@ function cambiarasesor()
 						<td align="left" height="22" bordercolor="#FFFF99">
 						<input type="text" name="cpf" class="cenboxfrmmin" <?echo "value='$cpf'"?>></td>
 					</tr>
-					<?//?>
-					<tr>
-						<td align="right" height="22" width="150">
-						<font face="Arial" size="2">¿La vivienda elegida es para una persona con discapacidad?</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td align="left" height="22" bordercolor="#FFFF99">
-						<select size="1" name="discapacidad" class="cenboxfrmmin">
-							<?echo $discapacidadv;?>
-						</select>
-						</td>
-					</tr>
-					<tr>
-						<td align="right" height="22" width="150">
-						<font face="Arial" size="2">Tipo de discapacidad:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td align="left" height="22" bordercolor="#FFFF99">
-						<select size="1" name="tipodiscapacidad" class="cenboxfrm">
-							<?echo $tipodiscapacidadv;?>
-						</select>
-						</td>
-					</tr>
-					<tr>
-						<td align="right" height="22" width="150">
-						<font face="Arial" size="2">Persona que presentará comprobante de discapacidad:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td align="left" height="22" bordercolor="#FFFF99">
-						<select size="1" name="personacapacidad" class="cenboxfrm">
-							<?echo $personacapacidadv;?>
-						</select>
-						</td>
-					</tr>
-					<tr>
-						<td width="150" align="right" height="22">
-						<font face="Arial" size="2">Afectación estructural:</font></td>
-						<td width="5" align="left" height="22" >&nbsp;</td>
-						<td align="left" height="22">
-						<select class="cenboxfrmmin" name="afectaestructura">
-						<?echo $afectaestructurav;?>
-						</select>
-						</td>				
-					</tr>
-					<?//?>
+
 				</table>
 			</div>
 			<div class="col-sm-6">
@@ -1789,62 +1508,6 @@ function cambiarasesor()
 
 			</div>
 		</div>
-		<?//?>
-		<br>
-		<h4><font face="Arial">Crédito solicitado</font></h4>
-			<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
-				<tr>
-					<td width="150" align="right" height="22">
-						<font face="Arial" size="2">Producto:</font></td>
-					<td width="5" align="left" height="22">&nbsp;</td>
-					<td align="left" height="22">	
-						<select class="cenboxfrm" name="idproducto">
-							<?echo $idproductov;?>
-						</select>							
-					</td>				
-				</tr>
-				<tr>
-					<td width="150" align="right" height="22">
-						<font face="Arial" size="2">Tipo de crédito:</font></td>
-					<td width="5" align="left" height="22">&nbsp;</td>
-					<td align="left" height="22">	
-						<select class="cenboxfrm" name="idtipoproducto">
-							<?echo $idtipoproductov;?>
-						</select>							
-					</td>				
-				</tr>
-				<tr>
-					<td width="150" align="right" height="22">
-						<font face="Arial" size="2">Destino del crédito:</font></td>
-					<td width="5" align="left" height="22">&nbsp;</td>
-					<td align="left" height="22">	
-						<select class="cenboxfrm" name="iddestino">
-							<?echo $iddestinov;?>
-						</select>							
-					</td>				
-				</tr>
-				<tr>
-					<td width="150" align="right" height="22">
-						<font face="Arial" size="2">Plazo del crédito:</font></td>
-					<td width="5" align="left" height="22">&nbsp;</td>
-					<td align="left" height="22">	
-						<select class="cenboxfrmmin" name="plazocredito">
-							<?echo $plazocreditov;?>
-						</select>							
-					</td>				
-				</tr>
-				<tr>
-					<td width="150" align="right" height="22">
-						<font face="Arial" size="2">¿Es el segundo crédito que solicita al infonavit?</font></td>
-					<td width="5" align="left" height="22">&nbsp;</td>
-					<td align="left" height="22">	
-						<select class="cenboxfrmmin" name="segundocredito">
-							<?echo $segundocreditov;?>
-						</select>							
-					</td>				
-				</tr>				
-			</table>
-		<?//?>
 
 		<br>
 		<div class="row">
@@ -1872,7 +1535,7 @@ function cambiarasesor()
 							<td width="5" align="left" height="22" >&nbsp;</td>
 							<td align="left" height="22">
 							<input type="text" name="valorneto" class="cenboxfrmmin" <?echo "value='$valorneto'"?>></td>				
-						</tr>					
+						</tr>						
 					</table>
 				</div>
 			<div class="col-sm-6">
@@ -1913,70 +1576,7 @@ function cambiarasesor()
 				</div>
 			</div>
 
-			<?//?>	
-			<br>
-			<div class="row">
-				<div class="col-sm-6">
-				<h4><font face="Arial">Datos de la empresa o patrón</font></h4>
-				<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
-					<tr>
-						<td width="200" align="right" height="22">
-						<font face="Arial" size="2">Nombre de la empresa o patrón:</font></td>
-						<td width="5" align="left" height="22" >&nbsp;</td>
-						<td align="left" height="22">
-						<input type="text" name="razonsocialpatron" class="cenboxfrm" <?echo "value='$razonsocialpatron'"?>></td>				
-					</tr>
-					<tr>
-						<td width="200" align="right" height="22">
-						<font face="Arial" size="2">Número de registro patronal (NRP):</font></td>
-						<td width="5" align="left" height="22" >&nbsp;</td>
-						<td align="left" height="22">
-						<input type="text" name="rfcpatron" class="cenboxfrm" <?echo "value='$rfcpatron'"?>></td>				
-					</tr>
-					<tr>
-						<td width="200" align="right" height="22">
-						<font face="Arial" size="2">Teléfono de la empresa donde trabaja:</font></td>
-						<td width="5" align="left" height="22" >&nbsp;</td>
-						<td align="left" height="22">
-						<input type="text" name="telpatron" class="cenboxfrm" <?echo "value='$telpatron'"?>></td>				
-					</tr>
-				</table>
-			</div>
-		<div class="col-sm-6">
-		<h4><font face="Arial">Datos del acreedor hipotecario</font></h4>
-		<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
-			<tr>
-				<td width="200" align="right" height="22">
-					<font face="Arial" size="2">Nombre o denominación o razón social:</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-				<td align="left" height="22">	
-				<input type="text" name="razonsocialacreditado" class="cenboxfrm" <?echo "value='$razonsocialacreditado'"?>></td>										
-			</tr>
-			<tr>
-				<td width="200" align="right" height="22">
-					<font face="Arial" size="2">RFC:</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-				<td align="left" height="22">	
-				<input type="text" name="rfcacreditado" class="cenboxfrm" <?echo "value='$rfcacreditado'"?>></td>			
-			</tr>
-			<tr>
-				<td width="200" align="right" height="22">
-					<font face="Arial" size="2">Nombre o denominación o razón social como aparece en el estado de cuenta:</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-				<td align="left" height="22">	
-				<input type="text" name="nombreacreditado" class="cenboxfrm" <?echo "value='$nombreacreditado'"?>></td>			
-			</tr>
-			<tr>
-				<td width="200" align="right" height="22">
-					<font face="Arial" size="2">Clabe bancaria estandarizada (CLABE):</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-				<td align="left" height="22">	
-				<input type="text" name="clabeacreditado" class="cenboxfrm" <?echo "value='$clabeacreditado'"?>></td>				
-			</tr>
-		</table>
-	</div>
-</div>
-		<?//?>
+
 				
 
 		
@@ -2084,32 +1684,6 @@ if($IDL5>0){?>
 <input type="hidden" name="actemail" <?echo "value='$email'"?>>
 <input type="hidden" name="actpuestopolitico" <?echo "value='$puestopolitico'"?>>
 <input type="hidden" name="actstatus" <?echo "value='$status'"?>>
-<?//?>
-<input type="hidden" name="idproducto'" <?echo "value='$idproducto'"?>>
-<input type="hidden" name="idtipoproducto'" <?echo "value='$idtipoproducto'"?>>
-<input type="hidden" name="iddestino'" <?echo "value='$iddestino'"?>>
-<input type="hidden" name="plazocredito'" <?echo "value='$plazocredito'"?>>
-<input type="hidden" name="segundocredito'" <?echo "value='$segundocredito'"?>>
-<input type="hidden" name="discapacidad'" <?echo "value='$discapacidad'"?>>
-<input type="hidden" name="tipodiscapacidad'" <?echo "value='$tipodiscapacidad'"?>>
-<input type="hidden" name="personacapacidad'" <?echo "value='$personacapacidad'"?>>
-<input type="hidden" name="afectaestructura'" <?echo "value='$afectaestructura'"?>>
-<input type="hidden" name="razonsocialpatron'" <?echo "value='$razonsocialpatron'"?>>
-<input type="hidden" name="rfcpatron'" <?echo "value='$rfcpatron'"?>>
-<input type="hidden" name="telpatron'" <?echo "value='$telpatron'"?>>
-<input type="hidden" name="ref1apellidop'" <?echo "value='$ref1apellidop'"?>>
-<input type="hidden" name="ref1apellidom'" <?echo "value='$ref1apellidom'"?>>
-<input type="hidden" name="ref1nombre'" <?echo "value='$ref1nombre'"?>>
-<input type="hidden" name="ref1telefono'" <?echo "value='$ref1telefono'"?>>
-<input type="hidden" name="ref2apellidop'" <?echo "value='$ref2apellidop'"?>>
-<input type="hidden" name="ref2apellidom'" <?echo "value='$ref2apellidom'"?>>
-<input type="hidden" name="ref2nombre'" <?echo "value='$ref2nombre'"?>>
-<input type="hidden" name="ref2telefono'" <?echo "value='$ref2telefono'"?>>
-<input type="hidden" name="razonsocialacreditado'" <?echo "value='$razonsocialacreditado'"?>>
-<input type="hidden" name="rfcacreditado'" <?echo "value='$rfcacreditado'"?>>
-<input type="hidden" name="nombreacreditado'" <?echo "value='$nombreacreditado'"?>>
-<input type="hidden" name="clabeacreditado'" <?echo "value='$clabeacreditado'"?>>
-<?//?>
 
 </div>
 

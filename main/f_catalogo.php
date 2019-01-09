@@ -129,6 +129,16 @@ function activa(submenu)
 
 			  echo "<li id='cubrecursos'><a href='#' onclick=\"activa('recursos'); midwindow.location.href='../modClientes/f_consultarecursos.php?titulo=0';\"><span>Recursos de Ingreso y Egreso</span></a></li>";
 
+			  echo "<li id='cubproducto'><a href='#' onclick=\"activa('producto'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_creproductos';\"><span>Productos Crédito</span></a></li>";
+
+			  echo "<li id='cubtipoproducto'><a href='#' onclick=\"activa('tipoproducto'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_cretipopro';\"><span>Tipo de Productos Crédito</span></a></li>";
+
+			  echo "<li id='cubdestino'><a href='#' onclick=\"activa('destino'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_credestino';\"><span>Destino Crédito</span></a></li>";
+
+			  echo "<li id='cubplazo'><a href='#' onclick=\"activa('plazo'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_creplazo';\"><span>Plazo Crédito</span></a></li>";
+
+			  echo "<li id='cubparentesco'><a href='#' onclick=\"activa('parentesco'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_parentezco';\"><span>Parentesco</span></a></li>";
+
 			  ?>
 			</ul>
 			<br>

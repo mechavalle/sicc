@@ -217,6 +217,7 @@ if($val5=mysqli_fetch_array($res2))
 	$rfcacreditado=$val5['rfcacreditado'];
 	$nombreacreditado=$val5['nombreacreditado'];
 	$clabeacreditado=$val5['clabeacreditado'];
+	$montopresupuesto=$val5['montopresupuesto'];
 
 	$discapacidadv=$val5['discapacidad'];
 	if($discapacidadv=="")
@@ -762,29 +763,11 @@ function cambiarasesor()
 					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">
 						<tr>
 							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Apellido paterno:</font></td>
+							<font face="Arial" size="2">Nombre (s):</font></td>
 							<td width="5" align="left" height="22">
 							&nbsp;</td>
 							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $ref1apellidop; ?></b></font>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Apellido materno:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $ref1apellidom; ?></b></font>
-							</td>							
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Nombre:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><? echo $ref1nombre;?></b></font>
+								<font face="Arial" size="2"><b><? echo "$ref1nombre $ref1apellidop $ref1apellidom"; ?></b></font>
 							</td>
 						</tr>
 						<tr>
@@ -803,29 +786,11 @@ function cambiarasesor()
 					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">						
 						<tr>
 							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Apellido paterno:</font></td>
+							<font face="Arial" size="2">Nombre (s):</font></td>
 							<td width="5" align="left" height="22">
 							&nbsp;</td>
 							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $ref2apellidop; ?></b></font>
-							</td>							
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Apellido materno:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $ref2apellidom; ?></b></font>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Nombre:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $ref2nombre; ?></b></font>
+								<font face="Arial" size="2"><b><?echo "$ref2nombre $ref2apellidop $ref2apellidom"; ?></b></font>
 							</td>
 						</tr>
 						<tr>
@@ -851,6 +816,9 @@ function cambiarasesor()
 				</div>
 				<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
 					<tr>	
+						<td width="5" align="left" height="22">&nbsp;</td>
+					</tr>
+					<tr>	
 						<td width="350" align="left" height="22"><font face="Arial" size="2">¿La vivienda elegida es para una persona con discapacidad?</font></td>
 						<td width="5" align="left" height="22">&nbsp;</td>
 						<td class="subr" align="left" height="22"><font face="Arial" size="2"><b><?echo $discapacidadv; ?></b></font></td>
@@ -864,11 +832,6 @@ function cambiarasesor()
 						<td width="350" align="left" height="22"><font face="Arial" size="2">Persona que presentará comprobante de discapacidad:</font></td>
 						<td width="5" align="left" height="22">&nbsp;</td>
 						<td class="subr" align="left" height="22"><font face="Arial" size="2"><b><?echo $personacapacidadv; ?></b></font></td>
-					</tr>
-					<tr>
-						<td width="350" align="left" height="22"><font face="Arial" size="2">Afectación estructural:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td class="subr" align="left" height="22"><font face="Arial" size="2"><b><?echo $afectaestructurav; ?></b></font></td>
 					</tr>
 				</table>
 			</div>
@@ -1033,6 +996,22 @@ function cambiarasesor()
 							<td class="subr" align="left" height="22">
 								<font face="Arial" size="2"><b><?echo $valorneto; ?></b></font>
 							</td>				
+						</tr>
+						<tr>
+							<td width="150" align="right" height="22">
+							<font face="Arial" size="2">Monto del presupuesto:</font></td>
+							<td width="5" align="left" height="22">&nbsp;</td>
+							<td class="subr" align="left" height="22">
+								<font face="Arial" size="2"><b><?echo $montopresupuesto; ?></b></font>
+							</td>
+						</tr>
+						<tr>
+							<td width="150" align="right" height="22">
+							<font face="Arial" size="2">Afectación estructural:</font></td>
+							<td width="5" align="left" height="22">&nbsp;</td>
+							<td class="subr" align="left" height="22">
+								<font face="Arial" size="2"><b><?echo $afectaestructurav; ?></b></font>
+							</td>
 						</tr>						
 					</table>
 				</div>

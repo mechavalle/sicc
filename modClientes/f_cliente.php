@@ -160,6 +160,7 @@ if(isset($_POST['accion']))
 		$rfcacreditado=$_POST['rfcacreditado'];
 		$nombreacreditado=$_POST['nombreacreditado'];
 		$clabeacreditado=$_POST['clabeacreditado'];
+		$montopresupuesto=$_POST['montopresupuesto'];
 		//
 		
 		if($numopeauto==0)
@@ -185,7 +186,7 @@ if(isset($_POST['accion']))
 		$csql .="`afectaestructura`='$afectaestructura', `razonsocialpatron`='$razonsocialpatron', `rfcpatron`='$rfcpatron', `telpatron`='$telpatron',";
 		$csql .="`ref1apellidop`='$ref1apellidop', `ref1apellidom`='$ref1apellidom', `ref1nombre`='$ref1nombre', `ref1telefono`='$ref1telefono',";
 		$csql .="`ref2apellidop`='$ref2apellidop', `ref2apellidom`='$ref2apellidom', `ref2nombre`='$ref2nombre', `ref2telefono`='$ref2telefono',";
-		$csql .="`razonsocialacreditado`='$razonsocialacreditado', `rfcacreditado`='$rfcacreditado', `nombreacreditado`='$nombreacreditado', `clabeacreditado`='$clabeacreditado',";
+		$csql .="`razonsocialacreditado`='$razonsocialacreditado', `rfcacreditado`='$rfcacreditado', `nombreacreditado`='$nombreacreditado', `clabeacreditado`='$clabeacreditado', `montopresupuesto`='$montopresupuesto',";
 		//
 		$csql .="`valorneto`='$valorneto', `status`='$status', `ultactfec`='".date("Y-m-d h:i:s")."', `ultactusu`='$IDUser' ";
 		$csql .="WHERE `id`='$id'";	
@@ -712,6 +713,7 @@ else{ #Fin del existe 'Accion'
 			$rfcacreditado=$val5['rfcacreditado'];
 			$nombreacreditado=$val5['nombreacreditado'];
 			$clabeacreditado=$val5['clabeacreditado'];
+			$montopresupuesto=$val5['montopresupuesto'];
 	//
 		
 			$idcli=$val5['idcli'];
@@ -1475,6 +1477,13 @@ function cambiarasesor()
 				<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">			
 					<tr>
 						<td align="right" height="22" width="150">
+						<font face="Arial" size="2">Nombre:</font></td>
+						<td width="5" align="left" height="22">&nbsp;</td>
+						<td align="left" height="22" bordercolor="#FFFF99">
+						<input type="text" name="ref1nombre" class="cenboxfrm" <?echo "value='$ref1nombre'"?>></td>
+					</tr>
+					<tr>
+						<td align="right" height="22" width="150">
 						<font face="Arial" size="2">Apellido paterno:</font></td>
 						<td width="5" align="left" height="22">&nbsp;</td>
 						<td align="left" height="22" bordercolor="#FFFF99">
@@ -1486,13 +1495,6 @@ function cambiarasesor()
 						<td width="5" align="left" height="22">&nbsp;</td>
 						<td align="left" height="22" bordercolor="#FFFF99">
 						<input type="text" name="ref1apellidom" class="cenboxfrm" <?echo "value='$ref1apellidom'"?>></td>
-					</tr>
-					<tr>
-						<td align="right" height="22" width="150">
-						<font face="Arial" size="2">Nombre:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td align="left" height="22" bordercolor="#FFFF99">
-						<input type="text" name="ref1nombre" class="cenboxfrm" <?echo "value='$ref1nombre'"?>></td>
 					</tr>
 					<tr>
 						<td align="right" height="22" width="150">
@@ -1508,6 +1510,13 @@ function cambiarasesor()
 				<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">			
 					<tr>
 						<td align="right" height="22" width="150">
+						<font face="Arial" size="2">Nombre:</font></td>
+						<td width="5" align="left" height="22">&nbsp;</td>
+						<td align="left" height="22" bordercolor="#FFFF99">
+						<input type="text" name="ref2nombre" class="cenboxfrm" <?echo "value='$ref2nombre'"?>></td>
+					</tr>
+					<tr>
+						<td align="right" height="22" width="150">
 						<font face="Arial" size="2">Apellido paterno:</font></td>
 						<td width="5" align="left" height="22">&nbsp;</td>
 						<td align="left" height="22" bordercolor="#FFFF99">
@@ -1519,13 +1528,6 @@ function cambiarasesor()
 						<td width="5" align="left" height="22">&nbsp;</td>
 						<td align="left" height="22" bordercolor="#FFFF99">
 						<input type="text" name="ref2apellidom" class="cenboxfrm" <?echo "value='$ref2apellidom'"?>></td>
-					</tr>
-					<tr>
-						<td align="right" height="22" width="150">
-						<font face="Arial" size="2">Nombre:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td align="left" height="22" bordercolor="#FFFF99">
-						<input type="text" name="ref2nombre" class="cenboxfrm" <?echo "value='$ref2nombre'"?>></td>
 					</tr>
 					<tr>
 						<td align="right" height="22" width="150">
@@ -1619,16 +1621,6 @@ function cambiarasesor()
 							<?echo $personacapacidadv;?>
 						</select>
 						</td>
-					</tr>
-					<tr>
-						<td width="150" align="right" height="22">
-						<font face="Arial" size="2">Afectación estructural:</font></td>
-						<td width="5" align="left" height="22" >&nbsp;</td>
-						<td align="left" height="22">
-						<select class="cenboxfrmmin" name="afectaestructura">
-						<?echo $afectaestructurav;?>
-						</select>
-						</td>				
 					</tr>
 					<?//?>
 				</table>
@@ -1872,6 +1864,24 @@ function cambiarasesor()
 							<td width="5" align="left" height="22" >&nbsp;</td>
 							<td align="left" height="22">
 							<input type="text" name="valorneto" class="cenboxfrmmin" <?echo "value='$valorneto'"?>></td>				
+						</tr>
+						<tr>
+							<td width="150" align="right" height="22">
+							<font face="Arial" size="2">Monto del presupuesto:</font></td>
+							<td width="5" align="left" height="22" >&nbsp;</td>
+							<td align="left" height="22">
+							<input type="text" name="montopresupuesto" class="cenboxfrmmin" <?echo "value='$montopresupuesto'"?>></td>
+							</td>				
+						</tr>
+						<tr>
+							<td width="150" align="right" height="22">
+							<font face="Arial" size="2">Afectación estructural:</font></td>
+							<td width="5" align="left" height="22" >&nbsp;</td>
+							<td align="left" height="22">
+							<select class="cenboxfrmmin" name="afectaestructura">
+							<?echo $afectaestructurav;?>
+							</select>
+							</td>				
 						</tr>					
 					</table>
 				</div>

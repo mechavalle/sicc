@@ -19,7 +19,7 @@ if(isset($_SESSION['vida']) && isset($_SESSION['vidamax']))
 	$IDL5=permiso("AdminClientesCom",$IDU);
 	$IDL6=permiso("AdminClientesInt",$IDU);
 	$IDL7=permiso("AdminClientesAse",$IDU);
-
+	$IDL8=permiso("AdminClientesPto",$IDU);
 
 	if($IDL<0)
 		{
@@ -1152,6 +1152,8 @@ function cambiarasesor()
 				<li class='active'><a href='f_cliente.php?id=$id'><b>General</b></a></li>";
 			if($id>0)
 				{
+				if($IDL8>0)
+					echo "<li><a href='f_clientep.php?id=$id'>Presupuesto de Obra</a></li>";
 				if($IDL2>0)
 					echo "<li><a href='f_clientei.php?id=$id'>Documentos y Archivos</a></li>";
 				if($IDL3>0)

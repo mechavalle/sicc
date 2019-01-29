@@ -34,10 +34,9 @@ else
 <meta http-equiv="Content-Language" content="es-mx">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="../img/icono.png" type="image/x-icon">
 <title>Catálogos</title>
 <link rel="stylesheet" href="../lib/boot/css/bootstrap.min.css">
-<script src="../lib/jquery-2.1.1.min.js"></script>
+<script src="../lib/jquery.min.js"></script>
 <script src="../lib/boot/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="../lib/fw/css/font-awesome.min.css">
 <SCRIPT LANGUAGE="JavaScript" SRC="../lib/fns.js"></SCRIPT>
@@ -82,22 +81,7 @@ function activa(submenu)
 
 </SCRIPT>
 
-<style type="text/css">
-	
-.invisible {
-	display: none;
-}
 
-.esvisible {
-	display: inherit;
-}
-.nav-tabs
-{
-	font-weight: bold;
-	text-transform: uppercase;
-	color: #000000;
-}
-</style>
 
 </head>
 
@@ -150,12 +134,6 @@ function activa(submenu)
 			  <?  
 
 			   echo "<li id='cubintegradora'><a href='#' onclick=\"activa('integradora'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_integradoras';\"><span>Integradoras</span></a></li>";
-
-			    echo "<li id='cubadmin'><a href='#' onclick=\"activa('admin'); midwindow.location.href='../modClientes/f_consultaentidades.php?tipo=1';\"><span>Administradoras</span></a></li>";
-
-			     echo "<li id='cubconstru'><a href='#' onclick=\"activa('constru'); midwindow.location.href='../modClientes/f_consultaentidades.php?tipo=2';\"><span>Constructoras</span></a></li>";
-
-			      echo "<li id='cubverifica'><a href='#' onclick=\"activa('verifica'); midwindow.location.href='../modClientes/f_consultaentidades.php?tipo=3';\"><span>Verificadoras</span></a></li>";
 
 			   echo "<li id='cubdocmusts'><a href='#' onclick=\"activa('docmusts'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_docsmust';\"><span>Documentos Obligatorios</span></a></li>";
 

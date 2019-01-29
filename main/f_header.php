@@ -54,7 +54,10 @@ switch ($mnu)
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Configuración<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <!--<li><a href="#" onclick="abre('contraseña','../main/f_cambiocon.php?prefijo=mic&acceso=AdminComics',450,300,'AUTO');">Cambiar Contraseña</a></li>-->
-              <li><a href="#">Cambiar Contraseña</a></li>
+              <li><a href="#" onclick="abre('contrasenia','../main/f_cambiopass.php',400,300,'AUTO');">Cambiar Contraseña</a></li>
+              <li><a href="../main/f_consultausuarios.php">Usuarios</a></li>
+              <li><a href="../main/f_consultatree.php?permiso=AdminModulos&desc=Categor%EDas de Modulos&tabla=adm_modcatego&maxnivel=2">Categoría Modulos</a></li>
+              <li><a href="../main/f_consultamodulos.php">Modulos</a></li>
             
             </ul>
           </li>

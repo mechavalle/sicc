@@ -337,7 +337,7 @@ function guardar()
 			<a href="#" onclick="window.close();"><span class="glyphicon glyphicon-remove-circle" style="font-size: 30px; float: right;"></span></a></td>
 		</tr>
 		<tr>
-			<td colspan="2"><h3><font face="Arial" color="#000080"><? echo "$idcli $nombre";?></font></h3></td>			
+			<td colspan="2"><h4><font face="Arial" color="#000080"><? echo "$idcli $nombre";?></font></h4></td>			
 		</tr>
 	</table>
 

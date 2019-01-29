@@ -166,6 +166,21 @@ if(isset($_POST['accion']))
 			echo "Error al actualizar el must: ".mysqli_error($conexio)."->$csql";
 			exit();}
 
+
+		## Origen de los recursos
+			$csql = "INSERT INTO `rel_recursos` (`tipo`,`idcliente`,`idrecurso` ) VALUES ('1','$id','1');";
+				mysqli_query($conexio, $csql);
+				if(mysqli_error($conexio)!="") {
+					echo "Error al grabar al actualizar registro. ".mysqli_error($conexio)."->$csql";
+					exit(); }
+
+		## Destino de los recursos
+			$csql = "INSERT INTO `rel_recursos` (`tipo`,`idcliente`,`idrecurso` ) VALUES ('2','$id','19');";
+				mysqli_query($conexio, $csql);
+				if(mysqli_error($conexio)!="") {
+					echo "Error al grabar al actualizar registro. ".mysqli_error($conexio)."->$csql";
+					exit(); }
+
 		#Fin guardado
 		#echo $csql;
 		echo "<html><head><title>Registro Guardado</title></head><body onLoad=\" ww=window.opener; ww.location.reload(); window.location.href='f_cliente.php?id=$id'; \"></body></html>";

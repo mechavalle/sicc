@@ -332,11 +332,11 @@ if($id>0)
 	</tr>
 	<tr>
 		<td width="147" align="right" height="25" bordercolor="#FFFF99">
-		<font face="Arial" size="2">Secretario General:</font></td>
+		<font face="Arial" size="2">Lugar:</font></td>
 		<td width="10" align="left" height="25" bordercolor="#FFFF99">
 		&nbsp;</td>
 		<td align="left" height="25" bordercolor="#FFFF99">
-		<input type="text" name="secretario" size="43" style="font-family: Verdana; font-size: 8pt" <?echo "value='$secretario'"?>></td>
+		<input type="text" name="lugar" class="cenboxfrm" <?echo "value='$lugar'"?>></td>
 	</tr>
 </table>
 <?}?>

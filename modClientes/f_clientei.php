@@ -113,7 +113,7 @@ else
 			<a href="#" onclick="window.close();"><span class="glyphicon glyphicon-remove-circle" style="font-size: 30px; float: right;"></span></a></td>
 		</tr>
 		<tr>
-			<td colspan="2"><h4><font face="Arial" color="#000080"><? echo "$idcli $nombre";?></font></h3></td>			
+			<td colspan="2"><h4><font face="Arial" color="#000080"><? echo "$idcli $nombre";?></font></h4></td>			
 		</tr>
 	</table>
 
@@ -121,7 +121,7 @@ else
 echo "<ul class='nav nav-tabs'>";
 echo "<li><a href='f_clienter.php?id=$id'>General</a></li>";
 if($IDL5>0)
-	echo "<li><a href='f_clientep.php?id=$id'>Presupuesto de Obra</a></li>";
+	echo "<li><a href='f_clientepr.php?id=$id'>Presupuesto de Obra</a></li>";
 if($IDL2>0)
 	echo "<li class='active'><a href='f_clientei.php?id=$id'>Documentos y Archivos</a></li>";
 if($IDL3>0)

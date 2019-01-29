@@ -20,6 +20,8 @@ if(isset($_SESSION['vida']) && isset($_SESSION['vidamax']))
 	$IDL6=permiso("AdminClientesInt",$IDU);
 	$IDL7=permiso("AdminClientesAse",$IDU);
 	$IDL8=permiso("AdminClientesPto",$IDU);
+	$IDL9=permiso("AdminClientesCon",$IDU);
+	$IDL10=permiso("AdminClientesVer",$IDU);	
 
 	if($IDL<0)
 		{
@@ -158,6 +160,45 @@ if(isset($_POST['accion']))
 			exit();	
 			}
 		}
+
+	if($accion==9)
+		{
+		$idconstructoranew=$_POST['idconstructoranew'];
+		$actconstructora=traedato("cat_clientes","id",$id,"S","idconstructora");
+		if($idconstructoranew!=$actconstructora)
+			{
+			$csql = "update cat_clientes set idconstructora='$idconstructoranew',ultactfec='".date("Y-m-d h:i:s")."',ultactusu='$IDUser' where `id`='$id'";		
+			mysqli_query($conexio, $csql);
+			if(mysqli_error($conexio)!="") {
+				echo "Error al grabar al actualizar registro. ".mysqli_error($conexio)."->$csql";
+				exit(); }
+			$logmsg="Actualización de Constructora de $actconstructora a $idconstructoranew.";
+			lognow("log_clientes",$id,5,$IDUser,$logmsg);
+			#echo $csql;
+			echo "<html><head><title>Registro Guardado</title></head><body onLoad=\"ww=window.opener; ww.location.reload(); window.location.href='f_clienter.php?id=$id'; \"></body></html>";
+			exit();	
+			}
+		}
+
+	if($accion==10)
+		{
+		$idverificadoranew=$_POST['idverificadoranew'];
+		$actverificadora=traedato("cat_clientes","id",$id,"S","idverificadora");
+		if($idverificadoranew!=$actverificadora)
+			{
+			$csql = "update cat_clientes set idverificadora='$idverificadoranew',ultactfec='".date("Y-m-d h:i:s")."',ultactusu='$IDUser' where `id`='$id'";		
+			mysqli_query($conexio, $csql);
+		
+			if(mysqli_error($conexio)!="") {
+				echo "Error al grabar al actualizar registro. ".mysqli_error($conexio)."->$csql";
+				exit(); }
+			$logmsg="Actualización de Verificadora de $actverificadora a $idverificadoranew.";
+			lognow("log_clientes",$id,5,$IDUser,$logmsg);
+			#echo $csql;
+			echo "<html><head><title>Registro Guardado</title></head><body onLoad=\"ww=window.opener; ww.location.reload(); window.location.href='f_clienter.php?id=$id'; \"></body></html>";
+			exit();	
+			}
+		}
 		
 	}
 	
@@ -180,8 +221,22 @@ if($val5=mysqli_fetch_array($res2))
 	$idextranjero=$val5['idextranjero'];
 	$estadonac=$val5['estadonac'];
 	$escolaridad=$val5['escolaridad'];
-	$domicilio=$val5['calle'].", ".$val5['numero'].". ".$val5['colonia'].", ".$val5['municipio'].". ".$val5['estado'].", ".$val5['cp'];
-	$domiciliof=$val5['callef'].", ".$val5['numerof'].". ".$val5['coloniaf'].", ".$val5['municipiof'].". ".$val5['estadof'].", ".$val5['cpf'];
+	$domicilio=$val5['calle'].", ".$val5['numero'];
+	if($val5['numeroint']!="")
+		$domicilio .=", ".$val5['numeroint'];
+	if($val5['lote']!="")
+		$domicilio .=", lote ".$val5['lote'];
+	if($val5['mza']!="")
+		$domicilio .=", MZA. ".$val5['mza'];
+	$domicilio .=", ".$val5['colonia'].", ".$val5['municipio'].". ".$val5['estado'].", CP ".$val5['cp'];
+	$domiciliof=$val5['callef'].", ".$val5['numerof'];
+	if($val5['numerointf']!="")
+		$domiciliof .=", ".$val5['numerointf'];
+	if($val5['lotef']!="")
+		$domiciliof .=", lote ".$val5['lotef'];
+	if($val5['mzaf']!="")
+		$domiciliof .=", MZA. ".$val5['mzaf'];
+	$domiciliof .=", ".$val5['coloniaf'].", ".$val5['municipiof'].". ".$val5['estadof'].", CP ".$val5['cpf'];
 	$oficina=$val5['oficina'];
 	$celular=$val5['celular'];
 	$telefonos=$val5['telefonos'];
@@ -302,6 +357,18 @@ if($val5=mysqli_fetch_array($res2))
 	$valorneto=fixmontosin($val5['valorneto']);
 
 	$integradora=$val5['integradora'];
+	$idconstructora=$val5['idconstructora'];
+	
+	if($idconstructora!=0)
+		$idconstructorav=traedato("cat_entidades","id",$idconstructora,"S","razonsocial");
+	else
+		$idconstructorav="-";
+	$idverificadora=$val5['idverificadora'];
+	if($idverificadora!=0)
+		$idverificadorav=traedato("cat_entidades","id",$idverificadora,"S","razonsocial");
+	else
+		$idverificadorav="-";
+	
 	$asesor=$val5['asesor'];
 
 	$idbanco=$val5['idbanco'];
@@ -317,6 +384,12 @@ if($val5=mysqli_fetch_array($res2))
 	if($propietariorv=="")
 		$propietariorv="-";
 
+	$idadministradora=$val5['idadministradora'];
+	if($idadministradora!=0)
+		$idadministradorav=traedato("cat_entidades","id",$idadministradora,"S","razonsocial");
+	else
+		$idadministradorav="-";			
+	
 	$owner=$val5['owner'];
 		
 	$status=$val5['status'];
@@ -371,6 +444,22 @@ $integranewv="";
 $resx = mysqli_query($conexio, $consulta);
 while($val=mysqli_fetch_array($resx))
 	$integranewv .="<option value='".$val['descripcion']."'>".$val['descripcion']."</option>";
+mysqli_free_result($resx);
+
+#constructoras nuevas
+$consulta="select * from cat_entidades where status='1' and tipo='2'";
+$idconstructoranewv="";
+$resx = mysqli_query($conexio, $consulta);
+while($val=mysqli_fetch_array($resx))
+	$idconstructoranewv .="<option value='".$val['id']."'>".$val['razonsocial']."</option>";
+mysqli_free_result($resx);
+
+#verificadoras nuevas
+$consulta="select * from cat_entidades where status='1' and tipo='3'";
+$idverificadoranewv="";
+$resx = mysqli_query($conexio, $consulta);
+while($val=mysqli_fetch_array($resx))
+	$idverificadoranewv .="<option value='".$val['id']."'>".$val['razonsocial']."</option>";
 mysqli_free_result($resx);
 ?>
 <html>
@@ -449,6 +538,30 @@ function cambiarasesor()
 	document.edicion.accion.value=8;
 	document.edicion.submit(); 			
 	}
+
+function cambiarconstructora()
+	{
+	if(document.edicion.idconstructoranew.options[document.edicion.idconstructoranew.selectedIndex].value=="0")
+		{
+		alert("seleccione una constructora para continuar");
+		return 0;
+		}
+	document.getElementById('divboton').innerHTML="<font color='#000000' style='font-size: 30px;'><i class='fa fa-refresh fa-spin'></i></font></p>";
+	document.edicion.accion.value=9;
+	document.edicion.submit(); 			
+	}
+
+function cambiarverificadora()
+	{
+	if(document.edicion.idverificadoranew.options[document.edicion.idverificadoranew.selectedIndex].value=="0")
+		{
+		alert("seleccione una verificadora para continuar");
+		return 0;
+		}
+	document.getElementById('divboton').innerHTML="<font color='#000000' style='font-size: 30px;'><i class='fa fa-refresh fa-spin'></i></font></p>";
+	document.edicion.accion.value=10;
+	document.edicion.submit(); 			
+	}
 </SCRIPT>
 
 </head>
@@ -464,7 +577,7 @@ function cambiarasesor()
 					<a href="#" onclick="window.close();"><span class="glyphicon glyphicon-remove-circle" style="font-size: 30px; float: right;"></span></a></td>
 				</tr>
 				<tr>
-					<td colspan="2"><h4><font face="Arial" color="#000080"><? echo "$idcli $nombre";?></font></h3></td>			
+					<td colspan="2"><h4><font face="Arial" color="#000080"><? echo "$idcli $nombre";?></font></h4></td>			
 				</tr>
 			</table>
 
@@ -474,7 +587,7 @@ function cambiarasesor()
 			if($id>0)
 				{
 				if($IDL8>0)
-					echo "<li><a href='f_clientep.php?id=$id'>Presupuesto de Obra</a></li>";
+					echo "<li><a href='f_clientepr.php?id=$id'>Presupuesto de Obra</a></li>";
 				if($IDL2>0)
 					echo "<li><a href='f_clientei.php?id=$id'>Documentos y Archivos</a></li>";
 				if($IDL3>0)
@@ -489,13 +602,21 @@ function cambiarasesor()
 			<div class="row">
 				<div class="col-sm-12">
 					<div id="divboton">
-						<button type='button' onClick="editar();" class='btn btn-primary btn-xs'>Editar</button>
-						<?				
+						<?
+						if($IDL>=2)
+							echo "<button type='button' onClick=\"editar();\" class='btn btn-primary btn-xs'>Editar</button>";	
+
 						if($IDL7>=1)
 							echo "&nbsp;<button type='button' onClick=\"Popup.showModal('modal5');\" class='btn btn-warning btn-xs'>Cambiar Asesor</button>";
 						
 						if($IDL6>=1)
 							echo "&nbsp;<button type='button' onClick=\"Popup.showModal('modal4');\" class='btn btn-warning btn-xs'>Cambiar Integradora</button>";
+
+						if($IDL9>=1)
+							echo "&nbsp;<button type='button' onClick=\"Popup.showModal('modal7');\" class='btn btn-warning btn-xs'>Cambiar Constructora</button>";
+
+						if($IDL10>=1)
+							echo "&nbsp;<button type='button' onClick=\"Popup.showModal('modal8');\" class='btn btn-warning btn-xs'>Cambiar Verificadora</button>";
 						?>
 						
 					</div>
@@ -521,6 +642,13 @@ function cambiarasesor()
 								</td>
 							</tr>
 							<tr>
+								<td width="150" align="right" height="22"><font face="Arial" size="2">Constructora:</font></td>
+								<td width="5" align="left" height="22">&nbsp;</td>
+								<td align="left" height="22">
+									<b><font face='Arial' size='2'><? echo $idconstructorav;?></font></b>			
+								</td>
+							</tr>
+							<tr>
 								<td width="150" align="right" height="22"><font face="Arial" size="2">Captura:</font></td>
 								<td width="5" align="left" height="22">&nbsp;</td>
 								<td align="left" height="22">
@@ -543,6 +671,13 @@ function cambiarasesor()
 								<td width="5" align="left" height="22">&nbsp;</td>
 								<td align="left" height="22">
 									<b><font face='Arial' size='2'><? echo $integradora;?></font></b>			
+								</td>
+							</tr>
+							<tr>
+								<td width="150" align="right" height="22"><font face="Arial" size="2">Verificadora:</font></td>
+								<td width="5" align="left" height="22">&nbsp;</td>
+								<td align="left" height="22">
+									<b><font face='Arial' size='2'><? echo $idverificadorav;?></font></b>			
 								</td>
 							</tr>
 							<tr>
@@ -815,27 +950,7 @@ function cambiarasesor()
 				<h4><font face="Arial">Domicilio Fiscal</font></h4>	
 				<div class="subr">		
 					<font face="Arial" size="2"><b><?echo $domiciliof; ?></b></font>
-				</div>
-				<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
-					<tr>	
-						<td width="5" align="left" height="22">&nbsp;</td>
-					</tr>
-					<tr>	
-						<td width="350" align="left" height="22"><font face="Arial" size="2">¿La vivienda elegida es para una persona con discapacidad?</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td class="subr" align="left" height="22"><font face="Arial" size="2"><b><?echo $discapacidadv; ?></b></font></td>
-					</tr>
-					<tr>
-						<td width="350" align="left" height="22"><font face="Arial" size="2">Tipo de discapacidad:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td class="subr" align="left" height="22"><font face="Arial" size="2"><b><?echo $tipodiscapacidadv; ?></b></font></td>
-					</tr>
-					<tr>
-						<td width="350" align="left" height="22"><font face="Arial" size="2">Persona que presentará comprobante de discapacidad:</font></td>
-						<td width="5" align="left" height="22">&nbsp;</td>
-						<td class="subr" align="left" height="22"><font face="Arial" size="2"><b><?echo $personacapacidadv; ?></b></font></td>
-					</tr>
-				</table>
+				</div>				
 			</div>
 			<div class="col-sm-6">	
 				<h4><font face="Arial">Domicilio Particular</font></h4>	
@@ -844,6 +959,94 @@ function cambiarasesor()
 				</div>
 			</div>
 		</div>
+
+		<!--
+		<br><br>	
+		<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">					
+					<tr>	
+						<td width="400" align="left" height="22"><font face="Arial" size="2">¿La vivienda elegida es para una persona con discapacidad?</font></td>
+						<td width="5" align="left" height="22">&nbsp;</td>
+						<td class="subr" align="left" height="22"><font face="Arial" size="2"><b><?echo $discapacidadv; ?></b></font></td>
+					</tr>
+					<tr>
+						<td width="400" align="left" height="22"><font face="Arial" size="2">Tipo de discapacidad:</font></td>
+						<td width="5" align="left" height="22">&nbsp;</td>
+						<td class="subr" align="left" height="22"><font face="Arial" size="2"><b><?echo $tipodiscapacidadv; ?></b></font></td>
+					</tr>
+					<tr>
+						<td width="400" align="left" height="22"><font face="Arial" size="2">Persona que presentará comprobante de discapacidad:</font></td>
+						<td width="5" align="left" height="22">&nbsp;</td>
+						<td class="subr" align="left" height="22"><font face="Arial" size="2"><b><?echo $personacapacidadv; ?></b></font></td>
+					</tr>
+				</table>
+		-->
+		<br>
+		<h4><font face="Arial">Información Bancaria</font></h4>
+					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
+						<tr>
+							<td width="150" align="right" height="22">
+							<font face="Arial" size="2">Institución Bancaria:</font></td>
+							<td width="5" align="left" height="22">&nbsp;</td>
+							<td class="subr" align="left" height="22">
+								<font face="Arial" size="2"><b><?echo $idbancov; ?></b></font>
+							</td>				
+						</tr>
+						<tr>
+							<td width="150" align="right" height="22">
+							<font face="Arial" size="2">Número de Cuenta:</font></td>
+							<td width="5" align="left" height="22">&nbsp;</td>
+							<td class="subr" align="left" height="22">
+								<font face="Arial" size="2"><b><?echo $cuenta; ?></b></font>
+							</td>			
+						</tr>
+						<tr>
+							<td width="150" align="right" height="22">
+							<font face="Arial" size="2">CLABE Interbancaria:</font></td>
+							<td width="5" align="left" height="22" >&nbsp;</td>
+							<td class="subr" align="left" height="22">
+								<font face="Arial" size="2"><b><?echo $clabe; ?></b></font>
+							</td>				
+						</tr>
+						<tr>
+							<td width="150" align="right" height="22">
+							<font face="Arial" size="2">Beneficiario:</font></td>
+							<td width="5" align="left" height="22">&nbsp;</td>
+							<td class="subr" align="left" height="22">
+								<font face="Arial" size="2"><b><?echo $beneficiario; ?></b></font>
+							</td>			
+						</tr>
+					</table>
+		<br>
+		<h4><font face="Arial">Datos de la empresa o patrón</font></h4>
+					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
+						<tr>
+							<td width="240" align="right" height="22">
+							<font face="Arial" size="2">Nombre de la empresa o patrón:</font></td>
+							<td width="5" align="left" height="22">&nbsp;</td>
+							<td class="subr" align="left" height="22">
+								<font face="Arial" size="2"><b><?echo $razonsocialpatron; ?></b></font>
+							</td>				
+						</tr>
+						<tr>
+							<td width="240" align="right" height="22">
+							<font face="Arial" size="2">Número de registro patronal (NRP):</font></td>
+							<td width="5" align="left" height="22">&nbsp;</td>
+							<td class="subr" align="left" height="22">
+								<font face="Arial" size="2"><b><?echo $rfcpatron; ?></b></font>
+							</td>				
+						</tr>
+						<tr>
+							<td width="240" align="right" height="22">
+							<font face="Arial" size="2">Teléfono de la empresa donde trabaja:</font></td>
+							<td width="5" align="left" height="22" >&nbsp;</td>
+							<td class="subr" align="left" height="22">
+								<font face="Arial" size="2"><b><?echo $telpatron; ?></b></font>
+							</td>				
+						</tr>						
+					</table>
+
+
+<!--
 
 		<br>
 		<h4><font face="Arial">Recursos de la cuenta</font></h4>
@@ -917,66 +1120,67 @@ function cambiarasesor()
 
 			</div>
 		</div>
-
-		<?//?>
-		<br>
-		<h4><font face="Arial">Crédito solicitado</font></h4>
-		<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
-			<tr>
-				<td width="150" align="right" height="22">
-					<font face="Arial" size="2">Producto</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-
-				<td class="subr" align="left" height="22">	
-					<font face="Arial" size="2"><b><?echo $idproducto; ?></b></font>												
-				</td>				
-			</tr>
-			<tr>
-				<td width="150" align="right" height="22">
-					<font face="Arial" size="2">Tipo de crédito:</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-
-				<td class="subr" align="left" height="22">	
-					<font face="Arial" size="2"><b><?echo $idtipoproducto; ?></b></font>												
-				</td>				
-			</tr>
-			<tr>
-				<td width="150" align="right" height="22">
-					<font face="Arial" size="2">Destino del crédito:</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-
-				<td class="subr" align="left" height="22">	
-					<font face="Arial" size="2"><b><?echo $iddestino; ?></b></font>												
-				</td>				
-			</tr>
-			<tr>
-				<td width="150" align="right" height="22">
-					<font face="Arial" size="2">Plazo del crédito:</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-
-				<td class="subr" align="left" height="22">	
-					<font face="Arial" size="2"><b><?echo $plazocredito; ?></b></font>												
-				</td>				
-			</tr>
-			<tr>
-				<td width="150" align="right" height="22">
-					<font face="Arial" size="2">¿Es el segundo crédito que solicitaste al infonavit?</font></td>
-				<td width="5" align="left" height="22">&nbsp;</td>
-
-				<td class="subr" align="left" height="22">	
-					<font face="Arial" size="2"><b><?echo $segundocreditov; ?></b></font>												
-				</td>				
-			</tr>
-		</table>
-		<?//?>
-
+-->
+		
 		<br>
 		<div class="row">
+<!--			
 			<div class="col-sm-6">
-				<h4><font face="Arial">Monto a solicitar</font></h4>
+				<h4><font face="Arial">Crédito solicitado</font></h4>
 					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
 						<tr>
 							<td width="150" align="right" height="22">
+								<font face="Arial" size="2">Producto</font></td>
+							<td width="5" align="left" height="22">&nbsp;</td>
+
+							<td class="subr" align="left" height="22">	
+								<font face="Arial" size="2"><b><?echo $idproducto; ?></b></font>												
+							</td>				
+						</tr>
+						<tr>
+							<td width="150" align="right" height="22">
+								<font face="Arial" size="2">Tipo de crédito:</font></td>
+							<td width="5" align="left" height="22">&nbsp;</td>
+
+							<td class="subr" align="left" height="22">	
+								<font face="Arial" size="2"><b><?echo $idtipoproducto; ?></b></font>												
+							</td>				
+						</tr>
+						<tr>
+							<td width="150" align="right" height="22">
+								<font face="Arial" size="2">Destino del crédito:</font></td>
+							<td width="5" align="left" height="22">&nbsp;</td>
+
+							<td class="subr" align="left" height="22">	
+								<font face="Arial" size="2"><b><?echo $iddestino; ?></b></font>												
+							</td>				
+						</tr>
+						<tr>
+							<td width="150" align="right" height="22">
+								<font face="Arial" size="2">Plazo del crédito:</font></td>
+							<td width="5" align="left" height="22">&nbsp;</td>
+
+							<td class="subr" align="left" height="22">	
+								<font face="Arial" size="2"><b><?echo $plazocredito; ?></b></font>												
+							</td>				
+						</tr>
+						<tr>
+							<td width="150" align="right" height="22">
+								<font face="Arial" size="2">¿Es el segundo crédito que solicitaste al infonavit?</font></td>
+							<td width="5" align="left" height="22">&nbsp;</td>
+
+							<td class="subr" align="left" height="22">	
+								<font face="Arial" size="2"><b><?echo $segundocreditov; ?></b></font>												
+							</td>				
+						</tr>
+					</table>
+				</div>
+-->
+				<div class="col-sm-12">
+					<h4><font face="Arial">Monto a solicitar</font></h4>
+					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
+						<tr>
+							<td width="240" align="right" height="22">
 							<font face="Arial" size="2">Valor ampliación, remodelación o mejora:</font></td>
 							<td width="5" align="left" height="22">&nbsp;</td>
 							<td class="subr" align="left" height="22">
@@ -984,7 +1188,7 @@ function cambiarasesor()
 							</td>				
 						</tr>
 						<tr>
-							<td width="150" align="right" height="22">
+							<td width="240" align="right" height="22">
 							<font face="Arial" size="2">Monto según reglas:</font></td>
 							<td width="5" align="left" height="22">&nbsp;</td>
 							<td class="subr" align="left" height="22">
@@ -992,7 +1196,7 @@ function cambiarasesor()
 							</td>				
 						</tr>
 						<tr>
-							<td width="150" align="right" height="22">
+							<td width="240" align="right" height="22">
 							<font face="Arial" size="2">El solicitante contaría con:</font></td>
 							<td width="5" align="left" height="22" >&nbsp;</td>
 							<td class="subr" align="left" height="22">
@@ -1000,7 +1204,7 @@ function cambiarasesor()
 							</td>				
 						</tr>
 						<tr>
-							<td width="150" align="right" height="22">
+							<td width="240" align="right" height="22">
 							<font face="Arial" size="2">Monto del presupuesto:</font></td>
 							<td width="5" align="left" height="22">&nbsp;</td>
 							<td class="subr" align="left" height="22">
@@ -1008,7 +1212,7 @@ function cambiarasesor()
 							</td>
 						</tr>
 						<tr>
-							<td width="150" align="right" height="22">
+							<td width="240" align="right" height="22">
 							<font face="Arial" size="2">Afectación estructural:</font></td>
 							<td width="5" align="left" height="22">&nbsp;</td>
 							<td class="subr" align="left" height="22">
@@ -1017,77 +1221,22 @@ function cambiarasesor()
 						</tr>						
 					</table>
 				</div>
-			<div class="col-sm-6">
-				<h4><font face="Arial">Información Bancaria</font></h4>
-					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Institución Bancaria:</font></td>
-							<td width="5" align="left" height="22">&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $idbancov; ?></b></font>
-							</td>				
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Número de Cuenta:</font></td>
-							<td width="5" align="left" height="22">&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $cuenta; ?></b></font>
-							</td>			
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">CLABE Interbancaria:</font></td>
-							<td width="5" align="left" height="22" >&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $clabe; ?></b></font>
-							</td>				
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Beneficiario:</font></td>
-							<td width="5" align="left" height="22">&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $beneficiario; ?></b></font>
-							</td>			
-						</tr>
-					</table>
-				</div>
 			</div>
 
 			<?//?>
+<!--			
 		<br>
 		<div class="row">
 			<div class="col-sm-6">
-				<h4><font face="Arial">Datos de la empresa o patrón</font></h4>
+				<h4><font face="Arial">Administradora del recurso</font></h4>
 					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
 						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Nombre de la empresa o patrón:</font></td>
-							<td width="5" align="left" height="22">&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $razonsocialpatron; ?></b></font>
-							</td>				
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Número de registro patronal (NRP):</font></td>
-							<td width="5" align="left" height="22">&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $rfcpatron; ?></b></font>
-							</td>				
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Teléfono de la empresa donde trabaja:</font></td>
-							<td width="5" align="left" height="22" >&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $telpatron; ?></b></font>
-							</td>				
+							<td class="subr" align="left" height="22">	
+								<font face="Arial" size="2"><b><?echo $idadministradorav; ?></b></font>
+							</td>										
 						</tr>						
-					</table>
-				</div>
+					</table>	
+			</div>
 			<div class="col-sm-6">
 				<h4><font face="Arial">Datos del acreedor hipotecario</font></h4>
 					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">	
@@ -1128,7 +1277,7 @@ function cambiarasesor()
 			</div>
 			<?//?>
 
-		
+-->		
 
 	
 <?
@@ -1237,6 +1386,40 @@ if($IDL5>0){?>
 	</p>
 	<p>
 	<button type="button" class="btn btn-success" onclick="guardarcom();">Guardar</button>
+	</p>
+</div>
+
+<div id="modal7" style="border:2px solid black; background-color:#ffffff; padding:10px; text-align:center; display:none;">
+	<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+			<td><h4><font face="Arial">Establecer Constructora</font></h4></td>
+			<td width="33" align="right"><a href="#" onclick="Popup.hide('modal7');"><span class="glyphicon glyphicon-remove-circle" style="font-size: 30px; float: right;"></span></a></td>
+		</tr>
+	</table>
+	<p align="center">	
+		<select class="cenboxfrm" name="idconstructoranew">
+			<?echo $idconstructoranewv;?>
+		</select>
+	</p>
+	<p>
+	<button type="button" class="btn btn-success" onclick="cambiarconstructora();">Cambiar</button>
+	</p>
+</div>
+
+<div id="modal8" style="border:2px solid black; background-color:#ffffff; padding:10px; text-align:center; display:none;">
+	<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+			<td><h4><font face="Arial">Establecer Verificadora</font></h4></td>
+			<td width="33" align="right"><a href="#" onclick="Popup.hide('modal8');"><span class="glyphicon glyphicon-remove-circle" style="font-size: 30px; float: right;"></span></a></td>
+		</tr>
+	</table>
+	<p align="center">	
+		<select class="cenboxfrm" name="idverificadoranew">
+			<?echo $idverificadoranewv;?>
+		</select>
+	</p>
+	<p>
+	<button type="button" class="btn btn-success" onclick="cambiarverificadora();">Cambiar</button>
 	</p>
 </div>
 

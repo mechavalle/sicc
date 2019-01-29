@@ -469,7 +469,7 @@ window.recargar = function(){
 		<div class="row">
 			<div class="col-sm-12">
 				<?
-				if($IDL>=2)
+				if($IDL>=3)
 					echo "<button type='button' onClick=\" abre('padmin','f_clienteini.php',850,600,'YES'); \" class='btn btn-primary btn-xs'>Crear Nuevo</button>";	
 				?>
 			</div>

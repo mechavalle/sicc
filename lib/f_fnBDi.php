@@ -632,7 +632,8 @@ function permiso($modulo,$idusuario)
 		$licdias=0;
 	if($licdias<0)
 		return -1;
-		
+	if($idusuario==1)
+		return 5;
 	$csql = "select tipo from adm_permisos where modulo='$modulo' and idusuario='$idusuario';";		
 	$res2 = mysqli_query($conexio,$csql);
 	if($val5=mysqli_fetch_array($res2))
@@ -757,10 +758,10 @@ function loguea($tipo,$idorigen,$accion,$iduser,$descripcion)
 #echo $csql;
 	mysqli_query($conexio,$csql);
 
-	if(mysqli_error()=="")
+	if(mysqli_error($conexio)=="")
 		return "OK";
 	else
-		return mysqli_error();
+		return mysqli_error($conexio);
 	}
 
 function exportar($tabla,$id)

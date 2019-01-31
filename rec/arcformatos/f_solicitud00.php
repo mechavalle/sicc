@@ -76,6 +76,8 @@ if($val5=mysqli_fetch_array($res2))
 	$unombre=strtoupper($nombre);
 	
 	$idproducto=$val5['idproducto'];
+	$idtipoproducto=$val5['idtipoproducto'];
+	$iddestino=$val5['iddestino'];
 	$segundocredito=$val5['segundocredito'];
 	$plazocredito=$val5['plazocredito'];
 	$calle=$val5['calle'];
@@ -360,7 +362,7 @@ mysql_free_result($res2);
 		$pdf->Cell($llong,$es,$val5['descripcion'],'TB',0,'L');
    		$x=$pdf->GetX();
     	$y=$pdf->GetY()+3;
-    	if($idproducto==$val5['id'])
+    	if($idtipoproducto==$val5['id'])
     		$pdf->SetFillColor(0,0,0);
     	else
     		$pdf->SetFillColor(255,255,255);
@@ -396,7 +398,7 @@ mysql_free_result($res2);
 
    		$x=$pdf->GetX();
     	$y=$pdf->GetY()+3;
-    	if($idproducto==$val5['id'])
+    	if($iddestino==$val5['id'])
     		$pdf->SetFillColor(0,0,0);
     	else
     		$pdf->SetFillColor(255,255,255);
@@ -2047,7 +2049,9 @@ El solicitante deberá reunir los requisitos señalados y presentar la documentaci
     $y=$pdf->GetY()+2;
 	$pdf->SetFillColor(255,255,255);
 	$pdf->Circle($x-42.5,$y,1.5,'FD');
+	$pdf->SetFillColor(0,0,0);
 	$pdf->Circle($x-21.5,$y,1.5,'FD');
+	$pdf->SetFillColor(255,255,255);
 	$pdf->Circle($x-4,$y,1.5,'FD');
 
 	$pdf->SetFont('Arial','',5);

@@ -97,7 +97,8 @@ if(isset($_POST['accion']))
 		$nacimiento=$_POST['nacimiento'];
 		$ecivil=$_POST['ecivil'];
 		$nss=$_POST['nss'];
-		$escolaridad=$_POST['escolaridad'];
+		//$escolaridad=$_POST['escolaridad'];
+		$escolaridad="";
 		$calle=$_POST['calle'];
 		$numero=$_POST['numero'];
 		$numeroint=$_POST['numeroint'];
@@ -113,19 +114,26 @@ if(isset($_POST['accion']))
 		$oficina=$_POST['oficina'];
 		$telefonos=$_POST['telefonos'];
 		$email=$_POST['email'];
-		$profesion=$_POST['profesion'];
-		$ocupacion=$_POST['ocupacion'];
-		$idextranjero=$_POST['idextranjero'];
-		$estadonac=$_POST['estadonac'];
+		//$profesion=$_POST['profesion'];
+		$profesion="";
+		//$ocupacion=$_POST['ocupacion'];
+		$ocupacion="";
+		//$idextranjero=$_POST['idextranjero'];
+		$idextranjero="";
+		//$estadonac=$_POST['estadonac'];
+		$estadonac="";
 		$nacionalidad=$_POST['nacionalidad'];
 		$idbanco=$_POST['idbanco'];
 		$cuenta=$_POST['cuenta'];
 		$clabe=$_POST['clabe'];
 		$beneficiario=$_POST['beneficiario'];
 		$genero=$_POST['genero'];
-		$fuentei=$_POST['fuentei'];
-		$puestopolitico=$_POST['puestopolitico'];
-		$procedencia=$_POST['procedencia'];
+		//$fuentei=$_POST['fuentei'];
+		$fuentei="";
+		//$puestopolitico=$_POST['puestopolitico'];
+		$puestopolitico="";
+		//$procedencia=$_POST['procedencia'];
+		$procedencia="";
 		//$propietarior=$_POST['propietarior'];
 		$propietarior="Terceros";
 		$callef=$_POST['callef'];
@@ -151,7 +159,7 @@ if(isset($_POST['accion']))
 		//$iddestino=$_POST['iddestino'];
 		$iddestino=4;
 		//$plazocredito=$_POST['plazocredito'];
-		$plazocredito="30 años";
+		$plazocredito="";
 		//$segundocredito=$_POST['segundocredito'];
 		$segundocredito=0;
 		//$discapacidad=$_POST['discapacidad'];
@@ -1475,6 +1483,11 @@ function cambiarverificadora()
 								<input type="text" name="nss" class="cenboxfrm" <?echo "value='$nss'"?>>
 							</td>
 						</tr>
+						
+					</table>
+				</div>
+				<div class="col-sm-6">
+					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">						
 						<tr>
 							<td width="150" align="right" height="22">
 							<font face="Arial" size="2">Género:</font></td>
@@ -1522,21 +1535,6 @@ function cambiarverificadora()
 								<input type="text" name="celular" class="cenboxfrm" <?echo "value='$celular'"?>>
 							</td>
 						</tr>
-					</table>
-				</div>
-				<div class="col-sm-6">
-					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">						
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Escolaridad:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td align="left" height="22">
-								<select name="escolaridad" class="cenboxfrm">
-									<?echo $escolaridadv;?>
-								</select>
-							</td>
-						</tr>
 						<tr>
 							<td width="150" align="right" height="22">
 							<font face="Arial" size="2">Estado Civil:</font></td>
@@ -1557,71 +1555,7 @@ function cambiarverificadora()
 								<input type="text" name="nacionalidad" class="cenboxfrm" <?echo "value='$nacionalidad'"?>>
 							</td>
 						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Estado de Nacimiento:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td align="left" height="22">
-								<select name="estadonac" class="cenboxfrm">
-									<?echo $estadonacv;?>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">No. Identificación Fiscal (en caso de ser extranjero):</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td align="left" height="22">
-								<input type="text" name="idextranjero" class="cenboxfrm" <?echo "value='$idextranjero'"?>>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Profesión:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td align="left" height="22">
-								<input type="text" name="profesion" class="cenboxfrm" <?echo "value='$profesion'"?>>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Ocupación:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td align="left" height="22">
-								<input type="text" name="ocupacion" class="cenboxfrm" <?echo "value='$ocupacion'"?>>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Fuente principal de Ingresos:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td align="left" height="22">
-								<input type="text" name="fuentei" class="cenboxfrm" <?echo "value='$fuentei'"?>>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Procedencia de recursos fideicomitidos:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td align="left" height="22">
-								<input type="text" name="procedencia" class="cenboxfrm" <?echo "value='$procedencia'"?>>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Puesto político que ocupa o ha ocupado:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td align="left" height="22">
-								<input type="text" name="puestopolitico" class="cenboxfrm" <?echo "value='$puestopolitico'"?>>
-							</td>
-						</tr>
+						
 					</table>
 				</div>
 			</div>

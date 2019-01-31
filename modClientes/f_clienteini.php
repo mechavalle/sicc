@@ -103,9 +103,9 @@ if(isset($_POST['accion']))
 					{$idcli +=1;
 					$idcli=completa($idcli,"0",6,"S");}
 				}
-			$csql = "INSERT INTO `cat_clientes` (`idcli`,`nombre`,`apellidop`,`apellidom`,";
+			$csql = "INSERT INTO `cat_clientes` (`idcli`,`nombre`,`apellidop`,`apellidom`,`ecivil`,";
 			$csql .="`rfc`,`nacimiento`,`nacionalidad`,`asesor`,`fecha`,`owner`,`status`,`ultactfec`,`ultactusu` )";
-			$csql .="VALUES ('$idcli','$nombre','$apellidop','$apellidom',";
+			$csql .="VALUES ('$idcli','$nombre','$apellidop','$apellidom','Soltero',";
 			$csql .="'$rfc','$nacimiento','México','$IDName','".date("Y-m-d h:i:s")."','$IDUser','$status',NOW(),'$IDUser');";
 			}
 	

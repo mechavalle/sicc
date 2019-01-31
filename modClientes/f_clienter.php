@@ -750,6 +750,11 @@ function cambiarverificadora()
 								<font face="Arial" size="2"><b><?echo $nss; ?></b></font>
 							</td>							
 						</tr>
+						
+					</table>
+				</div>
+				<div class="col-sm-6">
+					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">						
 						<tr>
 							<td width="150" align="right" height="22">
 							<font face="Arial" size="2">Género:</font></td>
@@ -795,19 +800,6 @@ function cambiarverificadora()
 								<font face="Arial" size="2"><b><?echo $celular; ?></b></font>
 							</td>							
 						</tr>
-					</table>
-				</div>
-				<div class="col-sm-6">
-					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">						
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Escolaridad:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $escolaridad; ?></b></font>
-							</td>							
-						</tr>
 						<tr>
 							<td width="150" align="right" height="22">
 							<font face="Arial" size="2">Estado Civil:</font></td>
@@ -826,69 +818,7 @@ function cambiarverificadora()
 								<font face="Arial" size="2"><b><?echo $nacionalidad; ?></b></font>
 							</td>
 						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Estado de Nacimiento:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $estadonac; ?></b></font>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">No. Identificación Fiscal (en caso de ser extranjero):</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $idextranjero; ?></b></font>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Profesión:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $profesion; ?></b></font>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Ocupación:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $ocupacion; ?></b></font>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Fuente principal de Ingresos:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $fuentei; ?></b></font>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Procedencia de recursos fideicomitidos:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $procedencia; ?></b></font>
-							</td>
-						</tr>
-						<tr>
-							<td width="150" align="right" height="22">
-							<font face="Arial" size="2">Puesto político que ocupa o ha ocupado:</font></td>
-							<td width="5" align="left" height="22">
-							&nbsp;</td>
-							<td class="subr" align="left" height="22">
-								<font face="Arial" size="2"><b><?echo $puestopolitico; ?></b></font>
-							</td>
-						</tr>
+						
 					</table>
 				</div>
 			</div>

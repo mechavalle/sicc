@@ -3,13 +3,13 @@ include("lib/f_conectai.php");
 include("lib/f_fnBDi.php"); 
 $conexio=conecta("");
 
-/*
+
 if($_SERVER['HTTPS']!="on")
   {
      $redirect= "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
      header("Location:$redirect");
   }
-*/
+
 
 if(isset($_POST['tries']))
 	$tries=$_POST['tries'];

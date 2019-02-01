@@ -1943,7 +1943,7 @@ El solicitante deberá reunir los requisitos señalados y presentar la documentaci
     $y=$pdf->GetY()+4.5;
 	for($i=0;$i<3;$i++)
 		{			
-		$pdf->Cell(3.5,$es,substr($ref1telefono,$i,1),0,0,'C');
+		$pdf->Cell(3.5,$es,substr($ref2telefono,$i,1),0,0,'C');
 		$m +=3.5;
 		}		
 	$pdf->Line($x,$y,$x+10.5,$y);
@@ -1958,7 +1958,7 @@ El solicitante deberá reunir los requisitos señalados y presentar la documentaci
     $y=$pdf->GetY()+4.5;
 	for($i=3;$i<8;$i++)
 		{			
-		$pdf->Cell(3.5,$es,substr($ref1telefono,$i,1),0,0,'C');
+		$pdf->Cell(3.5,$es,substr($ref2telefono,$i,1),0,0,'C');
 		$m +=3.5;
 		}		
 	$pdf->Line($x,$y,$x+28,$y);
@@ -1985,7 +1985,7 @@ El solicitante deberá reunir los requisitos señalados y presentar la documentaci
     $y=$pdf->GetY()+4.5;
 	for($i=3;$i<10;$i++)
 		{			
-		$pdf->Cell(3.5,$es,substr($ref1telefono,$i,1),0,0,'C');
+		$pdf->Cell(3.5,$es,"",0,0,'C');
 		$m +=3.5;
 		}		
 	$pdf->Line($x,$y,$x+35,$y);
@@ -2003,7 +2003,7 @@ El solicitante deberá reunir los requisitos señalados y presentar la documentaci
     $y=$pdf->GetY()+4.5;
 	for($i=3;$i<10;$i++)
 		{			
-		$pdf->Cell(3.5,$es,substr($ref1telefono,$i,1),0,0,'C');
+		$pdf->Cell(3.5,$es,"",0,0,'C');
 		$m +=3.5;
 		}		
 	$pdf->Line($x,$y,$x+35,$y);

@@ -80,7 +80,7 @@ if(isset($_POST['accion']))
 	   		#1.3 Nuevo. Comienza el guardado
 	   		#echo $monto;
 	   		#exit();
-			$cuantos=cuenta("adm_usuarios","usuario='$usuario'");
+			$cuantos=cuenta("adm_usuarios","id","usuario='$usuario'");
 			if($cuantos>0)
 				{
 				echo "<html><head><title>Usuario Guardado</title></head><body onLoad=\" alert('El usuario $usuario, ya existe'); window.location.href='f_usuarios.php';\"></body></html>";

@@ -180,7 +180,7 @@ $txt="<p><vb>II.    CONTRATO ADMINISTRADOR - DERECHOHABIENTE. </vb> El Derechoha
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(3);
 
-$txt="<p><vb>III.    CRÉDITO INFONAVIT. </vb> El Infonavit le autorizó al Derechohabiente un Crédito Infonavit para la reparación o mejora de casa habitación sobre el Inmueble de conformidad con el artículo 42 fracción II apartado c) de la Ley del Instituto del Fondo Nacional de la Vivienda para los Trabajadores.</p>";
+$txt="<p><vb>III.    CRÉDITO INFONAVIT. - </vb> El Infonavit le autorizó al Derechohabiente un Crédito Infonavit para la reparación o mejora de casa habitación sobre el Inmueble de conformidad con el artículo 42 fracción II apartado c) de la Ley del Instituto del Fondo Nacional de la Vivienda para los Trabajadores.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(3);
 
@@ -357,11 +357,11 @@ $txt="<p><vb>PERITO.</vb>  Es el experto, y puede ser arquitecto y/o ingeniero c
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p><vb>SEGUNDA. - DE LAS PARTES</vb></p>";
+$txt="<p><vb>SEGUNDA. - DE LAS PARTES.</vb></p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p><vb>I. 	Del Ejecutor de Obra:</vb></p>";
+$txt="<p><vb>I.  Del Ejecutor de Obra:</vb></p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
@@ -385,7 +385,7 @@ $txt="<p>Si el resultado de la verificación final es positivo, y así se lo infor
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>1.	Las partes reconocen y aceptan que solo podrá modificarse la Cotización de la Obra, y en caso de existir, los Planos y el Programa de Trabajo si la Empresa Verificadora, que ejecutó la verificación inicial previo al otorgamiento del Crédito Infonavit, ha realizado una visita de verificación al Inmueble y ha aprobado esos cambios propuestos; y asimismo, de ser necesario, la Afianzadora ha autorizado esos cambios. La Empresa Verificadora entregará al Administrador una copia del documento que emita con tal motivo. En todo caso, esas modificaciones no excederán el monto del Crédito Infonavit. Esa nueva Cotización de la Obra será elaborada y almacenada en el Sistema y/o se generará por escrito y será firmada por las partes en forma autógrafa Dicho documento será parte integrante de este contrato y reemplazará al anterior.</p>";
+$txt="<p>1. Las partes reconocen y aceptan que solo podrá modificarse la Cotización de la Obra, y en caso de existir, los Planos y el Programa de Trabajo si la Empresa Verificadora, que ejecutó la verificación inicial previo al otorgamiento del Crédito Infonavit, ha realizado una visita de verificación al Inmueble y ha aprobado esos cambios propuestos; y asimismo, de ser necesario, la Afianzadora ha autorizado esos cambios. La Empresa Verificadora entregará al Administrador una copia del documento que emita con tal motivo. En todo caso, esas modificaciones no excederán el monto del Crédito Infonavit. Esa nueva Cotización de la Obra será elaborada y almacenada en el Sistema y/o se generará por escrito y será firmada por las partes en forma autógrafa Dicho documento será parte integrante de este contrato y reemplazará al anterior.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
@@ -401,11 +401,11 @@ $txt="<p>Si la Afianzadora no aprueba expresamente esos cambios, el Ejecutor de 
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>2.	El Ejecutor de Obra no será responsable por los retrasos en la ejecución de los trabajos contenidos en los documentos del Anexo A cuando aquellos sean causados por el Derechohabiente, familiares de este, terceros en el Inmueble y/o vecinos del primero. En caso de ocurrir dicha situación, el Ejecutor de Obra avisará al Administrador para que, si es necesario extender el plazo de ejecución de los trabajos o cambiar los documentos del Anexo A, el Administrador solicite a la Empresa Verificadora que realice una nueva visita de verificación. De ser necesario, el Ejecutor de Obra también solicitará la autorización de la Afianzadora respecto al cambio en el plazo de ejecución y/o los trabajos de la Obra, todo lo anterior de acuerdo lo referido en el párrafo 2 anterior.</p>";
+$txt="<p>2. El Ejecutor de Obra no será responsable por los retrasos en la ejecución de los trabajos contenidos en los documentos del Anexo A cuando aquellos sean causados por el Derechohabiente, familiares de este, terceros en el Inmueble y/o vecinos del primero. En caso de ocurrir dicha situación, el Ejecutor de Obra avisará al Administrador para que, si es necesario extender el plazo de ejecución de los trabajos o cambiar los documentos del Anexo A, el Administrador solicite a la Empresa Verificadora que realice una nueva visita de verificación. De ser necesario, el Ejecutor de Obra también solicitará la autorización de la Afianzadora respecto al cambio en el plazo de ejecución y/o los trabajos de la Obra, todo lo anterior de acuerdo lo referido en el párrafo 2 anterior.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>B.	El Ejecutor de Obra utilizará el Anticipo que, por instrucciones del Administrador, el Fiduciario le pague, para la compra de material de acuerdo con la Cotización de la Obra, para mano de obra y/o para invertir en la Obra en cuestión. Para que el Administrador instruya al Fiduciario que pague al Ejecutor de Obra ese Anticipo, el Derechohabiente previamente deberá revisar en el Sistema el monto requerido y los conceptos a los que corresponde en términos de la Cotización de la Obra. El Derechohabiente deberá autorizar la Cotización de la Obra, ya incorporada en el Sistema con el monto neto del Crédito Infonavit, con la indicación del porcentaje de Anticipo dentro de las 24 (veinticuatro) horas siguientes a la fecha en que aparezca la notificación correspondiente en los Sistema.</p>";
+$txt="<p>B. El Ejecutor de Obra utilizará el Anticipo que, por instrucciones del Administrador, el Fiduciario le pague, para la compra de material de acuerdo con la Cotización de la Obra, para mano de obra y/o para invertir en la Obra en cuestión. Para que el Administrador instruya al Fiduciario que pague al Ejecutor de Obra ese Anticipo, el Derechohabiente previamente deberá revisar en el Sistema el monto requerido y los conceptos a los que corresponde en términos de la Cotización de la Obra. El Derechohabiente deberá autorizar la Cotización de la Obra, ya incorporada en el Sistema con el monto neto del Crédito Infonavit, con la indicación del porcentaje de Anticipo dentro de las 24 (veinticuatro) horas siguientes a la fecha en que aparezca la notificación correspondiente en los Sistema.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
@@ -413,19 +413,19 @@ $txt="<p>Previo a la entrega del Anticipo, el Ejecutor de Obra deberá invariable
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>C.	El Ejecutor de Obra empleará en la ejecución de la Obra equipos de la mejor calidad y en buenas condiciones de operación.</p>";
+$txt="<p>C. El Ejecutor de Obra empleará en la ejecución de la Obra equipos de la mejor calidad y en buenas condiciones de operación.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>D.	El Ejecutor de Obra deberá cumplir con todas las leyes, reglamentos y disposiciones aplicables, siendo por cuenta exclusiva del Ejecutor de Obra cualquier sanción o multa que las autoridades o sindicatos llegaren a imponer por violación a cualquiera de dichas disposiciones.</p>";
+$txt="<p>D. El Ejecutor de Obra deberá cumplir con todas las leyes, reglamentos y disposiciones aplicables, siendo por cuenta exclusiva del Ejecutor de Obra cualquier sanción o multa que las autoridades o sindicatos llegaren a imponer por violación a cualquiera de dichas disposiciones.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>E.	El Ejecutor de Obra será responsable de informar al Derechohabiente si son necesarios permisos y autorizaciones expedidas por la autoridad competente sean federales, locales o municipales, para la ejecución de la Obra en el Inmueble; así como tramitar y gestionar esos permisos directamente con esas autoridades. Los gastos por esos conceptos serán incluidos en la Cotización de la Obra, y la gestión de esas autorizaciones será contemplada para efectos de la entrega de la Obra en el plazo acordado con el Derechohabiente.</p>";
+$txt="<p>E. El Ejecutor de Obra será responsable de informar al Derechohabiente si son necesarios permisos y autorizaciones expedidas por la autoridad competente sean federales, locales o municipales, para la ejecución de la Obra en el Inmueble; así como tramitar y gestionar esos permisos directamente con esas autoridades. Los gastos por esos conceptos serán incluidos en la Cotización de la Obra, y la gestión de esas autorizaciones será contemplada para efectos de la entrega de la Obra en el plazo acordado con el Derechohabiente.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>F.	Durante el plazo de ejecución de la Obra y cuando el Ejecutor de Obra haga las reparaciones de acuerdo con el apartado I siguiente, en un horario lunes a viernes de 8:00 a 18:00 horas, y el sábado de 8:00 a 13:00 horas, el Ejecutor de Obra será responsable de los materiales, equipos y herramientas requeridos para la ejecución de la Obra y que permanezcan en el Inmueble hasta la entrega formal de la misma. Lo anterior incluirá también las medidas necesarias para su custodia mientras esos materiales, equipos y herramientas no se estén utilizando para la ejecución de los trabajos, solamente durante el horario citado al principio de este párrafo.</p>";
+$txt="<p>F. Durante el plazo de ejecución de la Obra y cuando el Ejecutor de Obra haga las reparaciones de acuerdo con el apartado I siguiente, en un horario lunes a viernes de 8:00 a 18:00 horas, y el sábado de 8:00 a 13:00 horas, el Ejecutor de Obra será responsable de los materiales, equipos y herramientas requeridos para la ejecución de la Obra y que permanezcan en el Inmueble hasta la entrega formal de la misma. Lo anterior incluirá también las medidas necesarias para su custodia mientras esos materiales, equipos y herramientas no se estén utilizando para la ejecución de los trabajos, solamente durante el horario citado al principio de este párrafo.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
@@ -433,15 +433,15 @@ $txt="<p>Fuera de esos horarios, el Derechohabiente será responsable de la conse
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>G.	El Ejecutor de Obra tomará las precauciones necesarias para evitar que como resultado de la Obra se causen directamente daños o perjuicios al Derechohabiente, el Inmueble o a cualquier tercero en sus bienes o personas. El Ejecutor de Obra será responsable por dichos daños salvo en los casos de caso fortuito o fuerza mayor, siempre y cuando no exista negligencia alguna por parte del Ejecutor de Obra y éste se apegue al cumplimiento del y las buenas prácticas en la construcción, remodelación y/o reparación.</p>";
+$txt="<p>G. El Ejecutor de Obra tomará las precauciones necesarias para evitar que como resultado de la Obra se causen directamente daños o perjuicios al Derechohabiente, el Inmueble o a cualquier tercero en sus bienes o personas. El Ejecutor de Obra será responsable por dichos daños salvo en los casos de caso fortuito o fuerza mayor, siempre y cuando no exista negligencia alguna por parte del Ejecutor de Obra y éste se apegue al cumplimiento del y las buenas prácticas en la construcción, remodelación y/o reparación.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>H.	El Ejecutor de Obra asumirá también todos los riesgos por la ejecución de la Obra hasta la entrega formal.</p>";
+$txt="<p>H. El Ejecutor de Obra asumirá también todos los riesgos por la ejecución de la Obra hasta la entrega formal.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>I.	El Ejecutor de Obra será responsable de que la Obra funcione para lo cual fue contratada por el Derechohabiente y conforme a las especificaciones calidad y funcionalidad descritas en la Cotización de la Obra y en su caso, los Planos y el Programa de Trabajo.</p>";
+$txt="<p>I. El Ejecutor de Obra será responsable de que la Obra funcione para lo cual fue contratada por el Derechohabiente y conforme a las especificaciones calidad y funcionalidad descritas en la Cotización de la Obra y en su caso, los Planos y el Programa de Trabajo.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
@@ -453,15 +453,15 @@ $txt="<p>El Ejecutor de Obra quedará eximido de esta obligación, si las reparaci
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>J.	El Ejecutor de Obra mantendrá limpias y en buen estado todas las partes de la Obra hasta su entrega y recepción total. Asimismo, el Ejecutor de Obra deberá mantener disciplina y orden en el trabajo durante el horario referido en el apartado F anterior.</p>";
+$txt="<p>J. El Ejecutor de Obra mantendrá limpias y en buen estado todas las partes de la Obra hasta su entrega y recepción total. Asimismo, el Ejecutor de Obra deberá mantener disciplina y orden en el trabajo durante el horario referido en el apartado F anterior.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>K.	Si existe un problema o diferendo con el Derechohabiente en relación con la Obra, la Cotización de la Obra, los Planos y/o, el Ejecutor de Obra solicitará la intervención del Perito de acuerdo con la cláusula Quinta. En cualquier momento, el Ejecutor de Obra podrá enviar al Derechohabiente un Acta de Incumplimiento con el formato descargado del Sistema, señalando los incumplimientos del Derechohabiente, y lo que el Ejecutor de Obra reclama.</p>";
+$txt="<p>K. Si existe un problema o diferendo con el Derechohabiente en relación con la Obra, la Cotización de la Obra, los Planos y/o, el Ejecutor de Obra solicitará la intervención del Perito de acuerdo con la cláusula Quinta. En cualquier momento, el Ejecutor de Obra podrá enviar al Derechohabiente un Acta de Incumplimiento con el formato descargado del Sistema, señalando los incumplimientos del Derechohabiente, y lo que el Ejecutor de Obra reclama.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>L.	El Ejecutor de Obra será siempre responsable de (1) tomar nota de los trabajos en las bitácoras a través del Sistema, y (2) sujeto al apartado A, acordar con el Derechohabiente los cambios a la Cotización de la Obra, y en su caso los Planos y el Programa de Trabajo en el Sistema incluyendo prórrogas. El Derechohabiente supervisará el cumplimiento del Ejecutor de Obra a la obligación consignada en esta cláusula.</p>";
+$txt="<p>L. El Ejecutor de Obra será siempre responsable de (1) tomar nota de los trabajos en las bitácoras a través del Sistema, y (2) sujeto al apartado A, acordar con el Derechohabiente los cambios a la Cotización de la Obra, y en su caso los Planos y el Programa de Trabajo en el Sistema incluyendo prórrogas. El Derechohabiente supervisará el cumplimiento del Ejecutor de Obra a la obligación consignada en esta cláusula.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
@@ -469,31 +469,31 @@ $txt="<p>M. El Ejecutor de Obra será responsable de entregar al Derechohabiente 
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p><vb>II.	Del Derechohabiente.</vb></p>";
+$txt="<p><vb>II.  Del Derechohabiente.</vb></p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>A.	El Derechohabiente deberá autorizar las solicitudes de ministración presentadas por el Ejecutor de Obra en los Sistema, de acuerdo con el apartado B de la sección I de este Contrato.</p>";
+$txt="<p>A. El Derechohabiente deberá autorizar las solicitudes de ministración presentadas por el Ejecutor de Obra en los Sistema, de acuerdo con el apartado B de la sección I de este Contrato.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>B.	El Derechohabiente revisará semanalmente los trabajos de la Obra y otorgará su aceptación o rechazo conforme a la Cláusula Cuarta siguiente.</p>";
+$txt="<p>B. El Derechohabiente revisará semanalmente los trabajos de la Obra y otorgará su aceptación o rechazo conforme a la Cláusula Cuarta siguiente.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>C.	El Derechohabiente se abstendrá de realizar cualquier acto u acción que impida al Ejecutor de Obra la ejecución de la Obra de acuerdo con este contrato, o bien la custodia y conservación de los materiales, equipos y herramientas en dicho domicilio cuando se utilicen para la ejecución de la Obra. Asimismo, el Derechohabiente dará las facilidades necesarias al Ejecutor de Obra para la realización de la Obra.</p>";
+$txt="<p>C. El Derechohabiente se abstendrá de realizar cualquier acto u acción que impida al Ejecutor de Obra la ejecución de la Obra de acuerdo con este contrato, o bien la custodia y conservación de los materiales, equipos y herramientas en dicho domicilio cuando se utilicen para la ejecución de la Obra. Asimismo, el Derechohabiente dará las facilidades necesarias al Ejecutor de Obra para la realización de la Obra.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>D.	El Derechohabiente tomará las medidas necesarias respecto a sus bienes, pertenencias y objetos de valor, señaladas en el apartado F de la sección I de esta Cláusula Segunda. En caso de incumplimiento, el Derechohabiente será responsable de la pérdida o menoscabo de esos bienes.</p>";
+$txt="<p>D. El Derechohabiente tomará las medidas necesarias respecto a sus bienes, pertenencias y objetos de valor, señaladas en el apartado F de la sección I de esta Cláusula Segunda. En caso de incumplimiento, el Derechohabiente será responsable de la pérdida o menoscabo de esos bienes.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>E.	Si existe un problema o diferendo con el Ejecutor de Obra en relación con la Obra, la Cotización de la Obra, los Planos, el Derechohabiente solicitará la intervención del Perito de acuerdo con la cláusula Quinta. En cualquier momento, el Derechohabiente podrá enviar al Ejecutor de Obra un Acta de Incumplimiento con el formato descargado del Sistema, señalando los incumplimientos del Ejecutor de Obra, y lo que el Derechohabiente reclama.</p>";
+$txt="<p>E. Si existe un problema o diferendo con el Ejecutor de Obra en relación con la Obra, la Cotización de la Obra, los Planos, el Derechohabiente solicitará la intervención del Perito de acuerdo con la cláusula Quinta. En cualquier momento, el Derechohabiente podrá enviar al Ejecutor de Obra un Acta de Incumplimiento con el formato descargado del Sistema, señalando los incumplimientos del Ejecutor de Obra, y lo que el Derechohabiente reclama.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p><vb>III.	De las Obligaciones Comunes de las Partes.</vb></p>";
+$txt="<p><vb>III.  De las Obligaciones Comunes de las Partes.</vb></p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
@@ -517,7 +517,280 @@ $txt="<p>En caso de que cualquiera de las partes desee cambiar a su coordinador,
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
+$txt="<p><vb>TERCERA. -  PRECIO.</vb></p>"; 
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
 
+$txt="<p>Por la ejecución de la Obra, el Ejecutor de Obra recibirá una contraprestación periódica en función del trabajo ejecutado conforme a la Cotización de la Obra de acuerdo con la Cláusula Segunda sección I apartado A. El Ejecutor de Obra reconoce que no recibirá cantidad adicional alguna a lo establecido en la Cotización de la Obra, por lo que éste no podrá incrementar su monto con posterioridad.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Como consecuencia del Convenio de Adhesión y previas instrucciones del Administrador, el Fiduciario realizará los pagos correspondientes al Ejecutor de Obra. En el entendido de que no será responsabilidad de Fiduciario, la revisión, cálculo ni verificación respecto de los montos y pagos que el Administrador le instruya a favor del Ejecutor de Obra. El Ejecutor de Obra conviene en que cualquier aclaración respecto de los pagos, retención y/o o suspensión de pagos previstos en este Contrato, el Fideicomiso y demás instrumentos aplicables, deberá realizarla directamente con el Administrador sin obligación alguna de Fiduciario.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Dicha contraprestación será pagada por el Fiduciario cuando el Derechohabiente se haya pronunciado respecto de los trabajos ejecutados en el periodo que el Ejecutor de Obra pretenda cobrar, o de acuerdo con la Cláusula Quinta.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Tanto el Derechohabiente como el Ejecutor de Obra reconocen expresamente que el Administrador ni el Fiduciario, ni el Infonavit son parte de este Contrato y no serán responsables del cumplimiento o incumplimiento del mismo bajo ninguna circunstancia.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Las partes saben y están conformes en que el importe de la contraprestación ya cubre todos los gastos del Ejecutor de Obra por concepto de proyectos, materiales, mano de obra, herramientas, equipo, flete, así como sus costos directos e indirectos, financiamiento, utilidad y en general todos sus sobrecostos incluyendo, enunciativa mas no limitativamente, tiempos muertos, horas extras, horarios atípicos. De tal manera, que el Ejecutor de Obra reconoce que dicha contraprestación no podrá variar por ningún motivo, y se compromete a no realizar reclamo alguno contra el Derechohabiente o terceros (Infonavit, el Fiduciario o el Administrador) por ningún concepto sea o no mencionado en el presente contrato.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p><vb>CUARTA. - FORMA DE PAGO.</vb></p>"; 
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>La contraprestación por la ejecución y garantía de la Obra será pagada de la siguiente forma:</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>I. El Derechohabiente se compromete a revisar semanalmente los trabajos de la Obra en el Inmueble y pronunciarse respecto a los trabajos (otorgar su aceptación o rechazarlos) dentro de los 5 (cinco) días naturales siguientes a la fecha en que haya recibido del Sistema, un correo electrónico con la indicación de que el avance de Obra ya está disponible para tales propósitos; ello para verificar que efectivamente hayan sido ejecutados en cumplimiento a la Cotización de la Obra, y en caso de existir, los Planos, y el Programa de Trabajo vigentes.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Una vez recibido el correo electrónico citado y concluida esa revisión in situ, el Derechohabiente podrá ingresar al Sistema y contará con el plazo citado en el apartado anterior para que  manifieste su aceptación o rechazo en cuanto: (A) al número de trabajos realizados por el Ejecutor de Obra en el plazo inmediato anterior en el que estaban programados y debían ser concluidos parcial o totalmente, y (B) el monto que el Fiduciario deberá pagar al Ejecutor de Obra de acuerdo a la Cotización de la Obra y en su caso, a los Planos, y el Programa de Trabajo.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>II. El Derechohabiente podrá manifestar su rechazo en cuanto a la ejecución de los trabajos en el periodo determinado, sólo si los Planos, el Programa de Trabajo y/o la Cotización de la Obra vigentes no han sido cumplidos por el Ejecutor de Obra. En este caso, el Administrador no podrá instruir al Fiduciario sobre el pago. Por lo que la cantidad, correspondiente a los trabajos no aceptados por el Derechohabiente será retenida por el Fideicomiso hasta que el Administrador le instruya la liberación de dichos recursos, siempre que el Ejecutor de Obra haya completado esos trabajos de acuerdo con el Contrato de Obra y obtenga la aceptación del Derechohabiente en términos de este Contrato; o bien el Perito señalado en la Cláusula Quinta del Contrato de Obra haya resuelto a favor del Ejecutor de Obra. Lo anterior no implicará en ninguna circunstancia que la fecha de entrega de la Obra se modifique parcial o totalmente. La Cotización de la Obra quedará tal y como se acuerden desde la firma de su aceptación por el Derechohabiente conforme a este Contrato de Obra.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>No obstante lo anterior, queda expresamente establecido que, si el Derechohabiente no se pronuncia respecto a los trabajos mediante el Sistema en el plazo referido (es decir, acepta o rechaza los trabajos), se entenderá que el Derechohabiente está de acuerdo con esos trabajos hechos por el Ejecutor de Obra en el periodo sujeto a evaluación; por lo que el Administrador podrá instruir al Fiduciario el pago que le corresponda al Ejecutor de Obra. Será condición para el pago al Ejecutor de Obra conforme a este Contrato de Obra que el Ejecutor de Obra incorpore o inserte en el Sistema los conceptos y/o el trabajo hechos en la Obra respectiva durante el periodo sujeto a revisión por parte del Derechohabiente.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>III. Las partes están de acuerdo en que, si existieran diferencias respecto del cumplimiento del Ejecutor de Obra, el Derechohabiente y/o el Ejecutor de Obra deberán al Administrador solicitar en el Sistema o en su defecto por correo electrónico, su intervención y agotada esta, la intervención del Perito de acuerdo con la Cláusula Quinta, para que el Perito emita su decisión respecto a la ejecución de los trabajos en la Obra de acuerdo con la Cotización de la Obra y en su caso, los Planos y el Programa de Trabajo. Se aplicarán los pagos a la ejecución de los trabajos de la Obra dependiendo del resultado de la decisión del Perito correspondiente, misma que deberá ser acatada y cumplida por el Ejecutor de Obra y el Derechohabiente. Por lo anterior, una vez que se recurra al Perito se suspenderá cualquier tipo de pago al Ejecutor de Obra, hasta que el Perito emita su dictamen. Si existe o puede existir una dilación en el plazo de ejecución de trabajos y resulta necesario, las partes deberán solicitar la autorización de la Afianzadora.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>A solicitud del Derechohabiente, el Ejecutor de Obra expedirá a nombre de éste una sola factura, con todos los requisitos fiscales vigentes, la cual cubrirá contraprestaciones pagadas en forma periódica en cumplimiento a este Contrato de Obra.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p><vb>QUINTA. -  DICTAMEN DEL PERITO.</vb></p>"; 
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>I. En caso de que existan diferencias entre el Derechohabiente y el Ejecutor de Obra respecto de los trabajos de la Obra, de acuerdo a la Cotización de la Obra, los Planos, o el Programa de Trabajo o la calidad de la Obra (una vez que ésta fue entregada conforme a este Contrato), el Derechohabiente y/o el Ejecutor de Obra solicitarán por medio del Sistema o correo electrónico que el Perito designado en este Contrato (o su reemplazo) intervenga para emitir una dictamen respecto a esas diferencias. Junto con esa solicitud, el Ejecutor de Obra  y/o el Derechohabiente enviarán al Perito por esos medios el Contrato de Obra con sus anexos, y cualquier Acta de Incumplimiento.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Las partes en este acto nombran al Perito indicado en el apartado siguiente para que intervenga en caso de diferencias conforme a esta Cláusula. Sin embargo, si a la fecha en que cualquiera de ellas solicita su intervención, ese Perito no está disponible, respondiendo en el plazo citado abajo, o no fue designado por las Partes, éstas nombran desde este momento al Administrador para que éste designe a un Perito que pueda emitir su dictamen respecto al cumplimiento de este Contrato de Obra y anexos, así como calidad de la Obra.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>El Perito deberá confirmar la recepción de la solicitud dentro de los 7 (siete) días naturales siguientes a la fecha en que la reciba en el Sistema o en su defecto por correo electrónico. Si el Perito no responde dentro de ese plazo, la parte que haya solicitado su intervención, deberá notificar al Administrador por medio del Sistema o por correo electrónico para que nombre el Perito substituto.  El Administrador nombrará a ese Perito dentro de los 7 (siete) días naturales siguientes a la fecha de recepción de la solicitud del Derechohabiente o Ejecutor de Obra, según sea el caso.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Todas las comunicaciones, solicitudes, envío de documentos entre el Derechohabiente, el Ejecutor de Obra, el Administrador y el Perito serán realizadas mediante el Sistema o en su defecto por correo electrónico. Las Partes en todo momento reconocerán la validez de dichos actos y sus efectos legales.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>II. Las Partes en este acto nombran a:____________________________________________ como el Perito que intervendrá conforme a esta Cláusula y emitirá su dictamen respecto al cumplimiento del Contrato de Obra, y sus anexos, así como la calidad de la Obra.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>III. El Ejecutor de Obra y el Derechohabiente reconocen y aceptan que si el desahogo de este procedimiento implica una prórroga al plazo vigente y ésta debe ser objeto de autorización de la Afianzadora, la parte que está solicitando la intervención del Perito deberá hacer todas las gestiones para que la otra parte lo acuerde por escrito y con firma autógrafa, y el Administrador pueda presentarla ante la Afianzadora. Si la parte que no solicitó al Perito se niega a acordar dicha prórroga, se entenderá que reconoce el incumplimiento que se le imputa, y que acepta dicha responsabilidad. La parte interesada en el peritaje notificará inmediatamente al Administrador de dicha situación para que a su vez lo haga del conocimiento de la Afianzadora. El Perito deberá tomar en cuenta la negativa de dicha parte para acordar la prórroga.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>IV. Dentro de los 7 (siete) días naturales siguientes a la confirmación de recepción de la notificación de la parte interesada en el peritaje, el Perito acudirá al Inmueble para revisar la situación en la que se encuentra la Obra y la problemática expuesta, incluyendo el Acta de Incumplimiento. En esa fecha y hora indicadas a través del Sistema o en su defecto por correo electrónico, el Perito hará una evaluación en el sitio de la Obra y escuchará sólo en esa fecha en forma simultánea al Ejecutor de Obra y al Derechohabienteen relación con su diferencia.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>V. El Perito emitirá su decisión por escrito y contendrá su firma autógrafa, y la notificará al Administrador, Derechohabiente y Ejecutor de Obra, a más tardar dentro de los 7 (siete) días naturales siguientes a la reunión a que se refiere el apartado anterior.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>El Perito o el Administrador incorporará esa decisión en el Sistema. El Derechohabiente y el Ejecutor de Obra están de acuerdo en que la decisión del Perito será un acuerdo definitivo y obligatorio para el Ejecutor de Obra y el Derechohabiente, y la cumplirán de conformidad. La parte, que no tenga la razón, pagará los gastos generados por la intervención del Perito. El monto total de esos gastos podrá ser consultado en el Sistema, y podrá ser descontado de los fondos aportados por el Derechohabiente y existentes a esa fecha en el Fideicomiso previa instrucción por escrito del Administrador al Fiduciario, si la parte que no resulta favorecida es el Derechohabiente.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Si el Perito resuelve a favor del Derechohabiente, el Administrador presentará la solicitud de reclamación de la Fianza correspondiente ante la Afianzadora dentro 7 (siete) días naturales a la notificación del Perito; ello sin perjuicio de que, si es necesario, el Derechohabiente y el Ejecutor de Obra deban solicitar la autorización de la Afianzadora respecto a la prórroga correspondiente. Si el Perito resuelve a favor del Ejecutor de Obra, el Administrador girará instrucciones al Fiduciario para que pague al Ejecutor de Obra la cantidad correspondiente a los trabajos de la Obra que estaban en disputa y que fueron resueltos por el Perito. Si es necesario se modificará la fecha de terminación de la Obra u otro anexo, misma que no excederá de 6 (seis) meses contados a partir del otorgamiento del Crédito Infonavit.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p><vb>SEXTA. -  FIANZAS.</vb></p>"; 
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Para garantizar el cumplimiento total de este Contrato de Obra, así como la calidad de la Obra, el Ejecutor de Obra contratará las Fianzas indicadas a continuación. El Ejecutor de Obra contratará con la Afianzadora la póliza única que comprenda esas dos Fianzas, suscribir los instrumentos necesarios, incluyendo el contrato individual de afianzamiento, ejecutar los actos necesarios para su conservación, salvo las prórrogas, esperas y reclamos de las Fianzas.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p><vb>I. Fianza de Cumplimiento.</vb> El Ejecutor de Obra se obliga a contratar y pagar esta Fianza para garantizar el total cumplimiento del Contrato de Obra y sus anexos por un monto máximo equivalente el Crédito Infonavit. El Ejecutor de Obra deberá señalar como único beneficiario de esta póliza o Endoso de Inclusión al Fideicomiso. La cancelación de la Fianza de Cumplimiento procederá una vez que el Administrador cuente con el dictamen de aplicación de recursos positivo emitido por la Empresa Verificadora.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p><vb>II. Fianza de Calidad.</vb> El Ejecutor de Obra se obliga a contratar y pagar esta fianza para garantizar la buena calidad o los vicios ocultos de los trabajos ejecutados, así como la reparación o sustitución de los mismos de acuerdo con la obligación garantizada y el Endoso de Inclusión correspondiente. El Ejecutor de Obra deberá señalar como único beneficiario al Fideicomiso.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>El Ejecutor de Obra deberá entregar a el Administrador el Endoso de Inclusión que incorpore la Fianza de Cumplimiento y la Fianza de Calidad dentro de los 5 (cinco) días hábiles siguientes a la firma de este Contrato, y previo a la entrega de cualquier Anticipo por parte del Fideicomiso.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>En este acto, el Derechohabiente ratifica que cede a favor del Fideicomiso la Fianza de Cumplimiento y Fianza de Calidad. El Derechohabiente no podrá reclamar a la Afianzadora que le expida la Fianza de Cumplimiento, cantidad, derecho o prestación alguna.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>La Fianza de Calidad estará vigente por un periodo de 3 (tres) meses contado a partir de la fecha en que la Empresa Verificadora emita el dictamen de aplicación de recursos positivo. Estas pólizas de Fianzas o Endosos de Inclusión deberán ser expedidas solamente bajo el Contrato General de Afianzamiento suscrito con la Afianzadora.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Para que el Ejecutor de Obra pueda cancelar cualquiera de las Fianzas, será requisito previo e indispensable, la conformidad por escrito del Fiduciario quien actuará a través del Administrador.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Para la ejecución de las pólizas de Fianzas o Endosos de Inclusión, el Administrador instruirá por escrito a Fiduciario el otorgamiento de los poderes necesarios para que se lleve a cabo cualquier acción que sea necesaria sobre dichas Fianzas, según se ha establecido en el Fideicomiso. Una vez presentada la reclamación de la Fianza ante la Afianzadora, ni el Derechohabiente ni el Ejecutor de Obra no podrán acordar ninguna modificación al Contrato de Obra y sus anexos, sin la autorización de la Afianzadora. En caso de incumplimiento, las Fianzas respectivas quedarán sin efectos.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Los recursos que por la ejecución de las Fianzas se obtengan a favor del beneficiario de las mismas, deberán ser invariablemente depositados en la cuenta del Fideicomiso para que sean aplicados en términos del mismo así como de este contrato y los demás relacionados.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p><vb>SÉPTIMA. - VIGENCIA DEL CONTRATO.</vb></p>"; 
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Este Contrato estará vigente a partir de su fecha de firma y hasta la fecha de vencimiento de la Fianza de Calidad conforme a la normatividad aplicable.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p><vb>OCTAVA. - RESCISIÓN DEL CONTRATO.</vb></p>"; 
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Cualquiera de las partes podrá rescindir el presente contrato, en caso de incumplimiento de la otra a este Contrato, sin necesidad de resolución judicial, salvo que exista caso fortuito o en caso de concurso mercantil o quiebra del Ejecutor de Obra, o el Administrador, el Derechohabiente también podrá rescindir este Contrato. Lo anterior sin perjuicio de que se ejecute la Fianza que corresponda conforme a este Contrato y la Cláusula Sexta anterior.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Para efectos de este Contrato, caso fortuito o fuerza mayor son sucesos de la naturaleza o hechos del hombre, que, siendo extraños al obligado, lo afectan en su esfera jurídica, impidiéndole temporal o definitivamente el cumplimiento parcial o total de una obligación, sin que tales hechos le sean imputables directa o indirectamente y cuya afectación no puede evitar con los instrumentos de que normalmente se disponga ya para prevenir el acontecimiento o para oponerse a él y resistirlo.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p><vb>NOVENA. - RESPONSABILIDAD LABORAL.</vb></p>"; 
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>De acuerdo con la Ley Federal del Trabajo, el Ejecutor de Obra cuenta con los trabajadores propios y suficientes para cumplir con las obligaciones pactadas en este instrumento; por lo que libera al Derechohabiente, Infonavit, el Fideicomiso, el Fiduciario y el Administrador de cualquier responsabilidad laboral, que, en su caso, llegara a presentarse con motivo del cumplimiento del contrato. En este sentido, en caso de que el Ejecutor de Obra subcontrate a terceras personas para cumplir con parte o la totalidad de este contrato, el Ejecutor de Obra se sujetará a las obligaciones previstas en la Ley Federal del Trabajo, la Ley de Seguridad Social y la Ley del Instituto del Fondo de la Vivienda para los Trabajadores.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>El Ejecutor de Obra será el único responsable por los trabajadores, subcontratistas, y personal que emplee en el cumplimiento de este contrato, incluyendo el pago de los salarios y demás prestaciones laborales de sus trabajadores, empleados o subcontratistas. El Ejecutor de Obra sacará en paz y a salvo al Derechohabiente, al Infonavit, al Fideicomiso (y/o Fiduciario) y a el Administrador de cualquier responsabilidad laboral derivada de cualquier demanda laboral, fiscal, penal, administrativa que sus trabajadores, subcontratistas, personal, empleados, socios y/o consultores externos entablen, y se obliga a indemnizarlos.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p><vb>DÉCIMA. - CESIÓN DE DERECHOS.</vb></p>"; 
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>El Ejecutor de Obra no podrá ceder total o parcialmente los derechos y obligaciones del presente subcontrato, sin consentimiento previo, expreso y por escrito del Derechohabiente y el visto bueno del Administrador.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p><vb>DÉCIMA PRIMERA. - DOMICILIOS.</vb></p>"; 
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Las partes señalan como sus domicilios para todos los efectos legales y contractuales los indicados en el capítulo de declaraciones y para el caso de que alguna de las partes llegare a cambiarlo, deberá notificarlo con quince días de anticipación a la otra parte. En caso contrario todas las notificaciones realizadas en el último domicilio señalado surtirán todos sus efectos legales. Sin perjuicio de que todas las notificaciones se realicen por medio del Sistema. Las partes también notificarán ese cambio de domicilio en el Sistema.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p><vb>DÉCIMA SEGUNDA. - AVISO DE PRIVACIDAD.</vb></p>"; 
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>A la firma de este Contrato de Obra, el Ejecutor de Obra entregar al Derechohabiente el aviso de privacidad por lo que respecta al tratamiento de los datos personales que haga el Ejecutor de Obra en términos de la normatividad en la materia vigente. Ello con independencia del Aviso de Privacidad que le entregue el Administrador.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p><vb>DÉCIMA TERCERA. - JURISDICCIÓN.</vb></p>"; 
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Para todo lo relativo a la interpretación del presente Contrato, las partes se someten a los tribunales competentes y leyes vigentes en la Ciudad de México (salvo lo relacionado a la expedición y ejecución de las garantías, incluyendo fianzas, en cuyo caso se aplicarán las leyes federales en la materia), renunciando a cualquier otro fuero que por razón de sus domicilios presentes o futuros o por cualquier otra causa les pudiera corresponder.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Enteradas las partes del contenido y alcance legal de todas y cada una de las cláusulas de este contrato lo firman de conformidad en CIUDAD DE MEXICO , el día  5  del mes de  NOVIEMBRE del año 2018.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$pdf->Cell(180,$es,"L  A  S    P  A  R  T  E  S",0,1,"C");
+$pdf->Ln(2);
+
+$txt="<p>EL DERECHOHABIENTE                                                  EL EJECUTOR DE OBRA</p>";
+$pdf->WriteTag(0,$es,$txt,0,"C");
+$pdf->Ln(0);
+
+$txt="<p>".$unombre."                              ALEJANDRO PEREZ BOBADILLA</p>";
+$pdf->WriteTag(0,$es,$txt,0,"C");
+$pdf->Ln(100);
+
+$txt="<p><vb>Anexo A</vb></p>";
+$pdf->WriteTag(180,$es,$txt,0,"C");
+$pdf->Ln(0);
+$txt="<p><vb>Cotización de la Obra</vb></p>";
+$pdf->WriteTag(180,$es,$txt,0,"C");
+$pdf->Ln(0);
+$txt="<p><vb>Planos</vb></p>";
+$pdf->WriteTag(180,$es,$txt,0,"C");
+$pdf->Ln(0);
+$txt="<p><vb>Programa de Trabajo</vb></p>";
+$pdf->WriteTag(180,$es,$txt,0,"C");
+$pdf->Ln(300);
+
+$txt="<p><vb>Anexo B</vb></p>";
+$pdf->WriteTag(180,$es,$txt,0,"C");
+$pdf->Ln(0);
+$txt="<p><vb>Actividades del Administrador</vb></p>";
+$pdf->WriteTag(180,$es,$txt,0,"C");
+$pdf->Ln(2);
+
+$txt="<p>A. El Administrador vigilará que el Ejecutor de la Obra inicie y termine los trabajos para la Obra de acuerdo con lo pactado en el Contrato de Obra en términos del apartado A de la cláusula Primera.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>B. El Administrador deberá cerciorarse de que la Ejecución de la Obra esté garantizada mediante la Fianza correspondiente en términos de la Cláusula Sexta de este instrumento.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>C. El Administrador apoyará al Derechohabiente para que la verificación inicial y la verificación final se realicen de acuerdo con los términos establecidos por el Infonavit y de acuerdo también con el apartado A de esta cláusula tercera. Será responsabilidad del Administrador asistir al Derechohabiente durante el proceso de verificación final. El Derechohabiente será responsable del pago directo de las verificaciones iniciales y finales en la cuenta bancaria de la empresa verificadora.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>D. El Administrador realizará la administración de los fondos derivados del Crédito Infonavit para que se apliquen a la ejecución de la Obra.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>E. El Administrador deberá instruir al Fiduciario, previa autorización firmada por el Derechohabiente, el pago del anticipo convenido y los pagos correspondientes al Ejecutor de Obra por los trabajos de ejecución de Obra y administración de la misma, según sea aplicable, los cuales siempre serán autorizados por Derechohabiente respecto a las partidas contenidas en la Cotización de la Obra conforme a la cláusula Segunda de este Contrato de Obra.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>F. En caso de que exista una controversia o diferendo en la ejecución o calidad de la Obra respecto de los cuales Ejecutor de Obra y el Derechohabiente no hayan podido llegar a un acuerdo, el Administrador hará las gestiones para resolver la problemática, mediante su intervención y/o la del Perito, y para la aplicación de la Fianza de Cumplimiento o de Calidad acorde a la cláusula Quinta de este Contrato.</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>En caso de que el Ejecutor de Obra y/o el Derechohabiente requieran contactar al Administrador para que este brinde el apoyo previsto en el Contrato de Obra, cualquiera de esas partes contactará al Administrador en los siguientes medios, mencionando en forma expresa y clara el <vb>número de Crédito Infonavit:</vb></p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(2);
+
+$txt="<p>Teléfono: 5651 5498</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(0);
+
+$txt="<p>Correo electrónico: erickerardoruiz@ceide.mx</p>";
+$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->Ln(0);
 
 /*
 $txt="<p>Tengo plena conciencia de que es un crédito y que si no realizo la mejoras no se utilizara el SSV para liquidarlo y seguiré pagando el crédito hasta su liquidación total.</p>";

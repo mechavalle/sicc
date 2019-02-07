@@ -372,42 +372,39 @@ $txt="<p>El presente Convenio se firma en CIUDAD DE MEXICO a los 6 días del mes 
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(5);
 
-$txt="<p>".$unombre."                                                  <vb>DANIEL GODOY CONTRERAS</vb></p>";
-$pdf->WriteTag(0,$es,$txt,0,"J");
+$pdf->SetFont('','B');
+$pdf->Cell(85,$es,$unombre,0,0,"J");
+$pdf->Cell(85,$es,"DANIEL GODOY CONTRERAS",0,1,"J");
 $pdf->Ln(2);
 
-$txt="<p><vb>DERECHOHABIENTE EN SU                                                PROMOTORÍA</vb></p>";
-$pdf->WriteTag(0,$es,$txt,0,"J");
-$pdf->Ln(0);
-$txt="<p><vb>CARÁCTER	DE FIDEICOMITENTE                                        FIDEICOMITENTE Y FIDEICOMISARIO </vb></p>";
-$pdf->WriteTag(0,$es,$txt,0,"J");
-$pdf->Ln(0);
-$txt="<p><vb>ADHERENTE Y/O FIDEICOMISARIO                                    EN SEGUNDO LUGAR</vb></p>";
-$pdf->WriteTag(0,$es,$txt,0,"J");
-$pdf->Ln(0);
-$txt="<p><vb>EN PRIMER LUGAR</vb></p>";
-$pdf->WriteTag(0,$es,$txt,0,"J");
-$pdf->Ln(2);
-
-$txt="<vb>_______________________________                                   _______________________________ </vb>";
-$pdf->WriteTag(200,$es,$txt,0,"J");
-$pdf->Ln(5);
-
-$txt="<p><vb>FIDUCIARIO</vb></p>";
-$pdf->WriteTag(200,$es,$txt,0,"C");
+$pdf->Cell(85,$es,"DERECHOHABIENTE EN SU",0,0,"J");
+$pdf->Cell(85,$es,"PROMOTORÍA",0,1,"J");
+$pdf->Cell(85,$es,"CARÁCTER	DE FIDEICOMITENTE",0,0,"J");
+$pdf->Cell(85,$es,"FIDEICOMITENTE Y FIDEICOMISARIO",0,1,"J");
+$pdf->Cell(85,$es,"ADHERENTE Y/O FIDEICOMISARIO",0,0,"J");
+$pdf->Cell(85,$es,"EN SEGUNDO LUGAR",0,1,"J");
+$pdf->Cell(85,$es,"EN PRIMER LUGAR",0,1,"J");
 $pdf->Ln(20);
 
-$txt="<vb>_______________________________                                   _______________________________ </vb>";
-$pdf->WriteTag(200,$es,$txt,0,"J");
-$pdf->Ln(2);
+$pdf->Cell(1,$es,"",0,0,"J");
+$pdf->Cell(50,$es,"",'T',0,"J");
+$pdf->Cell(35,$es,"",0,0,"J");
+$pdf->Cell(50,$es,"",'T',1,"J");
 
-$txt="<p><vb>SALVADOR DE LA LLATA MERCADO                                MIRIAM GAMERO ESPINOSA</vb></p>";
-$pdf->WriteTag(0,$es,$txt,0,"J");
-$pdf->Ln(0);
+$txt="<p><vb>FIDUCIARIO</vb></p>";
+$pdf->WriteTag(180,$es,$txt,0,"C");
+$pdf->Ln(20);
 
-$txt="<p><vb>DELEGADO FIDUCIARIO                                                      DELEGADO FIDUCIARIO</vb></p>";
-$pdf->WriteTag(0,$es,$txt,0,"J");
-$pdf->Ln(2);
+$pdf->SetFont('','B');
+$pdf->Cell(1,$es,"",0,0,"J");
+$pdf->Cell(50,$es,"",'T',0,"J");
+$pdf->Cell(35,$es,"",0,0,"J");
+$pdf->Cell(50,$es,"",'T',1,"J");
+
+$pdf->Cell(85,$es,"SALVADOR DE LA LLATA MERCADO",0,0,"J");
+$pdf->Cell(85,$es,"MIRIAM GAMERO ESPINOSA",0,1,"J");
+$pdf->Cell(85,$es,"DELEGADO FIDUCIARIO",0,0,"J");
+$pdf->Cell(85,$es,"DELEGADO FIDUCIARIO",0,1,"J");
 
 $pdf->Output();
 ?>

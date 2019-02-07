@@ -725,26 +725,33 @@ $txt="<p>Enteradas las partes del contenido y alcance legal de todas y cada una 
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$pdf->Cell(180,$es,"L  A  S    P  A  R  T  E  S",0,1,"C");
-$pdf->Ln(2);
+$pdf->Cell(170,$es,"L  A  S    P  A  R  T  E  S",0,1,"C");
+$pdf->Ln(3);
 
-$txt="<p>EL DERECHOHABIENTE                                                  EL EJECUTOR DE OBRA</p>";
-$pdf->WriteTag(0,$es,$txt,0,"C");
-$pdf->Ln(0);
+$pdf->Cell(85,$es,"EL DERECHOHABIENTE",0,0,"C");
+$pdf->Cell(85,$es,"EL EJECUTOR DE OBRA",0,1,"C");
+$pdf->Cell(85,$es,$unombre,0,0,"C");
+$pdf->Cell(85,$es,"ALEJANDRO PEREZ BOBADILLA",0,1,"C");
+$pdf->Ln(20);
 
-$txt="<p>".$unombre."                              ALEJANDRO PEREZ BOBADILLA</p>";
-$pdf->WriteTag(0,$es,$txt,0,"C");
-$pdf->Ln(100);
+$pdf->Cell(17.5,$es,"",0,0,"C");
+$pdf->Cell(50,$es,"",'T',0,"C");
+$pdf->Cell(35,$es,"",0,0,"C");
+$pdf->Cell(50,$es,"",'T',1,"C");
+$pdf->Ln(50);
 
 $txt="<p><vb>Anexo A</vb></p>";
 $pdf->WriteTag(180,$es,$txt,0,"C");
 $pdf->Ln(0);
+
 $txt="<p><vb>Cotización de la Obra</vb></p>";
 $pdf->WriteTag(180,$es,$txt,0,"C");
 $pdf->Ln(0);
+
 $txt="<p><vb>Planos</vb></p>";
 $pdf->WriteTag(180,$es,$txt,0,"C");
 $pdf->Ln(0);
+
 $txt="<p><vb>Programa de Trabajo</vb></p>";
 $pdf->WriteTag(180,$es,$txt,0,"C");
 $pdf->Ln(300);

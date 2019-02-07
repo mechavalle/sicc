@@ -79,8 +79,9 @@ if($val5=mysqli_fetch_array($res2))
 	$unombre=strtoupper($nombre);
 	$domicilio=strtoupper($val5['calle']." ".$val5['numero'].", ".$val5['colonia'].", ".$val5['municipio'].". ".$val5['estado'].". CP".$val5['cp']);
 	$email=$val5['email'];
-	$valorneto=fixmonto($val5['valorneto']);
-	$valornetov=strtoupper(convertir($val5['valorneto']));
+	$montopresupuesto=fixmonto($val5['montopresupuesto']);
+	//$valornetov=strtoupper(convertir($val5['valorneto']));
+
 	/*$nss=$val5['nss'];
 	
 	$nacimiento=fixfecha($val5['nacimiento']);
@@ -181,7 +182,7 @@ $txt="<p><vb>III.    CONTRATO DE PRESTACIÓN DE SERVICIOS. </vb>El DERECHOHABIENT
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(3);
 
-$txt="<p><vb>IV.    CRÉDITO INFONAVIT. </vb>El INFONAVIT le autorizó al DERECHOHABIENTE un CRÉDITO INFONAVIT para la reparación o mejora de casa habitación sobre vivienda de conformidad con el artículo 42 fracción II apartado c) de la Ley del Instituto del Fondo Nacional de la Vivienda para los Trabajadores por un monto equivalente a $ 192,857.21</p>";
+$txt="<p><vb>IV.    CRÉDITO INFONAVIT. </vb>El INFONAVIT le autorizó al DERECHOHABIENTE un CRÉDITO INFONAVIT para la reparación o mejora de casa habitación sobre vivienda de conformidad con el artículo 42 fracción II apartado c) de la Ley del Instituto del Fondo Nacional de la Vivienda para los Trabajadores por un monto equivalente a $montopresupuesto</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(3);
 

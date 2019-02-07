@@ -1036,7 +1036,7 @@ function erecu($tipo,$idrecurso)
 
 
 #asesores nuevos
-$consulta="select a.nombre from adm_usuarios a left join adm_permisos as b on a.id=b.idusuario where b.modulo='AdminClientes' and b.tipo>='2' and a.status='1'";
+$consulta="select a.nombre from adm_usuarios a left join adm_permisos as b on a.id=b.idusuario where b.modulo='AdminClientes' and b.tipo>='1' and a.status='1' order by nombre asc";
 $asesornewv="";
 $resx = mysqli_query($conexio, $consulta);
 while($val=mysqli_fetch_array($resx))

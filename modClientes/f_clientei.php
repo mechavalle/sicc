@@ -42,8 +42,18 @@ else
 if(isset($_GET['id']))	
 	$id=$_GET['id'];
 else
-	exit();
-	
+	{
+	if(isset($_POST['id']))	
+		$id=$_POST['id'];
+	else
+		exit();
+	}
+
+if(isset($_POST['accion']))	
+	$accion=$_POST['accion'];
+else
+	$accion=0;
+
 $csql = "SELECT * from `cat_clientes` WHERE `id` = '$id';";
 		
 $res2 = mysqli_query($conexio, $csql);
@@ -81,7 +91,21 @@ if(isset($_GET['orden']))
 	$orden=$_GET['orden'];
 else
 	$orden="descripcion";
-	
+
+if($accion==1)
+	{
+	$valor=$_POST['valor'];
+	$archivo=$laruta."/".traedato($latabla,"id",$valor,"S","archivo");
+	if(file_exists($archivo))
+		unlink($archivo);
+
+	$csql = "UPDATE $latabla set archivo='',tipoarchivo='',tamaarchivo='',ultactfec='".date("Y-m-d h:i:s")."',ultactusu='$IDUser' where id='$valor'";
+	mysqli_query($conexio,$csql);
+	if(mysqli_error($conexio)!="")
+		echo "Error al borrar el registro. ".mysqli_error($conexion)." $csql";
+	#echo "<html><head><title>Borrado</title></head><body onLoad=\" window.location.href='f_clientei.php?id=$id'; \"></body></html>";
+	exit();
+	}	
 
 ?>
 <html>
@@ -97,13 +121,23 @@ else
 <SCRIPT LANGUAGE="JavaScript" SRC="../lib/fns.js"></SCRIPT>
 <SCRIPT LANGUAGE="JavaScript">
 
+function borramust(elid)
+	{
+	if(confirm("¿Eliminar esta imagen obligatoria?"))
+		{		
+		document.edicion.accion.value=1;
+		document.edicion.valor.value=elid;
+		document.edicion.submit();
+		}
+	}
+
 </SCRIPT>
 
 </head>
 
 
 <body>
-
+<form method="POST" name="edicion" target="_self">
 <div class="container-fluid">
 
 	<table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -155,7 +189,7 @@ while($val8=mysqli_fetch_array($res))
 		$icono="<span class='glyphicon glyphicon-ok'></span>";
 		$link="<button type='button' onClick=\" abre('archivo','$elarchivo',800,800,'AUTO'); \" class='btn btn-success btn-xs'><span class='glyphicon glyphicon-search'></span>&nbsp;Ver</button>";
 		if($IDL2>=3)
-			$link2="&nbsp;<button type='button' class='btn btn-danger btn-xs' onClick=\"abre('borrarimagen','../main/f_borrar.php?id=$aid&tabla=$latabla&campoid=id&img=$elarchivo&ver=$ver',400,150,'NO');\"><span class='glyphicon glyphicon-trash'></span>&nbsp;Eliminar</button>";
+			$link2="&nbsp;<button type='button' class='btn btn-danger btn-xs' onClick=\"borramust($aid);\"><span class='glyphicon glyphicon-trash'></span>&nbsp;Eliminar</button>";
 		else
 			$link2="";
 		}
@@ -222,6 +256,10 @@ echo "</div>";
 ?>				
 
 </div>
+<input type="hidden" name="id" <? echo "value='$id'";?>>
+<input type="hidden" name="valor" value=''>
+<input type="hidden" name="accion" value=''>
+</form>
 </body>
 
 </html>

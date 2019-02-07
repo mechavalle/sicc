@@ -184,7 +184,16 @@ mysqli_free_result($res2);
     $pdf->SetFont('Arial','',$hs);
     $pdf->Cell(40,$es,"DIRECCIÓN.",1,0,'L');
     $pdf->SetFont('Arial','B',$hs);
-    $pdf->Cell(80,$es,$calle." ".$numero." ".$numeroint." ".$lote." ".$mza,'LR',1,'L');
+     $aux=$calle;
+    if($numero!="")
+    	$aux .=" ".$numero;
+    if($numeroint!="")
+    	$aux .=" ".$numeroint;
+    if($lote!="")
+    	$aux .=" lt ".$lote;
+    if($mza!="")
+    	$aux .=" mz ".$mza;
+    $pdf->Cell(80,$es,$aux,'LR',1,'L');
     $pdf->Cell(40,$es,"COLONIA:",1,0,'L');
     $pdf->SetFont('Arial','B',$hs);
     $pdf->Cell(80,$es,$colonia,'R',1,'L');

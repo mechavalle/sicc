@@ -346,36 +346,12 @@ if($id>0)
 <table border="0" width="90%" id="table3" cellspacing="0" cellpadding="0">
 	<tr>
 		<td width="147" align="right" height="25" bordercolor="#FFFF99">
-		<font face="Arial" size="2">Fecha Contratación:</font></td>
+		<font face="Arial" size="2">Fecha Firma:</font></td>
 		<td width="10" align="left" height="25" bordercolor="#FFFF99">
 		&nbsp;</td>
 		<td align="left" height="25" bordercolor="#FFFF99">
 		<input type="text" name="fecha" size="13" style="font-family: Verdana; font-size: 8pt" <?echo "value='$fecha'"?>><a href="#" name="anchor2" id="anchor2" onClick="displayCalendar(document.forms[0].fecha,'yyyy-mm-dd',this);"><img border="0" src="../img/calendar.gif" width="16" height="15"></a> </td>
-	</tr>
-	<tr>
-		<td width="147" align="right" height="25" bordercolor="#FFFF99">
-		<font face="Arial" size="2">Servicio a Proporcionar:</font></td>
-		<td width="10" align="left" height="25" bordercolor="#FFFF99">
-		&nbsp;</td>
-		<td align="left" height="25" bordercolor="#FFFF99">
-		<input type="text" name="servicio" size="43" style="font-family: Verdana; font-size: 8pt" <?echo "value='$servicio'"?>></td>
-	</tr>
-	<tr>
-		<td width="147" align="right" height="25" bordercolor="#FFFF99">
-		<font face="Arial" size="2">Honorarios:</font></td>
-		<td width="10" align="left" height="25" bordercolor="#FFFF99">
-		&nbsp;</td>
-		<td align="left" height="25" bordercolor="#FFFF99">
-		<input type="text" name="honorarios" size="43" style="font-family: Verdana; font-size: 8pt" <?echo "value='$honorarios'"?>></td>
-	</tr>
-	<tr>
-		<td width="147" align="right" height="25" bordercolor="#FFFF99">
-		<font face="Arial" size="2">Duración:</font></td>
-		<td width="10" align="left" height="25" bordercolor="#FFFF99">
-		&nbsp;</td>
-		<td align="left" height="25" bordercolor="#FFFF99">
-		<input type="text" name="duracion" size="43" style="font-family: Verdana; font-size: 8pt" <?echo "value='$duracion'"?>></td>
-	</tr>
+	</tr>	
 </table>
 <?}?>
 

@@ -49,7 +49,9 @@ if($val5=mysqli_fetch_array($res2))
 	{			
 	$idpersona=$val5['idpersona'];
 	//$persona=$val5['persona'];
-
+	$lugar=$val5['lugar'];
+#2018-01-23
+#0123456789
 	$dia=substr($val5['fecha'],8,2);
 	settype($dia,"integer");
 	$mes=substr($val5['fecha'],5,2);
@@ -57,15 +59,15 @@ if($val5=mysqli_fetch_array($res2))
 	$anio=substr($val5['fecha'],0,4);	
 	$inicio=strtoupper("$dia de ".mes($mes)." de $anio");
 
-	$dia=substr($val5['fechadoc'],8,2);
+	$dia=substr($val5['fecha'],8,2);
 	settype($dia,"integer");
-	$mes=substr($val5['fechadoc'],5,2);
-	settype($mes,"integer");
-	$anio=substr($val5['fechadoc'],0,4);	
-	$fin=strtoupper("$dia de ".mes($mes)." de $anio");
 
+	$mes=substr($val5['fecha'],5,2);
+	settype($mes,"integer");
+	$anio=substr($val5['fecha'],0,4);	
+	$fin=strtoupper("$dia de ".mes($mes)." de $anio");
 	
-	//$hoy="$lugar a $dia de ".mes($mes)." de $anio";
+	$hoy="$lugar a $dia de ".mes($mes)." de $anio";
 	}
 mysqli_free_result($res2);
 
@@ -369,7 +371,7 @@ $txt="<p>Para todo lo relacionado de este contrato las partes se someten a la ju
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>El presente Convenio se firma en CIUDAD DE MEXICO a los 6 días del mes de 9 de 2018.</p>";
+$txt="<p>El presente Convenio se firma en $hoy.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(5);
 

@@ -85,9 +85,9 @@ if($val5=mysqli_fetch_array($res2))
 	$numeroint=$val5['numeroint'];
 	$lote=$val5['lote'];
 	$mza=$val5['mza'];
-	$colonia=$val5['colonia'];
-	$municipio=$val5['municipio'];
-	$estado=$val5['estado'];
+	$colonia=strtoupper($val5['colonia']);
+	$municipio=strtoupper($val5['municipio']);
+	$estado=strtoupper($val5['estado']);
 	$cp=$val5['cp'];
 
 	$discapacidad=$val5['discapacidad'];
@@ -109,7 +109,12 @@ if($val5=mysqli_fetch_array($res2))
 
 	$telefonos=$val5['telefonos'];
 	$celular=$val5['celular'];
-	$genero=substr($val5['genero'],0,1);
+	$genero=strtoupper($val5['genero']);
+
+	$dia=substr($val5['nacimiento'],8,2);
+	$mes=substr($val5['nacimiento'],5,2);
+	$anio=substr($val5['nacimiento'],0,4);	
+	$nacimiento="$mes/$dia/$anio";
 
 	$email=$val5['email'];
 
@@ -154,33 +159,8 @@ if($val5=mysqli_fetch_array($res2))
 	}
 mysqli_free_result($res2);
 
-$milogo="../../img/infonavit.png";
-/*
-#Realizamos la consulta para traer los valores
-$csql = "SELECT * from `adm_config` WHERE `id` = '1';";
-$res2 = mysql_query($csql);
-if($val5=mysql_fetch_array($res2))
-	{
-	$empresa=$val5['empresa'];
-	$rfcempresa=$val5['rfcempresa'];
-	#$dirempresa=$val5['dirempresa'];
-	$dirempresa=$val5['calle']." ".$val5['numero'].", ".$val5['colonia'].", ".$val5['municipio'].", ".$val5['estado'].". CP:".$val5['cp'];
-	$representante=$val5['representantelegal'];	
-	$escdenominacion=ucwords($val5['escdenominacion']);
-	$escescritura=ucwords($val5['escescritura']);
-	$escfecha=ucwords($val5['escfecha']);
-	$escnotario=$val5['escnotario'];
-	$escnotarionum=ucwords($val5['escnotarionum']);
-	$escinscripcion=$val5['escinscripcion'];
-	$escinscripcionnum=$val5['escinscripcionnum'];
-	$escinscripcionfecha=$val5['escinscripcionfecha'];
-	$desccorta=$val5['desccorta'];	
-	$registropatronal=$val5['registropatronal'];
-	}
-mysql_free_result($res2);
-*/
 
-	### GeneraciÃ³n de PDF
+	### Generaci0n de PDF
 
 	
 	class PDF extends FPDF
@@ -301,9 +281,9 @@ mysql_free_result($res2);
 				    $this->SetX(10);	
 				    $this->SetFont('Arial','',6);
 					$this->Cell(15,6,"",0,0,'C');	
-					$this->Cell(60,6,"*DATOS OBLIGATORIOS",0,0,'L');
+					$this->Cell(60,6,"",0,0,'L');
 					$this->Cell(60,6,"HOJA ".$this->PageNo()." DE {nb}",0,0,'C');
-					$this->Cell(50,6,"CRED 1000.15",0,0,'R');				    				    
+					$this->Cell(50,6,"",0,0,'R');				    				    
 				   # $this->Cell(15,10,$this->PageNo().'/{nb}',0,0,'C');
 				}
 
@@ -341,7 +321,7 @@ mysql_free_result($res2);
 	$pdf->Cell(5,$es,"",0,0,"C");
 
 	$pdf->Cell(4,$es,'',0,0,'L');
-	$m +=4;
+	$m=4;
 	$x=$pdf->GetX();
     $y=$pdf->GetY()+4.5;
 	for($i=0;$i<10;$i++)
@@ -395,7 +375,7 @@ mysql_free_result($res2);
 
 	$pdf->SetFont('Arial','');
 	$pdf->Cell(25,$es,$genero,1,0,"C");
-	$pdf->Cell(25,$es,"",1,0,"C");
+	$pdf->Cell(25,$es,"INE",1,0,"C");
 	$pdf->Cell(25,$es,"",1,0,"C");
 	$pdf->Cell(12,$es,"",0,0,"C");
 	
@@ -423,8 +403,8 @@ mysql_free_result($res2);
 	$pdf->Cell(59,$es,"",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(59,$es,"",1,0,"C");
-	$pdf->Cell(59,$es,"",1,0,"C");
+	$pdf->Cell(59,$es,$nacimiento,1,0,"C");
+	$pdf->Cell(59,$es,"MEXICANA",1,0,"C");
 	$pdf->Cell(59,$es,"",1,1,"C");
 	$pdf->Ln(3);
 
@@ -458,9 +438,9 @@ mysql_free_result($res2);
 	$pdf->Cell(45,$es,"Firma electrónica",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(44,$es,"",1,0,"C");
-	$pdf->Cell(44,$es,"",1,0,"C");
-	$pdf->Cell(44,$es,"",1,0,"C");
+	$pdf->Cell(44,$es,"ASALARIADO",1,0,"C");
+	$pdf->Cell(44,$es,"EMPLEADO",1,0,"C");
+	$pdf->Cell(44,$es,"SALARIO",1,0,"C");
 	$pdf->Cell(45,$es,"",1,1,"C");
 	$pdf->Ln(3);
 	
@@ -471,8 +451,8 @@ mysql_free_result($res2);
 	$pdf->Cell(50,$es,"",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(50,$es,"",1,0,"L");
-	$pdf->Cell(68,$es,"¿Ocupa o ha ocupado algún puesto político?          Sí (     ) No (     )",0,0,"L");
+	$pdf->Cell(50,$es,"APORTACIONES INFONAVIT",1,0,"C");
+	$pdf->Cell(68,$es,"¿Ocupa o ha ocupado algún puesto político?          Sí (     ) No (  X  )",0,0,"L");
 	$pdf->Cell(9,$es,"¿Cuál?",0,0,"L");
 	$pdf->Cell(50,$es,"",1,1,"L");
 	$pdf->Ln(3);
@@ -481,13 +461,13 @@ mysql_free_result($res2);
 	$pdf->Cell(177,$es,"Estado Civil:",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(177,$es,"Soltero(a) (     )     Casado(a) (     )     Sociedad Conyugal (     )     Separación de Bienes (     )     Unión Libre (     )     Otro (     ) ",1,1,"C");
+	$pdf->Cell(177,$es,"Soltero(a) (  X  )     Casado(a) (     )     Sociedad Conyugal (     )     Separación de Bienes (     )     Unión Libre (     )     Otro (     ) ",1,1,"C");
 	$pdf->Ln(3);
 
 	$pdf->SetFont('Arial','');
 	$pdf->Cell(29,$es,"Domicilio Fiscal",0,0,"L");
 	$pdf->Cell(30,$es,"¿Corresponde a su domicilio particular?",0,0,"L");
-	$pdf->Cell(59,$es,"(     ) Sí",0,0,"C");
+	$pdf->Cell(59,$es,"(  X  ) Sí",0,0,"C");
 	$pdf->Cell(59,$es,"(     ) No",0,1,"C");
 	$pdf->Ln(3);
 
@@ -498,7 +478,24 @@ mysql_free_result($res2);
 
 	$pdf->SetFont('Arial','');
 	$pdf->Cell(118,$es,$calle,1,0,"C");
-	$pdf->Cell(29.5,$es,strtoupper(substr($numero,-6,1)),1,0,"C");
+	$aux="";
+	if($numeroint!="")
+		$aux .=$numeroint;
+	if($lote!="")
+		{
+		if($aux=="")
+			$aux .="lt $lote";
+		else
+			$aux .=", lt $lote";
+		}
+	if($mza!="")
+		{
+		if($aux=="")
+			$aux .="mz $mza";
+		else
+			$aux .=", mz $mza";
+		}
+	$pdf->Cell(29.5,$es,$aux,1,0,"C");
 	$pdf->Cell(29.5,$es,$numero,1,1,"C");
 	$pdf->Ln(3);
 
@@ -524,9 +521,9 @@ mysql_free_result($res2);
 	$pdf->Cell(29.5,$es,"Número Exterior:",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(118,$es,"",1,0,"C");
-	$pdf->Cell(29.5,$es,"",1,0,"C");
-	$pdf->Cell(29.5,$es,"",1,1,"C");
+	$pdf->Cell(118,$es,$calle,1,0,"C");
+	$pdf->Cell(29.5,$es,$aux,1,0,"C");
+	$pdf->Cell(29.5,$es,$numero,1,1,"C");
 	$pdf->Ln(3);
 
 	$pdf->SetFont('Arial','');
@@ -536,10 +533,10 @@ mysql_free_result($res2);
 	$pdf->Cell(27,$es,"Código Postal:",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(50,$es,"",1,0,"C");
-	$pdf->Cell(50,$es,"",1,0,"C");
-	$pdf->Cell(50,$es,"",1,0,"C");
-	$pdf->Cell(27,$es,"",1,1,"C");
+	$pdf->Cell(50,$es,$colonia,1,0,"C");
+	$pdf->Cell(50,$es,$municipio,1,0,"C");
+	$pdf->Cell(50,$es,$estado,1,0,"C");
+	$pdf->Cell(27,$es,$cp,1,1,"C");
 	$pdf->Ln(2);
 
 	$pdf->SetFont('Arial','B',$fs);
@@ -554,7 +551,7 @@ mysql_free_result($res2);
 	$pdf->Cell(6,6,"",1,0,'C');
 	$pdf->Cell(10,$es,"Propios",0,0,'C');
 	$pdf->Cell(10,6,"",0,0,'C');
-	$pdf->Cell(6,6,"",1,0,'C');	
+	$pdf->Cell(6,6,"X",1,0,'C');	
 	$pdf->Cell(15,$es,"Terceros",0,1,'L');	
 	$pdf->Ln(3);
 	$pdf->Cell(177,0,"Nota: En caso de existir un tercero o propietario real de los recursos (sea persona física o moral), deberá entregarse la documentación comprobatoria tanto de la identificación como del",0,1,'L');
@@ -574,7 +571,7 @@ mysql_free_result($res2);
 	$pdf->Cell(118,$es,"Origen de los recursos:",0,0,'L');
 	$pdf->Cell(59,$es,"Destino de los recursos:",0,1,'L');
 	$pdf->Cell(30,$es,"Patrimonio /Ahorro",0,0,'R');
-	$pdf->Cell(20,4,"",1,0,'L');
+	$pdf->Cell(20,4,"X",1,0,'L');
 	$pdf->Cell(9,$es,"",0,0,'L');
 	$pdf->Cell(30,$es,"Rifas, premios, sorteos",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
@@ -770,44 +767,44 @@ mysql_free_result($res2);
 
 	$pdf->Cell(79.5,3,"a) ¿Aquellas vinculadas con apuesta, concursos o sorteos?",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
-	$pdf->Cell(4,3,"",1,0,'L');
+	$pdf->Cell(4,3,"X",1,0,'L');
 	$pdf->Cell(0.5,$es,"",0,0,'L');
 	$pdf->Cell(78.5,3,"i) ¿Prestación  de servicios de blindaje de vehículos terrestres, nuevos o usados,",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
-	$pdf->Cell(4,3,"",1,1,'L');
+	$pdf->Cell(4,3,"X",1,1,'L');
 	$pdf->Cell(121,3,"así como de bienes inmuebles?",0,0,'R');
 	$pdf->Cell(0.5,$es,"",0,1,'L');
 
 	$pdf->Cell(80,3,"b) ¿Emisión o comercialización de tarjetas que constituyan instrumentos de",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
-	$pdf->Cell(4,3,"",1,1,'L');
+	$pdf->Cell(4,3,"X",1,1,'L');
 	$pdf->Cell(80,3,"almacenamiento de valor monetario?",0,0,'L');
 	$pdf->Cell(0.5,$es,"",0,0,'L');
 	$pdf->Cell(80,-3,"j) ¿Prestación de servicios de traslado o custodia de dinero o valores, con",0,0,'R');
 	$pdf->Cell(6.5,$es,"",0,0,'L');
 	$pdf->Cell(4,-3,"",1,0,'R');
-	$pdf->Cell(4,-3,"",1,1,'R');
+	$pdf->Cell(4,-3,"X",1,1,'R');
 	$pdf->Cell(157,9,"excepción de aquellos en los que intervenga BANXICO e instituciones",0,1,'R');
 	$pdf->Cell(123,-3,"dedicadas al depósito de valores?",0,0,'R');
 	$pdf->Cell(0.5,$es,"",0,1,'L');
 
 	$pdf->Cell(80,3,"c) ¿Emisión y comercialización habitual o profesional de cheques de viajero?",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
-	$pdf->Cell(4,3,"",1,0,'L');
+	$pdf->Cell(4,3,"X",1,0,'L');
 	$pdf->Cell(0.5,$es,"",0,0,'L');
 	$pdf->Cell(78.5,3,"k) ¿Prestación de servicios de fe pública (Notarios o corredores públicos )?",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
-	$pdf->Cell(4,3,"",1,0,'L');
+	$pdf->Cell(4,3,"X",1,0,'L');
 	$pdf->Cell(0.5,$es,"",0,1,'L');
 
 	$pdf->Cell(80,3,"d) ¿Ofrecimiento de operaciones de mutuo o de garantía o de otorgamiento",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
-	$pdf->Cell(4,3,"",1,1,'L');
+	$pdf->Cell(4,3,"X",1,1,'L');
 	$pdf->Cell(80,3,"de préstamos o créditos?",0,0,'L');
 	$pdf->Cell(0.5,3,"",0,0,'L');
 	$pdf->Cell(86.5,-3,"l) ¿Prestación de servicios profesionales, sin relación laboral, en los casos en los",0,0,'R');
 	$pdf->Cell(4,-3,"",1,0,'R');
-	$pdf->Cell(4,-3,"",1,1,'R');
+	$pdf->Cell(4,-3,"X",1,1,'R');
 	$pdf->Cell(164.5,9,"que se prepare para un cliente o se lleven a cabo en nombre y representación",0,1,'R');
 	$pdf->Cell(169.5,-3,"del cliente: compraventa de bienes inmuebles o la cesión de derechos sobre estos;",0,1,'R');
 	$pdf->Cell(162,9,"administración y manejo de recursos, valores o cualquier otro activo de sus",0,1,'R');
@@ -820,28 +817,42 @@ mysql_free_result($res2);
 
 	$pdf->Cell(80,3,"e) ¿Prestación de servicios de construcción o desarrollo de bienes inmuebles o",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
-	$pdf->Cell(4,3,"",1,0,'L');
+	$pdf->Cell(4,3,"X",1,0,'L');
 	$pdf->Cell(0.5,3,"",0,1,'L');
 	$pdf->Cell(80,3,"de intermediación en la transmisión de la propiedad o constitución de derechos",0,1,'L');
 	$pdf->Cell(80,3,"sobre dichos bienes, en los que se involucren operaciones de compra o venta de",0,1,'L');
 	$pdf->Cell(80,3,"los propios bienes, por cuenta o a favor de clientes de quienes presten dichos",0,1,'L');
 	$pdf->Cell(80,3,"servicios?",0,0,'L');
-	$pdf->Cell(88.5,-21,"m) ¿Recepción de donativos, por parte de las asociaciones y sociedades sin fines",0,0,'R');
+	
+	$pdf->Cell(88.5,-21,"m) ¿Recepción de donativos, por parte de las asociaciones y sociedades sin         ",0,0,'R');
+$x=$pdf->GetX();
+$y=$pdf->GetY();	
 	$pdf->Cell(-1.5,3,"",0,0,'R');
-	$pdf->Cell(4,3,"",1,0,'R');
-	$pdf->Cell(4,3,"",1,1,'R');
-	$pdf->Cell(100,-21,"de lucro?",0,0,'R');
+	$pdf->Cell(4,3,"",0,0,'R');
+	$pdf->Cell(4,3,"",0,1,'R');
+	$pdf->Cell(105,-21,"fines de lucro?",0,0,'R');
 	$pdf->Cell(0.5,3,"",0,1,'R');
+
+$x2=$pdf->GetX();
+$y2=$pdf->GetY();
+	$pdf->SetX($x);
+	$pdf->SetY($y-12);
+	$pdf->Cell(167,3,"",0,0,'R');
+	$pdf->Cell(4,3,"",1,0,'R');
+	$pdf->Cell(4,3,"X",1,1,'R');
+	$pdf->SetX($x2);
+	$pdf->SetY($y2);
+
 
 	$pdf->Cell(80,3,"f) ¿La comercialización o intermediación habitual o profesional de Metales",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
-	$pdf->Cell(4,3,"",1,0,'L');
+	$pdf->Cell(4,3,"X",1,0,'L');
 	$pdf->Cell(0.5,3,"",0,1,'L');
 	$pdf->Cell(80,3,"Preciosos, Piedras Preciosas, joyas o relojes?",0,0,'L');
 	$pdf->Cell(82,-3,"n) ¿Prestación de servicios de comercio exterior como agente o apoderado",0,0,'R');
 	$pdf->Cell(5,0,"",0,0,'R');
 	$pdf->Cell(4,-3,"",1,0,'R');
-	$pdf->Cell(4,-3,"",1,1,'R');
+	$pdf->Cell(4,-3,"X",1,1,'R');
 	$pdf->Cell(167.5,9,"aduanal, mediante autorización otorgada por la SHCP, para promover por cuenta",0,1,'R');
 	$pdf->Cell(165,-3,"ajena, el despacho de la siguientes mercancías: vehículos terrestres, aéreos y",0,1,'R');
 	$pdf->Cell(163.5,9,"marítimos; máquinas para juegos de apuesta y sorteos; equipos y materiales",0,1,'R');
@@ -855,17 +866,17 @@ mysql_free_result($res2);
 
 	$pdf->Cell(80,3,"g) ¿La subasta o comercialización de obras de arte?",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
-	$pdf->Cell(4,3,"",1,0,'L');
+	$pdf->Cell(4,3,"X",1,0,'L');
 	$pdf->Cell(0.5,$es,"",0,0,'L');
 	$pdf->Cell(78,3,"o) ¿Constitución de derechos personales de uso o goce de bienes inmuebles?",0,0,'L');
 	$pdf->Cell(0.5,$es,"",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
-	$pdf->Cell(4,3,"",1,0,'L');
+	$pdf->Cell(4,3,"X",1,0,'L');
 	$pdf->Cell(0.5,$es,"",0,1,'L');
 
 	$pdf->Cell(80,3,"h) ¿Comercialización o distribución de vehículos, nuevos o usados, ya sean",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
-	$pdf->Cell(4,3,"",1,0,'L');
+	$pdf->Cell(4,3,"X",1,0,'L');
 	$pdf->Cell(0.5,$es,"",0,1,'L');
 	$pdf->Cell(80,-3,"aéreos, marítimos o terrestres?",0,1,'L');
 	$pdf->Ln(15);
@@ -918,24 +929,25 @@ mysql_free_result($res2);
 	$pdf->Cell(59,$es,"Nombre y firma del fideicomitente",'T',0,"C");
 	$pdf->Ln(30);
 
-	$pdf->SetFont('Arial','B',$fs);
-	$pdf->Cell(20,-3,"Lugar:",0,0,'R');
-	$pdf->SetFont('Arial','',$fs);
-	$pdf->Cell(40,1.5,$lugar,'BU',0,"C");
-	$pdf->Cell(10,$es,"",0,0,"C");
 
 	$pdf->SetFont('Arial','B',$fs);
-	$pdf->Cell(20,-3,"Fecha de la solicitud:",0,0,'R');
+	$pdf->Cell(20,3,"Lugar:",0,0,'R');
+	$pdf->SetFont('Arial','',$fs);
+	$pdf->Cell(40,3,$lugar,'B',0,"C");
+	$pdf->Cell(10,$es,"",0,0,"C");
+	$pdf->SetFont('Arial','B',$fs);
+	$pdf->Cell(20,3,"Fecha de la solicitud:",0,0,'R');
 	$pdf->SetFont('Arial','',$es);
-	$pdf->Cell(10,1.5,$dia,'BU',0,"C");
+	$pdf->Cell(10,3,$dia,'B',0,"C");
 	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(5,-3,"/",0,0,"C");
+	$pdf->Cell(5,3,"/",0,0,"C");
 	$pdf->SetFont('Arial','',$es);
-	$pdf->Cell(30,1.5,$mesv,'BU',0,"C");
+	$pdf->Cell(30,3,$mesv,'B',0,"C");
 	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(5,-3,"/",0,0,"C");
+	$pdf->Cell(5,3,"/",0,0,"C");
 	$pdf->SetFont('Arial','',$es);
-	$pdf->Cell(15,1.5,$anio,'BU',1,"C");
+	$pdf->Cell(15,3,$anio,'B',1,"C");
+
 	
 	$pdf->Cell(245,4.5,"D  D                                  M  M                                   A  A  A  A",0,0,"C");
 

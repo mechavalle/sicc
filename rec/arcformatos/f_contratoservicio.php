@@ -57,15 +57,7 @@ if($val5=mysqli_fetch_array($res2))
 	$mes=substr($val5['fecha'],5,2);
 	settype($mes,"integer");
 	$anio=substr($val5['fecha'],0,4);	
-	$inicio=strtoupper("$dia de ".mes($mes)." de $anio");
-
-	$dia=substr($val5['fechadoc'],8,2);
-	settype($dia,"integer");
-	$mes=substr($val5['fechadoc'],5,2);
-	settype($mes,"integer");
-	$anio=substr($val5['fechadoc'],0,4);	
-	$fin=strtoupper("$dia de ".mes($mes)." de $anio");
-
+	$hoy=strtoupper("$dia de ".mes($mes)." de $anio");
 
 	
 	//$hoy="$lugar a $dia de ".mes($mes)." de $anio";
@@ -80,7 +72,15 @@ if($val5=mysqli_fetch_array($res2))
 		
 	$nombre=$val5['nombre']." ".$val5['apellidop']." ".$val5['apellidom'];
 	$unombre=strtoupper($nombre);
-	$domicilio=strtoupper($val5['calle']." ".$val5['numero'].", ".$val5['colonia'].", ".$val5['municipio'].". ".$val5['estado'].". CP".$val5['cp']);
+	$domicilio=$val5['calle']." ".$val5['numero'];
+	if($val5['numeroint']!="")
+		$domicilio .=", int ".$val5['numeroint'];
+	if($val5['lote']!="")
+		$domicilio .=", lt ".$val5['lote'];
+	if($val5['mza']!="")
+		$domicilio .=", mz ".$val5['mza'];
+	$domicilio .=", ".$val5['colonia'].", ".$val5['municipio'].". ".$val5['estado'].". CP: ".$val5['cp'];
+	$domicilio=strtoupper($domicilio);
 	$email=$val5['email'];
 	$valorneto=fixmonto($val5['valorneto']);
 	$valornetov=strtoupper(convertir($val5['valorneto']));
@@ -160,6 +160,7 @@ $pdf->SetStyle("a","Arial","BU",9,"0,0,255");
 $pdf->SetStyle("pers","times","I",0,"255,0,0");
 $pdf->SetStyle("place","Arial","U",100,"153,0,0");
 $pdf->SetStyle("vb","Arial","B",0,"0,0,0");
+$pdf->SetStyle("pu","Arial","U",0,"0,0,0");
 
 //$pdf->SetFont('Arial','',$fs);
 
@@ -192,7 +193,7 @@ $pdf->Cell(10,$es,"C.",0,0,"C");
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(3);
 
-$txt="<p>Señala su domicilio para todos los efectos de este Contrato, el ubicado en: SUR 8 D 68, AGRICOLA ORIENTAL, IZTACALCO, CIUDAD DE MEXICO, C.P. 08500</p>";
+$txt="<p>Señala su domicilio para todos los efectos de este Contrato, el ubicado en: $domicilio</p>";
 $pdf->Cell(10,$es,"D.",0,0,"C");
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(3);
@@ -207,7 +208,7 @@ $pdf->Cell(10,$es,"A.",0,0,"C");
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(3);
 
-$txt="<p>Ser propietario del inmueble marcado con:  SUR 8 D 68, AGRÍCOLA ORIENTAL, IZTACALCO, CIUDAD DE MÉXICO, C.P. 08500</p>";
+$txt="<p>Ser propietario del inmueble marcado con: $domicilio</p>";
 $pdf->Cell(10,$es,"B.",0,0,"C");
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(3);
@@ -491,7 +492,7 @@ $txt="<p>Para todo lo relativo a la interpretación del presente subcontrato, las
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(2);
 
-$txt="<p>Estando conformes ambas partes con el alcance y contenido de lo acordado mediante el presente contrato, lo firman por duplicado el día 31 DE 10 DE 18, quedando un ejemplar en poder de cada una de ellas.</p>";
+$txt="<p>Estando conformes ambas partes con el alcance y contenido de lo acordado mediante el presente contrato, lo firman por <pu>duplicado</pu> el día $hoy, quedando un ejemplar en poder de cada una de ellas.</p>";
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(5);
 

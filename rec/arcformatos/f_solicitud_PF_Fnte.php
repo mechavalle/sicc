@@ -298,29 +298,30 @@ mysqli_free_result($res2);
     $pdf->SetMargins(20,8);
     $pdf->SetTextColor(0,0,0);
     $pdf->SetFont('Arial','',$hs);
-    $pdf->SetY(20);
+    $pdf->SetY(10);
     $pdf->SetFont('Arial','B');
     $pdf->Cell($maximo,$es,"SOLICITUD DE SERVICIO FIDUCIARIO",0,1,'C');
 
     $pdf->SetFont('Arial','B',$fs);
     $pdf->SetFillColor(207,207,207);
     $pdf->Cell(177,$es,"DATOS DEL FIDEICOMITENTE",1,1,'C',true);
+    $pdf->ln(2);
 
     $pdf->SetFont('Arial','');
-	$pdf->Cell(30,$es,"Apellido Paterno",0,0,"L");
-	$pdf->Cell(30,$es,"Apellido Materno",0,0,"L");
-	$pdf->Cell(30,$es,"Nombre(s)",0,0,"L");
-	$pdf->Cell(7,$es,"",0,0,"L");
-	$pdf->Cell(60,$es,"Registro Federal de Causantes (10 posiciones):",0,0,"L");
-	$pdf->Cell(27,$es,"Homoclave:",0,1,"L");
+	$pdf->Cell(30,4,"Apellido Paterno",0,0,"L");
+	$pdf->Cell(30,4,"Apellido Materno",0,0,"L");
+	$pdf->Cell(30,4,"Nombre(s)",0,0,"L");
+	$pdf->Cell(7,4,"",0,0,"L");
+	$pdf->Cell(60,4,"Registro Federal de Causantes (10 posiciones):",0,0,"L");
+	$pdf->Cell(27,4,"Homoclave:",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(30,$es,$apellidop,1,0,"C");
-	$pdf->Cell(30,$es,$apellidom,1,0,"C");
-	$pdf->Cell(30,$es,$nombre,1,0,"C");
-	$pdf->Cell(5,$es,"",0,0,"C");
+	$pdf->Cell(30,4,$apellidop,1,0,"C");
+	$pdf->Cell(30,4,$apellidom,1,0,"C");
+	$pdf->Cell(30,4,$nombre,1,0,"C");
+	$pdf->Cell(5,4,"",0,0,"C");
 
-	$pdf->Cell(4,$es,'',0,0,'L');
+	$pdf->Cell(4,4,'',0,0,'L');
 	$m=4;
 	$x=$pdf->GetX();
     $y=$pdf->GetY()+4.5;
@@ -337,10 +338,10 @@ mysqli_free_result($res2);
 		}
 
 	$pdf->SetFont('Arial','',10);
-	$pdf->Cell(21,$es,"-",0,0,"C");
+	$pdf->Cell(21,4,"-",0,0,"C");
 
 	$pdf->SetFont('Arial','',$es);
-	$pdf->Cell(4,$es,'',0,0,'L');
+	$pdf->Cell(4,4,'',0,0,'L');
 	$m +=4;
 	$x=$pdf->GetX();
     $y=$pdf->GetY()+4.5;	
@@ -362,24 +363,22 @@ mysqli_free_result($res2);
 			$j=3.5*$i;
 			$pdf->Line($x+$j,$y-1.5,$x+$j,$y);
 			}
-		$pdf->Cell($maximo-$m,$es,'','R',1,'L');
-
-	$pdf->Ln(3);
+		$pdf->Cell($maximo-$m,5,'','R',1,'L');
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(25,$es,"Género",0,0,"L");
-	$pdf->Cell(25,$es,"Tipo de identificación",0,0,"L");
-	$pdf->Cell(25,$es,"No. de identificación",0,0,"L");
-	$pdf->Cell(15,$es,"",0,0,"L");
-	$pdf->Cell(97,$es,"C.U.R.P.",0,1,"L");
+	$pdf->Cell(25,4,"Género",0,0,"L");
+	$pdf->Cell(25,4,"Tipo de identificación",0,0,"L");
+	$pdf->Cell(25,4,"No. de identificación",0,0,"L");
+	$pdf->Cell(15,4,"",0,0,"L");
+	$pdf->Cell(97,4,"C.U.R.P.",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(25,$es,$genero,1,0,"C");
-	$pdf->Cell(25,$es,"INE",1,0,"C");
-	$pdf->Cell(25,$es,"",1,0,"C");
-	$pdf->Cell(12,$es,"",0,0,"C");
+	$pdf->Cell(25,4,$genero,1,0,"C");
+	$pdf->Cell(25,4,"INE",1,0,"C");
+	$pdf->Cell(25,4,"",1,0,"C");
+	$pdf->Cell(12,4,"",0,0,"C");
 	
-	$pdf->Cell(4,$es,'',0,0,'L');
+	$pdf->Cell(4,4,'',0,0,'L');
 	$m +=4;
 	$x=$pdf->GetX();
     $y=$pdf->GetY()+4.5;
@@ -395,89 +394,90 @@ mysqli_free_result($res2);
 		$pdf->Line($x+$j,$y-1.5,$x+$j,$y);
 		}
 
-	$pdf->Ln(9);
+	$pdf->Ln(5);
 	
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(59,$es,"Fecha de nacimiento",0,0,"L");
-	$pdf->Cell(59,$es,"Entidad de nacimiento",0,0,"L");
-	$pdf->Cell(59,$es,"",0,1,"L");
+	$pdf->Cell(59,4,"Fecha de nacimiento",0,0,"L");
+	$pdf->Cell(59,4,"Entidad de nacimiento",0,0,"L");
+	$pdf->Cell(59,4,"",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(59,$es,$nacimiento,1,0,"C");
-	$pdf->Cell(59,$es,"MEXICANA",1,0,"C");
-	$pdf->Cell(59,$es,"",1,1,"C");
-	$pdf->Ln(3);
+	$pdf->Cell(59,4,$nacimiento,1,0,"C");
+	$pdf->Cell(59,4,"MEXICANA",1,0,"C");
+	$pdf->Cell(59,4,"",1,1,"C");
+	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(118,$es,"Número de identificación  fiscal (En caso de ser extranjero)",0,0,"L");
-	$pdf->Cell(59,$es,"País que expidió",0,1,"L");
+	$pdf->Cell(118,4,"Número de identificación  fiscal (En caso de ser extranjero)",0,0,"L");
+	$pdf->Cell(59,4,"País que expidió",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(118,$es,"",1,0,"C");
-	$pdf->Cell(59,$es,"",1,1,"C");
-	$pdf->Ln(3);
+	$pdf->Cell(118,4,"",1,0,"C");
+	$pdf->Cell(59,4,"",1,1,"C");
+	$pdf->Ln(1);
 	
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(44,$es,"Teléfono Particular (clave lada + número)",0,0,"L");
-	$pdf->Cell(44,$es,"Teléfono Oficina (clave lada + número)",0,0,"L");
-	$pdf->Cell(44,$es,"Teléfono celular",0,0,"L");
-	$pdf->Cell(45,$es,"Correo electrónico",0,1,"L");
+	$pdf->Cell(44,4,"Teléfono Particular (clave lada + número)",0,0,"L");
+	$pdf->Cell(44,4,"Teléfono Oficina (clave lada + número)",0,0,"L");
+	$pdf->Cell(44,4,"Teléfono celular",0,0,"L");
+	$pdf->Cell(45,4,"Correo electrónico",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(14,$es,"(  ".substr($telefonos,-10,2)."  )",1,0,"C");
-	$pdf->Cell(30,$es,substr($telefonos,-8,8),1,0,"C");
-	$pdf->Cell(44,$es,"(               )",1,0,"C");
-	$pdf->Cell(44,$es,$celular,1,0,"C");
-	$pdf->Cell(45,$es,$email,1,1,"C");
-	$pdf->Ln(3);
+	$pdf->Cell(14,4,"(  ".substr($telefonos,-10,2)."  )",1,0,"C");
+	$pdf->Cell(30,4,substr($telefonos,-8,8),1,0,"C");
+	$pdf->Cell(14,4,"(  ".substr("",-10,2)."  )",1,0,"C");
+	$pdf->Cell(30,4,substr("",-8,8),1,0,"C");
+	$pdf->Cell(44,4,$celular,1,0,"C");
+	$pdf->Cell(45,4,$email,1,1,"C");
+	$pdf->Ln(1);
 	
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(44,$es,"Profesión",0,0,"L");
-	$pdf->Cell(44,$es,"Ocupación",0,0,"L");
-	$pdf->Cell(44,$es,"Fuente principal de ingresos",0,0,"L");
-	$pdf->Cell(45,$es,"Firma electrónica",0,1,"L");
+	$pdf->Cell(44,4,"Profesión",0,0,"L");
+	$pdf->Cell(44,4,"Ocupación",0,0,"L");
+	$pdf->Cell(44,4,"Fuente principal de ingresos",0,0,"L");
+	$pdf->Cell(45,4,"Firma electrónica",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(44,$es,"ASALARIADO",1,0,"C");
-	$pdf->Cell(44,$es,"EMPLEADO",1,0,"C");
-	$pdf->Cell(44,$es,"SALARIO",1,0,"C");
-	$pdf->Cell(45,$es,"",1,1,"C");
-	$pdf->Ln(3);
+	$pdf->Cell(44,4,"ASALARIADO",1,0,"C");
+	$pdf->Cell(44,4,"EMPLEADO",1,0,"C");
+	$pdf->Cell(44,4,"SALARIO",1,0,"C");
+	$pdf->Cell(45,4,"",1,1,"C");
+	$pdf->Ln(1);
 	
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(50,$es,"Procedencia de los recursos fideicomitidos",0,0,"L");
-	$pdf->Cell(68,$es,"",0,0,"L");
-	$pdf->Cell(9,$es,"",0,0,"L");
-	$pdf->Cell(50,$es,"",0,1,"L");
+	$pdf->Cell(50,4,"Procedencia de los recursos fideicomitidos",0,0,"L");
+	$pdf->Cell(68,4,"",0,0,"L");
+	$pdf->Cell(9,4,"",0,0,"L");
+	$pdf->Cell(50,4,"",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(50,$es,"APORTACIONES INFONAVIT",1,0,"C");
-	$pdf->Cell(68,$es,"¿Ocupa o ha ocupado algún puesto político?          Sí (     ) No (  X  )",0,0,"L");
-	$pdf->Cell(9,$es,"¿Cuál?",0,0,"L");
-	$pdf->Cell(50,$es,"",1,1,"L");
-	$pdf->Ln(3);
+	$pdf->Cell(50,4,"APORTACIONES INFONAVIT",1,0,"C");
+	$pdf->Cell(68,4,"¿Ocupa o ha ocupado algún puesto político?          Sí (     ) No (  X  )",0,0,"L");
+	$pdf->Cell(9,4,"¿Cuál?",0,0,"L");
+	$pdf->Cell(50,4,"",1,1,"L");
+	$pdf->Ln(1);
 	
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(177,$es,"Estado Civil:",0,1,"L");
+	$pdf->Cell(177,4,"Estado Civil:",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(177,$es,"Soltero(a) (  X  )     Casado(a) (     )     Sociedad Conyugal (     )     Separación de Bienes (     )     Unión Libre (     )     Otro (     ) ",1,1,"C");
-	$pdf->Ln(3);
+	$pdf->Cell(177,4,"Soltero(a) (  X  )     Casado(a) (     )     Sociedad Conyugal (     )     Separación de Bienes (     )     Unión Libre (     )     Otro (     ) ",1,1,"C");
+	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(29,$es,"Domicilio Fiscal",0,0,"L");
-	$pdf->Cell(30,$es,"¿Corresponde a su domicilio particular?",0,0,"L");
-	$pdf->Cell(59,$es,"(  X  ) Sí",0,0,"C");
-	$pdf->Cell(59,$es,"(     ) No",0,1,"C");
-	$pdf->Ln(3);
+	$pdf->Cell(29,4,"Domicilio Fiscal",0,0,"L");
+	$pdf->Cell(30,4,"¿Corresponde a su domicilio particular?",0,0,"L");
+	$pdf->Cell(59,4,"(  X  ) Sí",0,0,"C");
+	$pdf->Cell(59,4,"(     ) No",0,1,"C");
+	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(118,$es,"Calle:",0,0,"L");
-	$pdf->Cell(29.5,$es,"Número Interior:",0,0,"L");
-	$pdf->Cell(29.5,$es,"Número Exterior:",0,1,"L");
+	$pdf->Cell(118,4,"Calle:",0,0,"L");
+	$pdf->Cell(29.5,4,"Número Interior:",0,0,"L");
+	$pdf->Cell(29.5,4,"Número Exterior:",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(118,$es,$calle,1,0,"C");
+	$pdf->Cell(118,4,$calle,1,0,"C");
 	$aux="";
 	if($numeroint!="")
 		$aux .=$numeroint;
@@ -495,307 +495,312 @@ mysqli_free_result($res2);
 		else
 			$aux .=", mz $mza";
 		}
-	$pdf->Cell(29.5,$es,$aux,1,0,"C");
-	$pdf->Cell(29.5,$es,$numero,1,1,"C");
-	$pdf->Ln(3);
+	$pdf->Cell(29.5,4,$aux,1,0,"C");
+	$pdf->Cell(29.5,4,$numero,1,1,"C");
+	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(50,$es,"Colonia:",0,0,"L");
-	$pdf->Cell(50,$es,"Delegación o Municipio:",0,0,"L");
-	$pdf->Cell(50,$es,"Estado:",0,0,"L");
-	$pdf->Cell(27,$es,"Código Postal:",0,1,"L");
+	$pdf->Cell(50,4,"Colonia:",0,0,"L");
+	$pdf->Cell(50,4,"Delegación o Municipio:",0,0,"L");
+	$pdf->Cell(50,4,"Estado:",0,0,"L");
+	$pdf->Cell(27,4,"Código Postal:",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(50,$es,$colonia,1,0,"C");
-	$pdf->Cell(50,$es,$municipio,1,0,"C");
-	$pdf->Cell(50,$es,$estado,1,0,"C");
-	$pdf->Cell(27,$es,$cp,1,1,"C");
-	$pdf->Ln(3);
+	$pdf->Cell(50,4,$colonia,1,0,"C");
+	$pdf->Cell(50,4,$municipio,1,0,"C");
+	$pdf->Cell(50,4,$estado,1,0,"C");
+	$pdf->Cell(27,4,$cp,1,1,"C");
+	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','BU');
-	$pdf->Cell(177,$es,"Domicilio Particular, llenar sólo en caso de ser diferente al domicilio fiscal",0,1,"L");
+	$pdf->Cell(177,4,"Domicilio Particular, llenar sólo en caso de ser diferente al domicilio fiscal",0,1,"L");
 	
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(118,$es,"Calle:",0,0,"L");
-	$pdf->Cell(29.5,$es,"Número Interior:",0,0,"L");
-	$pdf->Cell(29.5,$es,"Número Exterior:",0,1,"L");
+	$pdf->Cell(118,4,"Calle:",0,0,"L");
+	$pdf->Cell(29.5,4,"Número Interior:",0,0,"L");
+	$pdf->Cell(29.5,4,"Número Exterior:",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(118,$es,$calle,1,0,"C");
-	$pdf->Cell(29.5,$es,$aux,1,0,"C");
-	$pdf->Cell(29.5,$es,$numero,1,1,"C");
-	$pdf->Ln(3);
+	$pdf->Cell(118,4,$calle,1,0,"C");
+	$pdf->Cell(29.5,4,$aux,1,0,"C");
+	$pdf->Cell(29.5,4,$numero,1,1,"C");
+	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(50,$es,"Colonia:",0,0,"L");
-	$pdf->Cell(50,$es,"Delegación o Municipio:",0,0,"L");
-	$pdf->Cell(50,$es,"Estado:",0,0,"L");
-	$pdf->Cell(27,$es,"Código Postal:",0,1,"L");
+	$pdf->Cell(50,4,"Colonia:",0,0,"L");
+	$pdf->Cell(50,4,"Delegación o Municipio:",0,0,"L");
+	$pdf->Cell(50,4,"Estado:",0,0,"L");
+	$pdf->Cell(27,4,"Código Postal:",0,1,"L");
 
 	$pdf->SetFont('Arial','');
-	$pdf->Cell(50,$es,$colonia,1,0,"C");
-	$pdf->Cell(50,$es,$municipio,1,0,"C");
-	$pdf->Cell(50,$es,$estado,1,0,"C");
-	$pdf->Cell(27,$es,$cp,1,1,"C");
+	$pdf->Cell(50,4,$colonia,1,0,"C");
+	$pdf->Cell(50,4,$municipio,1,0,"C");
+	$pdf->Cell(50,4,$estado,1,0,"C");
+	$pdf->Cell(27,4,$cp,1,1,"C");
 	$pdf->Ln(2);
 
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->SetFillColor(207,207,207);
-	$pdf->Cell(177,$es,"B - RECURSOS DE LA CUENTA",0,1,'L',true);
+	$pdf->Cell(177,4,"B - RECURSOS DE LA CUENTA",0,1,'L',true);
 
-	$pdf->SetFont('Arial','B',$fs);
-	$pdf->Cell(177,$es,"I. Propietario real de los recursos",0,1,'L');
+	$pdf->SetFont('Arial','B',$es);
+	$pdf->Cell(177,3,"I. Propietario real de los recursos",0,1,'L');
 
-	$pdf->SetFont('Arial','',$fs);
-	$pdf->Cell(100,$es,"Los recursos que se van a manejar en la cuenta son propios o provienen de un tercero",0,0,'L');	
-	$pdf->Cell(6,6,"",1,0,'C');
-	$pdf->Cell(10,$es,"Propios",0,0,'C');
-	$pdf->Cell(10,6,"",0,0,'C');
-	$pdf->Cell(6,6,"X",1,0,'C');	
-	$pdf->Cell(15,$es,"Terceros",0,1,'L');	
-	$pdf->Ln(3);
-	$pdf->Cell(177,0,"Nota: En caso de existir un tercero o propietario real de los recursos (sea persona física o moral), deberá entregarse la documentación comprobatoria tanto de la identificación como del",0,1,'L');
-	$pdf->Cell(177,$es,"domicilio, así como proporcionar la información adicional que le requiera el promotor a través de un cuestionario.",0,1,'L');
-	$pdf->Ln(50);
+	$pdf->SetFont('Arial','',$es);
+	$pdf->Cell(100,3,"Los recursos que se van a manejar en la cuenta son propios o provienen de un tercero",0,0,'L');	
+	$pdf->Cell(4,3,"",1,0,'C');
+	$pdf->Cell(12,3,"Propios",0,0,'C');
+	$pdf->Cell(12,3,"",0,0,'C');
+	$pdf->Cell(4,3,"X",1,0,'C');	
+	$pdf->Cell(15,3,"Terceros",0,1,'L');	
+	$pdf->Ln(2);
+	$pdf->Cell(177,1,"Nota: En caso de existir un tercero o propietario real de los recursos (sea persona física o moral), deberá entregarse la documentación comprobatoria tanto de la identificación como del",0,1,'L');
+	$pdf->Cell(177,4,"domicilio, así como proporcionar la información adicional que le requiera el promotor a través de un cuestionario.",0,1,'L');
+	$pdf->Ln(0);
 
-	$pdf->SetFont('Arial','B',$fs);
-	$pdf->Cell(177,$es,"II. Origen y destino de los recursos",0,1,'L');
+	$pdf->SetFont('Arial','B',$es);
+	$pdf->Cell(177,4,"II. Origen y destino de los recursos",0,1,'L');
 
 	$pdf->SetDash(0.5,0.5);
-	$pdf->Cell(114,64,"",1,0);
-	$pdf->Cell(63,64,"",1,0);
-	$pdf->Ln(2);
+	$pdf->Cell(114,50,"",1,0);
+	$pdf->Cell(63,50,"",1,0);
+	$pdf->Ln(0);
 
 	$pdf->SetDash(0,0);
-	$pdf->SetFont('Arial','',$fs);
-	$pdf->Cell(118,$es,"Origen de los recursos:",0,0,'L');
-	$pdf->Cell(59,$es,"Destino de los recursos:",0,1,'L');
-	$pdf->Cell(30,$es,"Patrimonio /Ahorro",0,0,'R');
+	$pdf->SetFont('Arial','',$es);
+	$pdf->Cell(118,4,"Origen de los recursos:",0,0,'L');
+	$pdf->Cell(59,4,"Destino de los recursos:",0,1,'L');
+	$pdf->Cell(30,4,"Patrimonio /Ahorro",0,0,'R');
 	$pdf->Cell(20,4,"X",1,0,'L');
-	$pdf->Cell(9,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Rifas, premios, sorteos",0,0,'R');
+	$pdf->Cell(9,4,"",0,0,'L');
+	$pdf->Cell(30,4,"Rifas, premios, sorteos",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(19,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Administración de Gastos e Ingresos",0,0,'R');
+	$pdf->Cell(19,4,"",0,0,'L');
+	$pdf->Cell(30,4,"Administración de Gastos e Ingresos",0,0,'R');
 	$pdf->Cell(10,4,"",1,1,'L');
-	$pdf->Ln(2);
+	$pdf->Ln(1);
 
-	$pdf->Cell(30,$es,"Venta de Negocio",0,0,'R');
+	$pdf->Cell(30,4,"Venta de Negocio",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(9,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Comisiones",0,0,'R');
+	$pdf->Cell(9,4,"",0,0,'L');
+	$pdf->Cell(30,4,"Comisiones",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(19,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Concertación de Fondos",0,0,'R');
+	$pdf->Cell(19,4,"",0,0,'L');
+	$pdf->Cell(30,4,"Concertación de Fondos",0,0,'R');
 	$pdf->Cell(10,4,"",1,1,'L');
-	$pdf->Ln(2);
+	$pdf->Ln(1);
 
-	$pdf->Cell(30,$es,"Beca",0,0,'R');
+	$pdf->Cell(30,4,"Beca",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(9,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Honorarios",0,0,'R');
+	$pdf->Cell(9,4,"",0,0,'L');
+	$pdf->Cell(30,4,"Honorarios",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(19,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Crédito",0,0,'R');
+	$pdf->Cell(19,4,"",0,0,'L');
+	$pdf->Cell(30,4,"Crédito",0,0,'R');
 	$pdf->Cell(10,4,"",1,1,'L');
-	$pdf->Ln(2);
+	$pdf->Ln(1);
 
-	$pdf->Cell(30,$es,"Bono Laboral",0,0,'R');
+	$pdf->Cell(30,4,"Bono Laboral",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(9,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Inversión",0,0,'R');
+	$pdf->Cell(9,4,"",0,0,'L');
+	$pdf->Cell(30,4,"Inversión",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(19,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Cuenta de Inversión",0,0,'R');
+	$pdf->Cell(19,4,"",0,0,'L');
+	$pdf->Cell(30,4,"Cuenta de Inversión",0,0,'R');
 	$pdf->Cell(10,4,"",1,1,'L');
-	$pdf->Ln(2);
+	$pdf->Ln(1);
 
-	$pdf->Cell(30,$es,"Venta de Inmuebles",0,0,'R');
+	$pdf->Cell(30,4,"Venta de Inmuebles",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(9,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Rentas",0,0,'R');
+	$pdf->Cell(9,4,"",0,0,'L');
+	$pdf->Cell(30,4,"Rentas",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(19,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Pago Proveedores",0,0,'R');
+	$pdf->Cell(19,4,"",0,0,'L');
+	$pdf->Cell(30,4,"Pago Proveedores",0,0,'R');
 	$pdf->Cell(10,4,"",1,1,'L');
-	$pdf->Ln(2);
+	$pdf->Ln(1);
 
-	$pdf->Cell(30,$es,"Sueldo",0,0,'R');
+	$pdf->Cell(30,4,"Sueldo",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(9,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Rifas, premios, sorteos",0,0,'R');
+	$pdf->Cell(9,4,"",0,0,'L');
+	$pdf->Cell(30,4,"Rifas, premios, sorteos",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(19,$es,"",0,0,'L');
-	$pdf->Cell(10,$es,"Otro, Especifique",0,0,'R');
-	$pdf->Cell(30,$es,"",'B',1,'L');
+	$pdf->Cell(19,4,"",0,0,'L');
+	$pdf->Cell(10,4,"Otro, Especifique",0,0,'R');
+	$pdf->Cell(30,4,"",'B',1,'L');
+	$pdf->Ln(1);
 
-	$pdf->Cell(30,$es,"Venta de Activos",0,0,'R');
+	$pdf->Cell(30,4,"Venta de Activos",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(9,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Sueldos",0,0,'R');
+	$pdf->Cell(9,4,"",0,0,'L');
+	$pdf->Cell(30,4,"Sueldos",0,0,'R');
 	$pdf->Cell(20,4,"",1,1,'L');
-	$pdf->Ln(2);
+	$pdf->Ln(1);
 
-	$pdf->Cell(30,$es,"Liquidación o finiquito",0,0,'R');
+	$pdf->Cell(30,4,"Liquidación o finiquito",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(9,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Venta de productos/ servicios",0,0,'R');
+	$pdf->Cell(9,4,"",0,0,'L');
+	$pdf->Cell(30,4,"Venta de productos/ servicios",0,0,'R');
 	$pdf->Cell(20,4,"",1,1,'L');
-	$pdf->Ln(2);
+	$pdf->Ln(1);
 
-	$pdf->Cell(30,$es,"Jubilaciones y Pensiones",0,0,'R');
+	$pdf->Cell(30,4,"Jubilaciones y Pensiones",0,0,'R');
 	$pdf->Cell(20,4,"",1,0,'L');
-	$pdf->Cell(9,$es,"",0,0,'L');
-	$pdf->Cell(30,$es,"Otro, Especifique ",0,0,'R');
-	$pdf->Cell(20,$es,"",'B',1,'L');
+	$pdf->Cell(9,4,"",0,0,'L');
+	$pdf->Cell(20,4,"Otro, Especifique ",0,0,'R');
+	$pdf->Cell(30,4,"",'B',1,'L');
 	$pdf->Ln(3);
 
-	$pdf->SetFont('Arial','B');
-	$pdf->Cell(20,$es,"TIPO",0,0,'R');
-	$pdf->Cell(156,$es,"",'B',1,'L');
-	$pdf->Ln(2);
+	$pdf->SetFont('Arial','B',$es);
+	$pdf->Cell(20,4,"TIPO",0,0,'R');
+	$pdf->Cell(156,4,"",'B',1,'L');
+	$pdf->Ln(1);
 
-	$pdf->SetFont('Arial','B');
-	$pdf->Cell(20,$es,"OBJETO",0,0,'R');
-	$pdf->Cell(156,$es,"",'B',1,'L');
-	$pdf->Ln(2);
+	$pdf->SetFont('Arial','B',$es);
+	$pdf->Cell(20,4,"OBJETO",0,0,'R');
+	$pdf->Cell(156,4,"",'B',1,'L');
+	$pdf->Ln(1);
 
-	$pdf->SetFont('Arial','B');
-	$pdf->Cell(20,$es,"PATRIMONIO",0,0,'R');
-	$pdf->Cell(156,$es,"",'B',1,'L');
-	$pdf->Ln(2);
+	$pdf->SetFont('Arial','B',$es);
+	$pdf->Cell(20,4,"PATRIMONIO",0,0,'R');
+	$pdf->Cell(156,4,"",'B',1,'L');
+	$pdf->Ln(5);
 
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->SetFillColor(207,207,207);
-	$pdf->Cell(177,$es,"DECLARACIONES IMPORTANTES DEL FIDEICOMITENTE",1,1,'C',true);
+	$pdf->Cell(177,4,"DECLARACIONES IMPORTANTES DEL FIDEICOMITENTE",1,1,'C',true);
 
-	$pdf->Cell(177,150,"",1,0,'J');
+	$pdf->Cell(177,22,"",1,0,'J');
 	$pdf->Ln(2);
 
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(3,0,"1.- ",0,0,'J');
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->Cell(22,0,"EL FIDEICOMITENTE ",0,0,'J');
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(152,0,"tiene conocimiento de que el llenado y entrega de esta solicitud no compromete al Grupo Financiero BX+( en adelante BX+) a otorgar ningún tipo de servicio.",0,1,'J');
 	$pdf->Ln(3);
 
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(11,0,"2.- Declara ",0,0,'J');
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->Cell(22,0,"EL FIDEICOMITENTE ",0,0,'J');
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(74,0,"que los datos e información proporcionada es correcta y verídica, y  autoriza a ",0,0,'J');
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->Cell(5,0,"BX+",0,0,'J');
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(65,0,"a verificarla en las ocasiones que se consideren pertinentes.",0,1,'J');
 	$pdf->Ln(3);
 
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(3,0,"3.- ",0,0,'J');
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->Cell(22,0,"EL FIDEICOMITENTE ",0,0,'J');
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(10,0,"autoriza a ",0,0,'J');
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->Cell(5,0,"BX+ ",0,0,'J');
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(137,0,"a conservar y utilizar para los fines de su objeto la presente solicitud y/o información contenida en la misma, en la que se conoce el aviso de ",0,1,'J');
 	$pdf->Ln(3);
-	$pdf->SetFont('Arial','',$fs);
+
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(13,0,"privacidad de ",0,0,'J');
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->Cell(5,0,"BX+, ",0,0,'J');
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(106,0,"y se da por enterado de que puede consultar modificaciones o actualizaciones al mismo en la página de internet ",0,0,'J');
 	$pdf->SetFont('Arial','B',$fs);
 	$pdf->Cell(53,0,"www.vepormas.com.mx.",0,0,'J');
 	$pdf->Ln(3);
 
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(3,0,"4.- ",0,0,'J');
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->Cell(22,0,"EL FIDEICOMITENTE ",0,0,'J');
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(152,0,"declara que los fondos y/o bienes que pondrá a disposición para que se proporcionen los servicios fiduciarios serán de su propiedad y provendrán de fuentes ",0,1,'J');
 	$pdf->Ln(3);
 	$pdf->Cell(177,0,"licitas.",0,1,'J');
 	$pdf->Ln(3);
 
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(3,0,"5.- ",0,0,'J');
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->Cell(22,0,"EL FIDEICOMITENTE ",0,0,'J');
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(10,0,"informa a ",0,0,'J');
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->Cell(5,0,"BX+ ",0,0,'J');
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(137,0,"que ________ (SI/NO) ha estado desempeñando en el último año funciones públicas destacadas en el territorio nacional o internacional en: ",0,1,'J');
 	$pdf->Ln(3);
-	$pdf->SetFont('Arial','',$fs);
+
+	$pdf->Cell(177,132,"",1,0,'J');
+	$pdf->Ln(2);
+
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(177,0,"gobiernos federales, estatales, municipales, organismos judiciales, partidos políticos, o puestos de alta jerarquía en empresas estatales o en el ámbito militar. En la aceptación o negación ",0,1,'J');
 	$pdf->Ln(3);
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(177,0,"de esta declaración deberán considerarse cónyuge, concubina, concubinario, y las personas con las que mantenga parentesco por consanguinidad o afinidad hasta en segundo grado.",0,1,'J');
 	$pdf->Ln(3);
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(177,0,"6. En este acto de manera expresa el firmante autoriza a BX+ para que pueda verificar con el Sistema de Administración Tributaria (SAT) que la clave en el RFC y los datos de ",0,1,'J');
 	$pdf->Ln(3);
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(177,0,"identificación del firmante, correspondan a los que el SAT tiene registrados en su base de datos.  Así mismo, autoriza a Bx+ para que incluya la clave del RFC validada o proporcionada ",0,1,'J');
 	$pdf->Ln(3);
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(177,0,"por el SAT en los estados de cuenta, declaraciones o avisos de los diversos productos contratados con Bx+, para dar cumplimiento a lo establecido en las fracciones V, IX y X del Art. ",0,1,'J');
 	$pdf->Ln(3);
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(177,0,"32-B del Código Fiscal de la Federación para 2014.",0,1,'J');
 	$pdf->Ln(3);
-	$pdf->SetFont('Arial','',$fs);
-	$pdf->Cell(177,0,"7. ¿Desempeña de manera habitual o profesional alguna de las siguientes actividades?",0,1,'J');
-	$pdf->Ln(3);
+	$pdf->SetFont('Arial','',$es);
+	$pdf->Cell(177,2,"7. ¿Desempeña de manera habitual o profesional alguna de las siguientes actividades?",0,1,'J');
 
-	$pdf->SetFont('Arial','',$fs);
-	$pdf->Cell(80,$es,"",0,0,'L');
-	$pdf->Cell(4,$es,"Sí",0,0,'L');
-	$pdf->Cell(4,$es,"No",0,0,'L');
-	$pdf->Cell(79,$es,"",0,0,'L');
-	$pdf->Cell(4,$es,"Sí",0,0,'L');
-	$pdf->Cell(4,$es,"No",0,1,'L');
-	$pdf->Cell(0.5,$es,"",0,0,'L');
+	$pdf->SetFont('Arial','',$es);
+	$pdf->Cell(80,3,"",0,0,'L');
+	$pdf->Cell(4,3,"Sí",0,0,'L');
+	$pdf->Cell(4,3,"No",0,0,'L');
+	$pdf->Cell(79,3,"",0,0,'L');
+	$pdf->Cell(4,3,"Sí",0,0,'L');
+	$pdf->Cell(4,3,"No",0,1,'L');
+	$pdf->Cell(0.5,3,"",0,0,'L');
 
 	$pdf->Cell(79.5,3,"a) ¿Aquellas vinculadas con apuesta, concursos o sorteos?",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
 	$pdf->Cell(4,3,"X",1,0,'L');
-	$pdf->Cell(0.5,$es,"",0,0,'L');
+	$pdf->Cell(0.5,3,"",0,0,'L');
 	$pdf->Cell(78.5,3,"i) ¿Prestación  de servicios de blindaje de vehículos terrestres, nuevos o usados,",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
 	$pdf->Cell(4,3,"X",1,1,'L');
 	$pdf->Cell(121,3,"así como de bienes inmuebles?",0,0,'R');
-	$pdf->Cell(0.5,$es,"",0,1,'L');
+	$pdf->Cell(0.5,3,"",0,1,'L');
 
 	$pdf->Cell(80,3,"b) ¿Emisión o comercialización de tarjetas que constituyan instrumentos de",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
 	$pdf->Cell(4,3,"X",1,1,'L');
 	$pdf->Cell(80,3,"almacenamiento de valor monetario?",0,0,'L');
-	$pdf->Cell(0.5,$es,"",0,0,'L');
+	$pdf->Cell(0.5,3,"",0,0,'L');
 	$pdf->Cell(80,-3,"j) ¿Prestación de servicios de traslado o custodia de dinero o valores, con",0,0,'R');
-	$pdf->Cell(6.5,$es,"",0,0,'L');
+	$pdf->Cell(6.5,3,"",0,0,'L');
 	$pdf->Cell(4,-3,"",1,0,'R');
 	$pdf->Cell(4,-3,"X",1,1,'R');
 	$pdf->Cell(157,9,"excepción de aquellos en los que intervenga BANXICO e instituciones",0,1,'R');
 	$pdf->Cell(123,-3,"dedicadas al depósito de valores?",0,0,'R');
-	$pdf->Cell(0.5,$es,"",0,1,'L');
+	$pdf->Cell(0.5,0,"",0,1,'L');
 
 	$pdf->Cell(80,3,"c) ¿Emisión y comercialización habitual o profesional de cheques de viajero?",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
 	$pdf->Cell(4,3,"X",1,0,'L');
-	$pdf->Cell(0.5,$es,"",0,0,'L');
+	$pdf->Cell(0.5,3,"",0,0,'L');
 	$pdf->Cell(78.5,3,"k) ¿Prestación de servicios de fe pública (Notarios o corredores públicos )?",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
 	$pdf->Cell(4,3,"X",1,0,'L');
-	$pdf->Cell(0.5,$es,"",0,1,'L');
+	$pdf->Cell(0.5,4,"",0,1,'L');
 
 	$pdf->Cell(80,3,"d) ¿Ofrecimiento de operaciones de mutuo o de garantía o de otorgamiento",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
@@ -813,7 +818,7 @@ mysqli_free_result($res2);
 	$pdf->Cell(167,-3,"operación y administración de sociedades mercantiles, o;  constitución, escisión,",0,1,'R');
 	$pdf->Cell(168,9,"fusión, operación y administración de personas morales o vehículos corporativos,",0,1,'R');
 	$pdf->Cell(156.5,-3,"incluido el fideicomiso y la compra o venta de entidades mercantiles?",0,0,'R');
-	$pdf->Cell(0.5,3,"",0,1,'L');
+	$pdf->Cell(0.5,0,"",0,1,'L');
 
 	$pdf->Cell(80,3,"e) ¿Prestación de servicios de construcción o desarrollo de bienes inmuebles o",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
@@ -831,7 +836,7 @@ $y=$pdf->GetY();
 	$pdf->Cell(4,3,"",0,0,'R');
 	$pdf->Cell(4,3,"",0,1,'R');
 	$pdf->Cell(105,-21,"fines de lucro?",0,0,'R');
-	$pdf->Cell(0.5,3,"",0,1,'R');
+	$pdf->Cell(0.5,0,"",0,1,'R');
 
 $x2=$pdf->GetX();
 $y2=$pdf->GetY();
@@ -842,7 +847,6 @@ $y2=$pdf->GetY();
 	$pdf->Cell(4,3,"X",1,1,'R');
 	$pdf->SetX($x2);
 	$pdf->SetY($y2);
-
 
 	$pdf->Cell(80,3,"f) ¿La comercialización o intermediación habitual o profesional de Metales",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
@@ -859,40 +863,37 @@ $y2=$pdf->GetY();
 	$pdf->Cell(161.5,-3,"para la elaboración de tarjetas de pago; joyas, relojes, Piedras Preciosas y",0,1,'R');
 	$pdf->Cell(162.5,9,"Metales Preciosos; obras de arte; materiales de resistencia balística para la",0,1,'R');
 	$pdf->Cell(137.5,-3,"prestación de servicios de blindaje de vehículos?",0,0,'R');
-	$pdf->Cell(0.5,3,"",0,1,'L');
-
-	$pdf->Cell(177,35,"",1,0,'J');
-	$pdf->Ln(2);
+	$pdf->Cell(0.5,1,"",0,1,'L');
 
 	$pdf->Cell(80,3,"g) ¿La subasta o comercialización de obras de arte?",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
 	$pdf->Cell(4,3,"X",1,0,'L');
-	$pdf->Cell(0.5,$es,"",0,0,'L');
+	$pdf->Cell(0.5,3,"",0,0,'L');
 	$pdf->Cell(78,3,"o) ¿Constitución de derechos personales de uso o goce de bienes inmuebles?",0,0,'L');
-	$pdf->Cell(0.5,$es,"",0,0,'L');
+	$pdf->Cell(0.5,3,"",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
 	$pdf->Cell(4,3,"X",1,0,'L');
-	$pdf->Cell(0.5,$es,"",0,1,'L');
+	$pdf->Cell(0.5,4,"",0,1,'L');
 
 	$pdf->Cell(80,3,"h) ¿Comercialización o distribución de vehículos, nuevos o usados, ya sean",0,0,'L');
 	$pdf->Cell(4,3,"",1,0,'L');
 	$pdf->Cell(4,3,"X",1,0,'L');
-	$pdf->Cell(0.5,$es,"",0,1,'L');
-	$pdf->Cell(80,-3,"aéreos, marítimos o terrestres?",0,1,'L');
-	$pdf->Ln(15);
+	$pdf->Cell(0.5,3,"",0,1,'L');
+	$pdf->Cell(80,3,"aéreos, marítimos o terrestres?",0,1,'L');
+	$pdf->Ln(10);
 
-	$pdf->Cell(15,$es,"",0,0,"C");
-	$pdf->Cell(59,$es,"Nombre y firma del fideicomitente",'T',0,"C");
-	$pdf->Ln(12);
+	$pdf->Cell(15,3,"",0,0,"C");
+	$pdf->Cell(59,3,"Nombre y firma del fideicomitente",'T',0,"C");
+	$pdf->Ln(5);
 
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->SetFillColor(207,207,207);
-	$pdf->Cell(177,$es,"AVISO DE PRIVACIDAD DE GRUPO FINANCIERO VE POR MÁS",1,1,'C',true);
+	$pdf->Cell(177,4,"AVISO DE PRIVACIDAD DE GRUPO FINANCIERO VE POR MÁS",1,1,'C',true);
 
-	$pdf->Cell(177,115,"",1,0,'J');
-	$pdf->Ln(2);
+	$pdf->Cell(177,105,"",1,0,'J');
+	$pdf->Ln(1);
 
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(177,3,"Grupo Financiero Ve por Más, (en adelante “BX+”), en congruencia con su política de privacidad, así como con su objetivo de delimitar los alcances y condiciones generales del",0,1,'J');
 	$pdf->Cell(177,3,"tratamiento a los datos personales, acorde a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (en adelante la “Ley”), su reglamento y demás",0,1,'J');
 	$pdf->Cell(177,3,"normatividad aplicable, al respecto le informa lo siguiente:",0,1,'J');
@@ -923,19 +924,18 @@ $y2=$pdf->GetY();
 	$pdf->Cell(177,3,"4. Cambios al presente Aviso de Privacidad.",0,1,'J');
 	$pdf->Cell(177,3," “BX+” se compromete a mantenerlo informado sobre los cambios que pueda sufrir el presente Aviso de Privacidad, a través de la página de internet  www.vepormas.com.mx",0,1,'J');
 	$pdf->Cell(177,3,"He leído y estoy de acuerdo con los términos del Aviso de Privacidad.",0,1,'J');
-	$pdf->Ln(15);
+	$pdf->Ln(10);
 
-	$pdf->Cell(15,$es,"",0,0,"C");
-	$pdf->Cell(59,$es,"Nombre y firma del fideicomitente",'T',0,"C");
-	$pdf->Ln(30);
+	$pdf->Cell(15,4,"",0,0,"C");
+	$pdf->Cell(59,4,"Nombre y firma del fideicomitente",'T',0,"C");
+	$pdf->Ln(7);
 
-
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->Cell(20,3,"Lugar:",0,0,'R');
-	$pdf->SetFont('Arial','',$fs);
+	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(40,3,$lugar,'B',0,"C");
 	$pdf->Cell(10,$es,"",0,0,"C");
-	$pdf->SetFont('Arial','B',$fs);
+	$pdf->SetFont('Arial','B',$es);
 	$pdf->Cell(20,3,"Fecha de la solicitud:",0,0,'R');
 	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(10,3,$dia,'B',0,"C");
@@ -948,8 +948,7 @@ $y2=$pdf->GetY();
 	$pdf->SetFont('Arial','',$es);
 	$pdf->Cell(15,3,$anio,'B',1,"C");
 
-	
-	$pdf->Cell(245,4.5,"D  D                                  M  M                                   A  A  A  A",0,0,"C");
+	$pdf->Cell(245,3,"D  D                                  M  M                                   A  A  A  A",0,0,"C");
 
 $pdf->Output();//muestro el pdf
 

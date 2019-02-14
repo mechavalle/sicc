@@ -84,19 +84,20 @@ $consulta .=$consulta2."ORDER BY nombre";
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../img/icono.png" type="image/x-icon">
-	<title>Consulta de Usuarios</title>
-	<SCRIPT LANGUAGE="JavaScript" SRC="../lib/fns.js"></SCRIPT>
-	<link rel="stylesheet" href="../lib/boot/css/bootstrap.min.css">
-	<script src="../lib/jquery-2.1.1.min.js"></script>
-	<script src="../lib/boot/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="../lib/fw/css/font-awesome.min.css">
-	<SCRIPT LANGUAGE="JavaScript">
+<title>Consulta de Usuarios</title>
+<SCRIPT LANGUAGE="JavaScript" SRC="../lib/fns.js"></SCRIPT>
+<link rel="stylesheet" href="../lib/boot/css/bootstrap.min.css">
+<script src="../lib/jquery-2.1.1.min.js"></script>
+<script src="../lib/boot/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../lib/fw/css/font-awesome.min.css">
+<link rel="stylesheet" href="../lib/style.css">
+<SCRIPT LANGUAGE="JavaScript">
 		function alcargar()
 			{
 		<? if($todos==1){?>
-			document.getElementById("divregistros").innerHTML="<b>"+document.edicion.i.value+" Usuarios Totales</b><br><a href='#' onClick='document.edicion.todos.value=0; document.edicion.submit();'>"+document.edicion.k.value+" Usuarios con Acceso a <? echo $razon;?></a>";
+			document.getElementById("divregistros").innerHTML="<b>"+document.edicion.i.value+" Usuarios Totales</b>";
 		<?} if($todos==0){?>
-			document.getElementById("divregistros").innerHTML="<a href='#' onClick='document.edicion.todos.value=1; document.edicion.submit();'>"+document.edicion.i.value+" Usuarios Totales</a><br><b>"+document.edicion.k.value+" Usuarios con Acceso a <? echo $razon;?></b>";
+			document.getElementById("divregistros").innerHTML="<a href='#' onClick='document.edicion.todos.value=1; document.edicion.submit();'>"+document.edicion.i.value+" Usuarios Totales</a><br>";
 		<?}?>
 			}
 	</SCRIPT>
@@ -112,8 +113,6 @@ $consulta .=$consulta2."ORDER BY nombre";
 	<p>
 	<h3><font color="#888888">Consulta <font color='#ff0000'>Usuarios</font></font></h3>
 	</p>
-
-	<br>
 
 	<div class="well well-sm">
 		<table border="0" width="100%" id="table5" cellspacing="0" cellpadding="0">
@@ -215,6 +214,10 @@ $consulta .=$consulta2."ORDER BY nombre";
 <input type="hidden" name="todos" <?echo "value='$todos'";?>>
 <input type="hidden" name="i" <?echo "value='$i'";?>>
 <input type="hidden" name="k" <?echo "value='$k'";?>>
+<?
+echo "<br>";
+include("../main/f_footer.php");
+?>
 </form>
 </body>
 </html>

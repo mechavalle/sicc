@@ -37,11 +37,13 @@ else
 <link rel="icon" href="../img/icono.png" type="image/x-icon">
 <title>Catálogos</title>
 <link rel="stylesheet" href="../lib/boot/css/bootstrap.min.css">
+<link rel="stylesheet" href="../lib/fw/css/font-awesome.min.css">
 <script src="../lib/jquery-2.1.1.min.js"></script>
 <script src="../lib/boot/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="../lib/fw/css/font-awesome.min.css">
 <SCRIPT LANGUAGE="JavaScript" SRC="../lib/fns.js"></SCRIPT>
+<link type="text/css" rel="stylesheet" href="../lib/stlinks.css" media="screen"></link>
 <SCRIPT LANGUAGE="JavaScript" SRC="../lib/popup.js"></SCRIPT>
+<link rel="stylesheet" href="../lib/style.css">
 <SCRIPT LANGUAGE="JavaScript">
 
 function selecciona(menu)
@@ -115,6 +117,7 @@ function activa(submenu)
 
 		<ul class='nav nav-tabs'>
 		<? echo "<li id='mnugeneral'><a href='#' onclick=\"selecciona('general');\"><span>General</span></a></li>"; ?>
+		<? echo "<li id='mnuclientes'><a href='#' onclick=\"selecciona('clientes');\"><span>Clientes</span></a></li>"; ?>
 		<? echo "<li id='mnuoperacion'><a href='#' onclick=\"selecciona('operacion');\"><span>Operación</span></a></li>"; ?>
 		
 		</ul>
@@ -125,9 +128,16 @@ function activa(submenu)
 			  echo "<li id='cubestadosrep'><a href='#' onclick=\"activa('estadosrep');  midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_estadosrep';\"><span>Estados de la república</span></a></li>"; 
 			  echo "<li id='cubbancos'><a href='#' onclick=\"activa('bancos'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_instituciones';\"><span>Instituciones Bancarias</span></a></li>";
 			  echo "<li id='cubescolaridad'><a href='#' onclick=\"activa('escolaridad'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_escolaridad';\"><span>Escolaridad</span></a></li>";
-
 			  echo "<li id='cubedocivil'><a href='#' onclick=\"activa('edocivil'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_ecivil';\"><span>Estado civil</span></a></li>";
+			  echo "<li id='cubparentesco'><a href='#' onclick=\"activa('parentesco'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_parentezco';\"><span>Parentesco</span></a></li>";
+			  ?>
+			</ul>
+			<br>
+		</div>
 
+		<div id="subclientes" class="invisible">
+			<ul class="nav nav-pills">
+			  <?
 			  echo "<li id='cubrecursos'><a href='#' onclick=\"activa('recursos'); midwindow.location.href='../modClientes/f_consultarecursos.php?titulo=0';\"><span>Recursos de Ingreso y Egreso</span></a></li>";
 
 			  echo "<li id='cubproducto'><a href='#' onclick=\"activa('producto'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_creproductos';\"><span>Productos Crédito</span></a></li>";
@@ -138,8 +148,7 @@ function activa(submenu)
 
 			  echo "<li id='cubplazo'><a href='#' onclick=\"activa('plazo'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_creplazo';\"><span>Plazo Crédito</span></a></li>";
 
-			  echo "<li id='cubparentesco'><a href='#' onclick=\"activa('parentesco'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_parentezco';\"><span>Parentesco</span></a></li>";
-
+			  echo "<li id='cubstatusc'><a href='#' onclick=\"activa('statusc'); midwindow.location.href='f_consultaregsc.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_statuscliente';\"><span>Status</span></a></li>";
 			  ?>
 			</ul>
 			<br>
@@ -151,44 +160,15 @@ function activa(submenu)
 
 			   echo "<li id='cubintegradora'><a href='#' onclick=\"activa('integradora'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_integradoras';\"><span>Integradoras</span></a></li>";
 
-			    echo "<li id='cubadmin'><a href='#' onclick=\"activa('admin'); midwindow.location.href='../modClientes/f_consultaentidades.php?tipo=1';\"><span>Administradoras</span></a></li>";
+			    echo "<li id='cubadmin'><a href='#' onclick=\"activa('admin'); midwindow.location.href='../modClientes/f_consultaentidades.php?titulo=0&tipo=1';\"><span>Administradoras</span></a></li>";
 
-			     echo "<li id='cubconstru'><a href='#' onclick=\"activa('constru'); midwindow.location.href='../modClientes/f_consultaentidades.php?tipo=2';\"><span>Constructoras</span></a></li>";
+			     echo "<li id='cubconstru'><a href='#' onclick=\"activa('constru'); midwindow.location.href='../modClientes/f_consultaentidades.php?titulo=0&tipo=2';\"><span>Constructoras</span></a></li>";
 
-			      echo "<li id='cubverifica'><a href='#' onclick=\"activa('verifica'); midwindow.location.href='../modClientes/f_consultaentidades.php?tipo=3';\"><span>Verificadoras</span></a></li>";
+			      echo "<li id='cubverifica'><a href='#' onclick=\"activa('verifica'); midwindow.location.href='../modClientes/f_consultaentidades.php?titulo=0&tipo=3';\"><span>Verificadoras</span></a></li>";
 
 			   echo "<li id='cubdocmusts'><a href='#' onclick=\"activa('docmusts'); midwindow.location.href='f_consultaregs.php?permiso=AdminCatalogos&minlev=1&maxlev=1&desc=&tabla=cat_docsmust';\"><span>Documentos Obligatorios</span></a></li>";
 
 			  ?>
-			</ul>
-			<br>
-		</div>
-
-		<div id="sublineas" class="invisible">
-			<ul class="nav nav-pills">
-			  <?  echo "<li id='cubtipolineas'><a href='#' onclick=\"activa('tipolineas');  midwindow.location.href='../modMain/f_consultaregs.php?permiso=AdminLineas&minlev=1&maxlev=3&desc=&tabla=cat_invlineas';\"><span>Líneas de Producto</span></a></li>"; ?>
-			</ul>
-			<br>
-		</div>
-
-		<div id="submonedas" class="invisible">
-			<ul class="nav nav-pills">
-			  <?  echo "<li id='cubtipomonedas'><a href='#' onclick=\"activa('tipomonedas');  midwindow.location.href='../modMain/f_consultaregs.php?permiso=AdminIndirectos&minlev=1&maxlev=1&desc=&tabla=cat_monedas';\"><span>Monedas</span></a></li>"; ?>
-			</ul>
-			<br>
-		</div>
-
-		<div id="subproductos" class="invisible">
-			<ul class="nav nav-pills">
-				<? 
-					echo "<li id='cubproduct'><a href='#' onclick=\"activa('product'); midwindow.location.href='../modInventario/f_consultaproductos.php?titulo=0';\"><span>Productos</span></a></li>";
-					echo "<li id='cubtip'><a href='#' onclick=\"activa('tip'); midwindow.location.href='../modInventario/f_consultatipoproducto.php';\"><span>Tipo de Productos</span></a></li>"; 
-					echo "<li id='cubuni'><a href='#' onclick=\"activa('uni'); midwindow.location.href='../modInventario/f_consultaunidades.php?titulo=0';\"><span>Unidades de Producto</span></a></li>";
-					echo "<li id='cubmarcas'><a href='#' onclick=\"activa('marcas'); midwindow.location.href='../modMain/f_consultaregs.php?permiso=AdminIndirectos&minlev=1&maxlev=1&desc=&tabla=cat_marcas';\"><span>Marcas de Producto</span></a></li>";
-					echo "<li id='cubcondiciones'><a href='#' onclick=\"activa('condiciones'); midwindow.location.href='../modMain/f_consultaregs.php?permiso=AdminIndirectos&minlev=1&maxlev=1&desc=&tabla=cat_condiciones';\"><span>Condiciones de Pago</span></a></li>";
-					echo "<li id='cubentrega'><a href='#' onclick=\"activa('entrega'); midwindow.location.href='../modMain/f_consultaregs.php?permiso=AdminIndirectos&minlev=1&maxlev=1&desc=&tabla=cat_tipoentrega';\"><span>Tipo de Entrega</span></a></li>";
-					echo "<li id='cublab'><a href='#' onclick=\"activa('lab'); midwindow.location.href='../modMain/f_consultaregs.php?permiso=AdminIndirectos&minlev=1&maxlev=1&desc=&tabla=cat_tipolab';\"><span>Tipos L.A.B.</span></a></li>";
-					?>
 			</ul>
 			<br>
 		</div>
@@ -198,11 +178,11 @@ function activa(submenu)
 		<script>
 			if (window.innerHeight){ 
 			   //navegadores basados en mozilla 
-			   espacio_iframe = window.innerHeight - 100 
+			   espacio_iframe = window.innerHeight - 225 
 			}else{ 
 			   if (document.body.clientHeight){ 
 			      //Navegadores basados en IExplorer, es que no tengo innerheight 
-			      	espacio_iframe = document.body.clientHeight - 100
+			      	espacio_iframe = document.body.clientHeight - 225
 			   }else{ 
 			      	//otros navegadores 
 			      	espacio_iframe = 700 

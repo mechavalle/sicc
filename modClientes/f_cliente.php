@@ -194,6 +194,35 @@ if(isset($_POST['accion']))
 		$idadministradora=1;
 		//
 		
+		##Redefinir Status
+		if($nombre!="" && $apellidop!="" && $apellidom!="" && $nacimiento!="0000-00-00" && $rfc!="" && $curp!="" && $nss!="" && $genero!="" && $email!="" && $ecivil!="" && $nacionalidad!="" && $ref1nombre!="" && $ref1apellidop!="" && $ref1apellidom!="" && $ref1telefono!="" &&  $ref2nombre!="" && $ref2apellidop!="" && $ref2apellidom!="" && $ref2telefono!="" &&  $calle!="" && ($numero!="" || $numeroint!="" || $lote!="" || $mza!="") && $colonia!="" && $municipio!="" &&  $estado!="" && $cp!="" && $razonsocialpatron!="" && $rfcpatron!="" &&  $telpatron!="" && $montopresupuesto!="0")
+			$status=2;
+		if($status>=2)
+			{
+			$consulta="select * from cat_clientes where id='$id'";					
+			$resx = mysqli_query($conexio,$consulta);
+			while($val=mysqli_fetch_array($resx))
+				{
+				$asesor=$val['asesor'];
+				$integradora=$val['integradora'];
+				$idconstructora=$val['idconstructora'];
+				$idverificadora=$val['idverificadora'];
+				}
+			mysqli_free_result($resx);
+			if($asesor!="" && $integradora!="" && $idconstructora>0 && $idverificadora>0)
+				$status=3;
+			}
+		if($status>=3)
+			{
+			$imgtabla=traedato("adm_archivos","modulo","clientes","N","tabla");
+			$docmust=traedato("cat_clientes","id",$id,"S","docmust");				
+			$cdoc=traedato2("Select ifnull(count(id),0) as resu from $imgtabla where idorigen='$id' and tipo='must' and archivo!=''","resu");
+			if($cdoc>=$docmust)
+				$status=4;
+			}
+
+
+
 		if($numopeauto==0)
 			$minsql="`idcli`='$idcli',";
 		else
@@ -519,19 +548,13 @@ if(isset($_POST['accion']))
 			echo "Error al grabar el registro. ".mysqli_error($conexio)."->$csql";
 			exit(); }
 			
-		$csql = "DELETE from `ope_clientedocs` where idpersona='$id';";
-		mysqli_query($conexio, $csql);
-		if(mysqli_error($conexio)!="") {
-			echo "Error al grabar el registro. ".mysqli_error($conexio)."->$csql";
-			exit(); }	
-	
-		$csql = "DELETE from `ope_clientecoms` where idorigen='$id';";
+		$csql = "DELETE from `cat_clientespto` where idcliente='$id';";
 		mysqli_query($conexio, $csql);
 		if(mysqli_error($conexio)!="") {
 			echo "Error al grabar el registro. ".mysqli_error($conexio)."->$csql";
 			exit(); }
 			
-		$csql = "DELETE from `ope_operadorms` where idorigen='$id';";
+		$csql = "DELETE from `ope_formatos` where idpersona='$id';";
 		mysqli_query($conexio, $csql);
 		if(mysqli_error($conexio)!="") {
 			echo "ERROR: "."Error al grabar el registro. ".mysqli_error($conexio)."->$csql";

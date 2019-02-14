@@ -166,7 +166,7 @@ else
 	$accion=0;
 
 #####################################	
-$consulta = "SELECT a.id,a.nombre,a.apellidop,a.apellidom,a.rfc,a.estadof,a.idcli,a.integradora,a.asesor,a.fecha,a.valorneto,a.docmust,a.status,b.descripcion as statusv,b.color   
+$consulta = "SELECT a.id,a.nombre,a.apellidop,a.apellidom,a.rfc,a.estado,a.idcli,a.integradora,a.asesor,a.fecha,a.montopresupuesto,a.docmust,a.status,b.descripcion as statusv,b.color   
  FROM `cat_clientes` a
  left join cat_statuscliente as b on a.status=b.id
   where a.id>0 ";
@@ -187,7 +187,7 @@ $consulta = "SELECT a.id,a.nombre,a.apellidop,a.apellidom,a.rfc,a.estadof,a.idcl
 		if($rfc!="")
 			$consultaT3 .="(a.rfc = '$rfc' ) ";	
 		if($estado!="")
-			$consultaT4 .="( a.estadof='$estadof' ) ";
+			$consultaT4 .="( a.estado='$estado' ) ";
 		if($integradora!="")
 			$consultaT5 .="( a.integradora='$integradora' ) ";
 		if($asesor!="")
@@ -297,23 +297,19 @@ else
 
 if(isset($_GET['orden']))
 	{	
-	if($_GET['orden']=="idcli asc")
-		$ordenv="<option selected value='idcli asc'>id</option><option value='apellidop asc'>Nombre</option><option value='status asc'>Status</option><option value='tipo asc'>Tipo</option>";		
-	if($_GET['orden']=="tipo asc")
-		$ordenv="<option value='idcli asc'>id</option><option value='apellidop asc'>Nombre</option><option value='status asc'>Status</option><option selected value='tipo asc'>Tipo</option>";
+	if($_GET['orden']=="cast(idcli as SIGNED) desc")
+		$ordenv="<option selected value='cast(idcli as SIGNED) desc'>id descendente</option><option value='cast(idcli as SIGNED) asc'>id ascendete</option><option value='apellidop asc'>Apellido Paterno</option><option value='status asc'>Status</option>";
+	if($_GET['orden']=="cast(idcli as SIGNED) asc")
+		$ordenv="<option value='cast(idcli as SIGNED) desc'>id descendente</option><option selected value='cast(idcli as SIGNED) asc'>id ascendete</option><option value='apellidop asc'>Apellido Paterno</option><option value='status asc'>Status</option>";		
 	if($_GET['orden']=="apellidop asc")
-		$ordenv="<option value='idcli asc'>id</option><option selected value='apellidop asc'>Nombre</option><option value='status asc'>Status</option><option value='tipo asc'>Tipo</option>";
+		$ordenv="<option value='cast(idcli as SIGNED) desc'>id descendente</option><option value='cast(idcli as SIGNED) asc'>id ascendete</option><option selected value='apellidop asc'>Apellido Paterno</option><option value='status asc'>Status</option>";
 	if($_GET['orden']=="status asc")
-		$ordenv="<option value='idcli asc'>id</option><option value='apellidop asc'>Nombre</option><option selected value='status asc'>Status</option><option value='tipo asc'>Tipo</option>";
+		$ordenv="<option value='cast(idcli as SIGNED) desc'>id descendente</option><option value='cast(idcli as SIGNED) asc'>id ascendete</option><option value='apellidop asc'>Apellido Paterno</option><option selected value='status asc'>Status</option>";
 	$orden=$_GET['orden'];
 	}
 else {
-	$ordenv="<option selected value='idcli asc'>id</option><option value='apellidop asc'>Nombre</option><option value='status asc'>Status</option><option value='tipo asc'>Tipo</option>";
-	$orden="cast(idcli as SIGNED) asc"; }
-
-
-
-
+	$ordenv="<option selected value='cast(idcli as SIGNED) desc'>id descendente</option><option value='cast(idcli as SIGNED) asc'>id ascendete</option><option value='apellidop asc'>Apellido Paterno</option><option value='status asc'>Status</option>";
+	$orden="cast(idcli as SIGNED) desc"; }
 
 if($accion==1)
 	{
@@ -341,7 +337,8 @@ $consulta .=$consulta2."ORDER BY ".$orden." ".$limite;
 <meta http-equiv="Content-Language" content="es-mx">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Consulta Capital Humano</title>
+<link rel="icon" href="../img/icono.png" type="image/x-icon">
+<title>Consulta Clientes - SICC</title>
 <link rel="stylesheet" href="../lib/boot/css/bootstrap.min.css">
 <link rel="stylesheet" href="../lib/fw/css/font-awesome.min.css">
 <script src="../lib/jquery-2.1.1.min.js"></script>
@@ -362,9 +359,20 @@ window.recargar = function(){
     include("../main/f_header.php");
     ?>
 	<div style="padding: 0 20px;">
-		<? if($titulo==1)
-			echo "<p><h3><font color='#888888'>Clientes</font></h3></p>";
-		?>
+		<div class="row">
+			<div class="col-xs-6">
+				<? 
+				if($titulo==1)
+					echo "<p><h3><font color='#888888'>Consulta <font color='#ff0000'>Clientes</font></font></h3></p>";
+				?>
+			</div>
+			<div class="col-xs-6">
+				<!--<p align="right">
+					<button data-toggle="collapse" data-target="#demo">Collapsible</button>
+			-->
+				</p>
+			</div>
+		</div>
 
 		<div class="well well-sm">
 			<div class="row">
@@ -453,11 +461,11 @@ window.recargar = function(){
 					<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">
 						<tr>
 							<td align="right">
-								<a href="#"  onclick="document.edicion.submit();"><span class="glyphicon glyphicon-refresh"></span>&nbsp;<font size="1" face="Verdana">Actualizar</font></a>
-								&nbsp;|&nbsp;<a href="#"  onclick="window.location.href='f_consultaclientes.php';"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;<font size="1" face="Verdana">Limpiar</font></a>
+								<button type="button" class="btn btn-link" onclick="document.edicion.submit();"><span class="glyphicon glyphicon-refresh"></span>&nbsp;<font size="1" face="Verdana">Actualizar</font></button>
+								|<button type="button" class="btn btn-link" onclick="window.location.href='f_consultaclientes.php';"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;<font size="1" face="Verdana">Limpiar</font></button>
 								<?
 								if($IDL3>=1)
-									echo "&nbsp;|&nbsp;<a href='f_consultaoperador_ex.php?idper=$idper&nombre=$nombre&tipo=$tipo&status=$status&idscat_organigrama=$idscat_organigrama&hoy=".date("h i s")."' target='blank'><span class='glyphicon glyphicon-download-alt'></span>&nbsp;<font size='1' face='Verdana'>Exportar</font></a>";							
+									echo "|<button type='button' class='btn btn-link' onClick=\"window.open('f_consultaclientes_exp.php?idcli=$idcli&rfc=$rfc&integradora=$integradora&nombre=$nombre&estado=$estado&asesor=$asesor&status=$status&orden=$orden&fecha1=$fecha1&fecha2=$fecha2&hoy=".date("h i s")."');\"><span class='glyphicon glyphicon-download-alt'></span>&nbsp;<font size='1' face='Verdana'>Exportar</font></button>";							
 								?>
 							</td>
 						</tr>
@@ -501,7 +509,7 @@ window.recargar = function(){
 			      		<th><font size="2" face="Arial">Ingreso</font></th>
 			      		<th><font size="2" face="Arial">Integradora</font></th>
 			      		<th><font size="2" face="Arial">Asesor</font></th>
-			      		<th><font size="2" face="Arial">Monto</font></th>
+			      		<th><font size="2" face="Arial">Monto Pto</font></th>
 			      		<th><font size="2" face="Arial">Documentación</font></th>
 			      		<th><font size="2" face="Arial">Status</font></th>
 			      	</tr>
@@ -510,6 +518,7 @@ window.recargar = function(){
 
 				
 				<?
+				$total=0;
 				$imgtabla=traedato("adm_archivos","modulo","clientes","N","tabla");
 				#echo $consulta;
 				#exit();	
@@ -524,11 +533,12 @@ window.recargar = function(){
 						$nombrecompleto="&nbsp;";
 
 					$vrfc=$val['rfc'];
-					$vestado=$val['estadof'];
+					$vestado=$val['estado'];
 					$vfecha=fixfecha($val['fecha']);
 					$vintegradora=$val['integradora'];
 					$vasesor=$val['asesor'];
-					$vvalorneto=fixmontosin($val['valorneto']);
+					$total +=$val['montopresupuesto'];
+					$vvalorneto=fixmontosin($val['montopresupuesto']);
 					$colof="color='".$val['color']."'";
 					$vstatus=$val['statusv'];
 					$color="";
@@ -552,6 +562,12 @@ window.recargar = function(){
 					echo "</tr>";
 					}
 				mysqli_free_result($res);
+
+				echo "<tr>";
+					echo "<td colspan='7' align='right'><b><font size='2' face='Arial'>Total:</font></b></td>";
+					echo "<td><b><font size='2' face='Arial'>".fixmontosin($total)."</font></b></td>";
+					echo "<td colspan='2'></td>";					
+					echo "</tr>";
 				?>			
 				</tbody>
 			</table>

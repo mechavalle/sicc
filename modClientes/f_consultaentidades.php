@@ -66,7 +66,7 @@ switch($tipo)
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Consulta Entidad <?echo $titulov;?></title>
 <link rel="stylesheet" href="../lib/boot/css/bootstrap.min.css">
-<script src="../lib/jquery.min.js"></script>
+<script src="../lib/jquery-2.1.1.min.js"></script>
 <script src="../lib/boot/js/bootstrap.min.js"></script>
 <SCRIPT LANGUAGE="JavaScript" SRC="../lib/fns.js"></SCRIPT>
 <SCRIPT LANGUAGE="JavaScript">

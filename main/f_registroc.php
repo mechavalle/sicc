@@ -283,7 +283,7 @@ function borrar()
 				<td align="right" width="100" height="25"><font face="Arial" size="2">Descripción:</font></td>
 				<td width="5" height="25">&nbsp;</td>
 				<td height="25">
-				<input type="text" name="descripcion" class="cenboxfrmbig" <?echo "value='$descripcion'";?>></td>
+				<input type="text" name="descripcion" class="cenboxfrm" <?echo "value='$descripcion'";?>></td>
 			</tr>
 			<tr>
 				<td align="right" width="100" height="25"><font face="Arial" size="2">Color:</font></td>

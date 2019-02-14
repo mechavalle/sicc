@@ -241,19 +241,20 @@ $consulta .=$consulta2."ORDER BY categoria,subcategoria,nombre ".$limite;
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../img/icono.png" type="image/x-icon">
-	<title>Consulta de Módulos</title>
-	<SCRIPT LANGUAGE="JavaScript" SRC="../lib/fns.js"></SCRIPT>
-	<link rel="stylesheet" href="../lib/boot/css/bootstrap.min.css">
-	<script src="../lib/jquery-2.1.1.min.js"></script>
-	<script src="../lib/boot/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="../lib/fw/css/font-awesome.min.css">
-	<script type="text/javascript">
+<title>Consulta de Módulos</title>
+<SCRIPT LANGUAGE="JavaScript" SRC="../lib/fns.js"></SCRIPT>
+<link rel="stylesheet" href="../lib/boot/css/bootstrap.min.css">
+<script src="../lib/jquery-2.1.1.min.js"></script>
+<script src="../lib/boot/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../lib/fw/css/font-awesome.min.css">
+<link rel="stylesheet" href="../lib/style.css">
+<script type="text/javascript">
 		function importar(){
 		document.edicion.accion.value=1;
 		document.edicion.submit();
 		}
 		
-	</script>
+</script>
 </head>
 <body>
 <form name="edicion" method="POST" target="_self" enctype="multipart/form-data">
@@ -364,6 +365,10 @@ $consulta .=$consulta2."ORDER BY categoria,subcategoria,nombre ".$limite;
 		<input type="file" onchange="importar();" class="form-control campotxt" id="mixml" placeholder="" name="mixml" style="display: none;" size="1">
 		<input type="hidden" name="accion" value='0'>
 	</div>
+	<?
+echo "<br>";
+include("../main/f_footer.php");
+?>
 </form>
 </body>
 

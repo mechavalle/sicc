@@ -143,6 +143,7 @@ function traepartida($nivel,$idpadre)
 <script src="../lib/jquery-2.1.1.min.js"></script>
 <script src="../lib/boot/js/bootstrap.min.js"></script>
 <SCRIPT LANGUAGE="JavaScript" SRC="../lib/fns.js"></SCRIPT>
+<link rel="stylesheet" href="../lib/style.css">
 <SCRIPT LANGUAGE="JavaScript">
 
 </SCRIPT>
@@ -190,8 +191,14 @@ if($IDL>=2)
 	</tbody>
 	
 </table>
+</div>
+</div>
 
 </form>
+<?
+echo "<br>";
+include("../main/f_footer.php");
+?>
 </body>
 
 </html>

@@ -11,10 +11,8 @@ switch ($mnu)
   }
 
 ?>
-<!--<div class="container-fluid">
-    <h1>Comics de <font color='#ff0000'>Abraham Valle</font></h1>
-  </div>-->
-<nav class="navbar navbar-inverse"  data-spy="affix" data-offset-top="80" style="background-color: #22222259; color: #070607;">
+
+<nav class="navbar navbar-inverse"  data-spy="affix" data-offset-top="80" style="background-color: #ddd; color: #070607; border: 0;">
   
   <div class="container-fluid">
     <div class="navbar-header">
@@ -27,7 +25,7 @@ switch ($mnu)
         <img src="../img/Logo_CEIDE.png" class="img-responsive" style="width: 100px; height: auto;  ">
       </a>
       <a class="navbar-brand" href="../main/f_blank.php">
-      <font color='#f5f5dc'>SICC</font></a>
+      <font color='#000066'>SICC</font></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">

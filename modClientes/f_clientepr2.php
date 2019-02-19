@@ -261,7 +261,7 @@ mysqli_free_result($res2);
 
 		echo "<div id='collapse".$idp."' class='panel-collapse collapse'>
 			    <div class='panel-body'>";	    
-		echo "<button type='button' class='btn btn-primary btn-xs' onclick=\"abre('agregardetalle','f_agregardetalle.php?idpto=1&idcliente=$id',550,450,'YES');\">Agregar Detalle</button>";
+		echo "<button type='button' class='btn btn-primary btn-xs' onclick=\"abre('agregardetalle','f_agregardetalle.php?idpto=$idp&idcliente=$id',550,450,'YES');\">Agregar Detalle</button>";
 
 		echo $linea;
 

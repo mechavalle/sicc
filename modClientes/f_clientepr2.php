@@ -234,7 +234,7 @@ mysqli_free_result($res2);
 
 			    $linea .= "<tr><td align='right' colspan='4'><font size='2' face='Arial'><b>Total:</b></font></td>";
 				$linea .= "<td><font size='2' face='Arial'><b>$totali</b></font></td>";
-				$linea .= "<td><font size='2' face='Arial'><b>$totalp</b></font></td>";
+				$linea .= "<td><font size='2' face='Arial'><b>$totalp %</b></font></td>";
 				$linea .= "<td><font size='2' face='Arial'><b>$totalt</b></font></td>";
 				$linea .= "<td><font size='2' face='Arial'><b></b></font></td></tr>";
 				

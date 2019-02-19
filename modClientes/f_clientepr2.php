@@ -230,7 +230,7 @@ mysqli_free_result($res2);
 
 		      	$totali=fixmontosin($totali); 
 		      	$totalp=fixmontosin($totalp); 
-		      	$totalt=fixmontosin($totalt); 
+		      	$totalt=$totalt; 
 
 			    $linea .= "<tr><td align='right' colspan='4'><font size='2' face='Arial'><b>Total:</b></font></td>";
 				$linea .= "<td><font size='2' face='Arial'><b>$totali</b></font></td>";

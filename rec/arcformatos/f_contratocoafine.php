@@ -219,7 +219,7 @@ $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(3);
 
 $pdf->SetFont('Arial','',$fs);
-$txt="<p>Que es una sociedad debidamente constituida conforme a las leyes de este país, tal y como se acredita en la Escritura Pública No. $escescritura de fecha $escfecha, pasada ante la fe del Licenciado $escnotario, titular de la notaría número $escnotarionum, misma que se encuentra debidamente inscrita en el Registro Público de la Propiedad y el Comercio del Distrito Federal con número de folio mercantil $escinscripcionnum <vb>(anexo 1)</vb>, inscrita en el Registro Federal de Contribuyentes del Servicio de Administración Tributaria (SAT) con RFC $rfccons <vb>(anexo 2)</vb>.</p>";
+$txt="<p>Que es una sociedad debidamente constituida conforme a las leyes de este país, tal y como se acredita en la Escritura Pública No. $escescritura de fecha $escfecha, pasada ante la fe del Licenciado $escnotario, titular de la notaría número $escnotarionum, misma que se encuentra debidamente inscrita en el Registro Público de la Propiedad y el Comercio de $escinscripcion con número de folio mercantil $escinscripcionnum <vb>(anexo 1)</vb>, inscrita en el Registro Federal de Contribuyentes del Servicio de Administración Tributaria (SAT) con RFC $rfccons <vb>(anexo 2)</vb>.</p>";
 $pdf->Cell(10,$es,"A.",0,0,"C");
 $pdf->WriteTag(0,$es,$txt,0,"J");
 $pdf->Ln(3);
